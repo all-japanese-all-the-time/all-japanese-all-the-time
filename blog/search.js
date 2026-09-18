@@ -115,6 +115,15 @@
       '.ajatt-dd .ajatt-more{padding:8px 12px;color:#aaa;font-size:12px;font-style:italic}',
       '.ajatt-hit{background:transparent;color:#ffd479;font-weight:bold}',
       '.ajatt-results{margin:0 0 24px}',
+      /* the page body is light, unlike the #333 bar the dropdown lives in */
+      '.ajatt-searchbar{margin:0 0 16px;display:flex;gap:6px}',
+      '.ajatt-searchbar input{flex:1 1 auto;padding:8px 10px;font-size:14px;',
+      'border:1px solid #ccc;background:#fff;color:#222;min-width:0}',
+      '.ajatt-searchbar input:focus{outline:none;border-color:#888}',
+      '.ajatt-searchbar button{padding:8px 14px;border:1px solid #333;background:#333;',
+      'color:#fff;cursor:pointer;font-size:13px}',
+      '.ajatt-searchbar button:hover{background:#222}',
+      '.ajatt-hint{color:#777;font-size:13px;font-style:italic;margin:0 0 18px}',
       '.ajatt-results h1{margin:0 0 4px}',
       '.ajatt-results .ajatt-count{color:#777;font-size:13px;margin:0 0 18px}',
       '.ajatt-results ol{list-style:none;margin:0;padding:0}',
@@ -204,25 +213,62 @@
 
   /* ---------- results view, on /blog/?s=query ---------- */
 
-  function renderResults(q) {
+  function renderResults(initialQuery) {
     var host = document.getElementById('primary');
     if (!host) return;
-    var all = search(q), page = 1;
+
+    var q = initialQuery, all = search(q), page = 1;
     var box = el('div', 'ajatt-results');
 
-    var h = el('h1', 'entry-title');
-    h.appendChild(document.createTextNode('Search results for “' + q + '”'));
-    box.appendChild(h);
-    var count = el('p', 'ajatt-count',
-      all.length ? all.length + (all.length === 1 ? ' post' : ' posts') + ' found'
-                 : 'No posts matched that title.');
-    box.appendChild(count);
+    /* The theme's own search box sits in #drop-down-search, which is
+     * display:none behind a slideToggle icon. It survives this render (it is
+     * outside #primary) but it is hidden, so refining a search would mean
+     * hunting for the toggle. This bar is a real form with the same name="s"
+     * and action, so enter works even if the handler below never binds. */
+    var bar = el('form', 'ajatt-searchbar');
+    bar.setAttribute('method', 'get');
+    bar.setAttribute('action', '/blog/');
+    bar.setAttribute('role', 'search');
+    var input = el('input');
+    input.type = 'search';
+    input.name = 's';
+    input.value = q;
+    input.setAttribute('aria-label', 'Search post titles');
+    input.placeholder = 'Search post titles\u2026';
+    var go = el('button', null, 'Search');
+    go.type = 'submit';
+    bar.appendChild(input);
+    bar.appendChild(go);
+    box.appendChild(bar);
 
+    var h = el('h1', 'entry-title');
+    box.appendChild(h);
+    var count = el('p', 'ajatt-count');
+    box.appendChild(count);
     var list = el('ol'), pager = el('div', 'ajatt-pager');
-    box.appendChild(list); box.appendChild(pager);
+    box.appendChild(list);
+    box.appendChild(pager);
+
+    function heading() {
+      h.textContent = '';
+      h.appendChild(document.createTextNode('Search results for \u201c' + q + '\u201d'));
+      document.title = 'Search results for \u201c' + q + '\u201d | AJATT | All Japanese All The Time';
+      count.className = 'ajatt-count';
+      if (!longEnough(q)) {
+        count.className = 'ajatt-hint';
+        count.textContent = hasCJK(q)
+          ? 'Type at least one character.'
+          : 'Type at least three characters.';
+      } else {
+        count.textContent = all.length
+          ? all.length + (all.length === 1 ? ' post' : ' posts') + ' found'
+          : 'No posts matched that title.';
+      }
+    }
 
     function draw() {
       list.textContent = ''; pager.textContent = '';
+      if (!longEnough(q)) return;
       var pages = Math.max(1, Math.ceil(all.length / PER_PAGE));
       page = Math.min(Math.max(1, page), pages);
       all.slice((page - 1) * PER_PAGE, page * PER_PAGE).forEach(function (r) {
@@ -242,22 +288,39 @@
         });
         pager.appendChild(b);
       };
-      btn('‹ Prev', page - 1, page === 1);
+      btn('\u2039 Prev', page - 1, page === 1);
       var shown = [];
       for (var i = 1; i <= pages; i++) {
         if (i === 1 || i === pages || Math.abs(i - page) <= 2) shown.push(i);
       }
       shown.forEach(function (i, k) {
-        if (k && i - shown[k - 1] > 1) pager.appendChild(el('span', 'ajatt-gap', '…'));
+        if (k && i - shown[k - 1] > 1) pager.appendChild(el('span', 'ajatt-gap', '\u2026'));
         btn(String(i), i, false, i === page);
       });
-      btn('Next ›', page + 1, page === pages);
+      btn('Next \u203a', page + 1, page === pages);
     }
 
-    draw();
+    function setQuery(next, pushUrl) {
+      q = next;
+      all = longEnough(q) ? search(q) : [];
+      page = 1;
+      heading(); draw();
+      /* keep the address bar shareable without reloading the page */
+      if (pushUrl && window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', '/blog/?s=' + encodeURIComponent(q));
+      }
+    }
+
+    input.addEventListener('input', function () { setQuery(input.value, false); });
+    bar.addEventListener('submit', function (e) {
+      e.preventDefault();
+      setQuery(input.value, true);
+      input.blur();
+    });
+
+    heading(); draw();
     host.textContent = '';
     host.appendChild(box);
-    document.title = 'Search results for “' + q + '” | AJATT | All Japanese All The Time';
   }
 
   /* ---------- boot ---------- */
