@@ -16,13 +16,21 @@ they fire:
 <link rel="canonical"> points at the destination so search engines consolidate on
 the real page rather than the stub.
 
+Every URL in the stub is relative to the stub itself, the domain name nowhere in
+the file. rel=canonical is an ordinary URL reference, resolved against the
+document's base like any other, so on the live site it resolves to exactly the
+absolute URL it used to be spelled out as - and a copy of this archive unzipped
+on someone's laptop, or served from a subdirectory of another domain, redirects
+just as well as the original does.
+
 Run from the repository root:  python3 tools/build-redirect-stubs.py
+Existing stubs are rewritten in place; anything that is not a stub is left alone.
 """
 import html, os, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MOVE_COMMIT = '1087f640'
-ORIGIN = 'https://alljapanesealltheti.me'
+DRY = '--dry-run' in sys.argv
 
 # Feeds and other machine endpoints are skipped: an HTML stub served where a
 # reader expects RSS is worse than a 404, because a feed reader cannot parse it.
@@ -34,13 +42,13 @@ TEMPLATE = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <title>Moved: {title}</title>
-<link rel="canonical" href="{origin}{dest}">
+<link rel="canonical" href="{dest}">
 <meta name="referrer" content="no-referrer-when-downgrade">
 <meta http-equiv="refresh" content="0; url={dest}">
 <script>location.replace({dest_js} + location.search + location.hash);</script>
 </head>
 <body style="font-family:sans-serif;padding:2em;max-width:40em;margin:0 auto">
-<p>This page now lives at <a href="{dest}">{origin}{dest}</a>.</p>
+<p>This page now lives at <a href="{dest}">{site_path}</a>.</p>
 <p style="color:#666;font-size:.9em">The archive moved to <code>/blog/</code> to
 restore the URLs the original site used, so that an old link needs only its
 domain changed to work again.</p>
@@ -66,23 +74,42 @@ def moved_paths():
             continue
         yield path
 
+def is_stub(target):
+    """A page we generated, recognised the same way build-search-index.py does."""
+    try:
+        head = open(target, 'rb').read(2048)
+    except OSError:
+        return False
+    return b'location.replace' in head and b'canonical' in head
+
 def main():
-    made = skipped = 0
+    made = rewritten = skipped = 0
     for path in sorted(set(moved_paths())):
-        dest = '/blog/' + path + '/'
+        # '/blog/a/b/' seen from '/a/b/', which is where this stub lives
+        dest = '../' * len(path.split('/')) + 'blog/' + path + '/'
         target = os.path.join(ROOT, path, 'index.html')
-        if os.path.exists(target):
+        exists = os.path.exists(target)
+        if exists and not is_stub(target):
             skipped += 1              # never overwrite something real
             continue
-        os.makedirs(os.path.dirname(target), exist_ok=True)
-        with open(target, 'w', encoding='utf-8') as fh:
-            fh.write(TEMPLATE.format(
-                title=html.escape(path.rsplit('/', 1)[-1].replace('-', ' '))[:90],
-                dest=html.escape(dest),
-                dest_js=repr(dest).replace("'", '"'),
-                origin=ORIGIN))
-        made += 1
-    print(f'  stubs written : {made:,}')
+        page = TEMPLATE.format(
+            title=html.escape(path.rsplit('/', 1)[-1].replace('-', ' '))[:90],
+            dest=html.escape(dest),
+            dest_js=repr(dest).replace("'", '"'),
+            site_path=html.escape('/blog/' + path + '/'))
+        if exists and open(target, encoding='utf-8').read() == page:
+            continue                  # already current
+        if not DRY:
+            os.makedirs(os.path.dirname(target), exist_ok=True)
+            with open(target, 'w', encoding='utf-8') as fh:
+                fh.write(page)
+        if exists:
+            rewritten += 1
+        else:
+            made += 1
+    verb = 'would be ' if DRY else ''
+    print(f'  stubs {verb}written : {made:,}')
+    print(f'  stubs {verb}rewritten in place: {rewritten:,}')
     print(f'  skipped (a real file already there): {skipped}')
 
 if __name__ == '__main__':
