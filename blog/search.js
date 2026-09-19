@@ -249,7 +249,7 @@
     var host = document.getElementById('primary');
     if (!host) return;
 
-    var q = initialQuery, all = search(q), page = 1, mode = 'titles';
+    var q = initialQuery, all = search(q), page = 1, mode = 'titles', corrected = null;
     var box = el('div', 'ajatt-results');
 
     /* The theme's own search box sits in #drop-down-search, which is
@@ -296,6 +296,10 @@
          * looks exactly like a working search finding nothing. */
         count.className = 'ajatt-hint';
         count.textContent = 'The search index could not be loaded. Reload the page to try again.';
+      } else if (mode === 'full-text' && corrected) {
+        count.textContent = all.length + (all.length === 1 ? ' post' : ' posts')
+          + ' found for \u201c' + corrected + '\u201d \u2014 nothing matched \u201c'
+          + q + '\u201d, so the spelling was corrected';
       } else if (mode === 'full-text') {
         count.textContent = all.length
           ? all.length + (all.length === 1 ? ' post' : ' posts') + ' found'
@@ -359,7 +363,7 @@
       if (longEnough(q)) {
         apiSearch(q, API_URL).then(function (d) {
           if (!d || q !== next) return;          /* stale response, ignore */
-          all = d.results; mode = 'full-text'; page = 1;
+          all = d.results; mode = 'full-text'; corrected = d.corrected || null; page = 1;
           heading(); draw();
         });
       }
@@ -385,7 +389,7 @@
     if (longEnough(q)) {
       apiSearch(q, API_URL).then(function (d) {
         if (!d || d.q !== q) return;
-        all = d.results; mode = 'full-text'; page = 1;
+        all = d.results; mode = 'full-text'; corrected = d.corrected || null; page = 1;
         heading(); draw();
       });
     }
