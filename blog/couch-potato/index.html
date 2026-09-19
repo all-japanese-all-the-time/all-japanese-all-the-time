@@ -14,16 +14,12 @@
 <link rel="pingback" href="../xmlrpc.php" />
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <link rel='dns-prefetch' href='http://s0.wp.com/' />
-<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
-<link rel='dns-prefetch' href='http://netdna.bootstrapcdn.com/' />
+<link rel='dns-prefetch' href='https://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='https://netdna.bootstrapcdn.com/' />
 <link rel='dns-prefetch' href='http://s.w.org/' />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Feed" href="../feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Comments Feed" href="../comments/feed/index.html" />
 
-		<script type="text/javascript">
-			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.13"}};
-			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])?!1:!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55358,56760,9792,65039],[55358,56760,8203,9792,65039])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
-		</script>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -42,7 +38,7 @@ img.emoji {
 <link rel='stylesheet' id='wp-block-library-css'  href='../wp-includes/css/dist/block-library/style.mind934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='extra-style-css'  href='../wp-content/plugins/organize-series-extra-tokens/orgSeries-extrad934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='orgseries-default-css-css'  href='../wp-content/plugins/organize-series/orgSeriesd934.css?ver=5.1.13' type='text/css' media='all' />
-<link rel='stylesheet' id='google_fonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
+<link rel='stylesheet' id='google_fonts-css'  href='https://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
 <link rel='stylesheet' id='theme_stylesheet-css'  href='../wp-content/themes/magazine-premium/styled934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='font_awesome-css'  href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' type='text/css' media='all' />
 <link rel='stylesheet' id='jetpack_css-css'  href='../wp-content/plugins/jetpack/css/jetpackbf7d.css?ver=7.0.3' type='text/css' media='all' />
@@ -77,7 +73,7 @@ img.emoji {
       
       if(document.links[t].hasAttribute('onClick') == false) {
         // forced if the address starts with http (or also https), but does not link to the current domain
-        if(all_links.href.search(/^http/) != -1 && all_links.href.search(/\/index.html/) == -1 && all_links.href.search(/^#/) == -1) {
+        if(all_links.href.search(/^http/) != -1 && all_links.hostname != location.hostname && all_links.href.search(/^#/) == -1) {
           // console.log('Changed ' + all_links.href);
           change_link = true;
         }
@@ -149,30 +145,6 @@ a:hover, .entry-meta a:hover, .format-link .entry-title a:hover { color: #222222
 body.custom-background { background-image: url("../wp-content/themes/magazine-premium/library/images/solid.png"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
 </style>
 	
-	<!-- Clean Archives Reloaded v3.2.0 | http://www.viper007bond.com/wordpress-plugins/clean-archives-reloaded/ -->
-	<style type="text/css">.car-collapse .car-yearmonth { cursor: s-resize; } </style>
-	<script type="text/javascript">
-		/* <![CDATA[ */
-			jQuery(document).ready(function() {
-				jQuery('.car-collapse').find('.car-monthlisting').hide();
-				jQuery('.car-collapse').find('.car-monthlisting:first').show();
-				jQuery('.car-collapse').find('.car-yearmonth').click(function() {
-					jQuery(this).next('ul').slideToggle('fast');
-				});
-				jQuery('.car-collapse').find('.car-toggler').click(function() {
-					if ( 'Expand All' == jQuery(this).text() ) {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').show();
-						jQuery(this).text('Collapse All');
-					}
-					else {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').hide();
-						jQuery(this).text('Expand All');
-					}
-					return false;
-				});
-			});
-		/* ]]> */
-	</script>
 
 <!-- Custom CSS -->
 <style>
@@ -267,17 +239,17 @@ img.thickie {
 					<a href="#" class="left-menu"><i class="icon-reorder"></i></a>
 					<a href="#"><i class="icon-search"></i></a>
 				</div>
-				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></div>
 
 								<div class="title-logo-wrapper center">
 										<div id="title-wrapper">
-						<h1 id="site-title"><a href="" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
+						<h1 id="site-title"><a href="../index.html" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
 						<h2 id="site-description">You don&#039;t know a language, you live it. You don&#039;t learn a language, you get used to it.</h2>					</div>
 				</div>
-									<a href="" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
+									<a href="../index.html" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
 					
 				<nav id="site-navigation" role="navigation">
 					<h3 class="assistive-text">Main menu</h3>
@@ -285,7 +257,7 @@ img.thickie {
 					<div class="menu-header-links-container"><ul id="menu-header-links" class="menu"><li id="menu-item-3362" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-3362"><a title="How To Use This Website" href="../index.html">NEW? START HERE!</a>
 <li id="menu-item-3361" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3361"><a href="../archives/index.html">Latest/Blog</a>
 <li id="menu-item-3364" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3364"><a href="../store/index.html">Store</a>
-<li id="menu-item-3366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3366"><a href="/blog/contact/">Contact</a>
+<li id="menu-item-3366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3366"><a href="../contact/index.html">Contact</a>
 <li id="menu-item-24564" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24564"><a href="../index.html?random">@Random Post</a>
 </ul></div>				</nav><!-- #site-navigation -->
 
@@ -307,27 +279,27 @@ img.thickie {
 					<h1 class="entry-title">So You Want to Know How to Learn Japanese By Literally Sitting on Your Plump Behind, Watching Anime and Being A Couch Potato (And Even Become Kanji-Literate and Be Able to Read All Your Favorite Manga Raw), With NO Studying, NO Effort, NO Memorization, NO Pain and NO Boredom? Also NO STUDYING?</h1>
 				</header>
 				<div class="entry-content">
-<p>Well, well, well. It looks like you got through that epic title. So, if nothing else, you&#8217;re a survivor <img src="/blog/wp-includes/images/smilies/icon_razz.gif" alt=":P" class="wp-smiley"/>  .</p>
+<p>Well, well, well. It looks like you got through that epic title. So, if nothing else, you&#8217;re a survivor <img src="../wp-includes/images/smilies/icon_razz.gif" alt=":P" class="wp-smiley"/>  .</p>
 <p>Let me not beat around the bush. Because there are no bushes here. This is the Internet and we&#8217;re&#8230;it&#8217;s like&#8230;data encoded in light pulses and electrical signals, and&#8230;anyway, no (involuntary) beatings and no bushes!</p>
 <p>You like anime. And you like manga. Don&#8217;t lie. I already know. We know. Anime and manga (and to some extent video games, martial arts and even (gasp!) people) are the primary reasons why people like you and me want to learn Japanese. All the other reasons we make up are just crap we make up so that people don&#8217;t make fun of us for liking anime and manga.</p>
 <p>So don&#8217;t lie to me. Not because it&#8217;s morally wrong or any of that shoulda-covered-it-in-second-grade crap. No, because<strong> the problem with telling lies is that you eventually start believing them</strong>, and you run the risk of not merely hiding but altogether forgetting the truth. Kind of like when the people who persecuted Gandhi and European Jews went from just trash-talking about being a master race to actually believing it (and being dismissive of proper strategy and tactics and stuff). I never want that to happen to you; I never want you to forget that you love anime, that it&#8217;s what motivates you to want to learn Japanese.</p>
-<p><a href="/blog/how-real-is-anime-japanese">Anime is real Japanese</a>, just like <em>The Simpsons</em> is real English. <a href="/blog/if-anime-is-bad-for-you">Anime is good for you</a>. Anime and manga will make you fluent, but if and only if you have <span style="color: #ff6600;"><strong>a system that is engineered to get them from page and screen deep and permanently into your brain</strong></span> and mouth &#8212; but more on that later. In any case, you are on the right track; <strong>you must never forget your love for anime, your love for manga. Never. It is right and it is good and it is healthy</strong> and you are not a <a href="http://ja.urbandictionary.com/define.php?term=Weeaboo">weeaboo</a> or a banana or a coconut or a cookie or whatever terms of abuse the &#8220;cool&#8221; kids are using these days. Those people are just jealous because you have something you&#8217;re in love with, that you can really sink your teeth into.</p>
-<p>Now, does that mean that <em>Inuyasha</em> doesn&#8217;t suck? Of course not. <em>Inuyasha</em> sucks. <em>Inuyasha</em> always has sucked and <em>Inuyasha</em> always will suck and nothing whatsoever can be done to help that <img src="/blog/wp-includes/images/smilies/icon_razz.gif" alt=":P" class="wp-smiley"/>  .</p>
-<p>But everything else is cool <img src="/blog/wp-includes/images/smilies/icon_biggrin.gif" alt=":D" class="wp-smiley"/>  .</p>
+<p><a href="../how-real-is-anime-japanese/index.html">Anime is real Japanese</a>, just like <em>The Simpsons</em> is real English. <a href="../if-anime-is-bad-for-you/index.html">Anime is good for you</a>. Anime and manga will make you fluent, but if and only if you have <span style="color: #ff6600;"><strong>a system that is engineered to get them from page and screen deep and permanently into your brain</strong></span> and mouth &#8212; but more on that later. In any case, you are on the right track; <strong>you must never forget your love for anime, your love for manga. Never. It is right and it is good and it is healthy</strong> and you are not a <a href="http://ja.urbandictionary.com/define.php?term=Weeaboo">weeaboo</a> or a banana or a coconut or a cookie or whatever terms of abuse the &#8220;cool&#8221; kids are using these days. Those people are just jealous because you have something you&#8217;re in love with, that you can really sink your teeth into.</p>
+<p>Now, does that mean that <em>Inuyasha</em> doesn&#8217;t suck? Of course not. <em>Inuyasha</em> sucks. <em>Inuyasha</em> always has sucked and <em>Inuyasha</em> always will suck and nothing whatsoever can be done to help that <img src="../wp-includes/images/smilies/icon_razz.gif" alt=":P" class="wp-smiley"/>  .</p>
+<p>But everything else is cool <img src="../wp-includes/images/smilies/icon_biggrin.gif" alt=":D" class="wp-smiley"/>  .</p>
 <p>Now that we&#8217;ve gotten over the pleasantries and the joshing, let me be the first to re-assure you that you are in good hands. <strong><em>Inuyasha</em> may suck something awful, but the knowledge that I&#8217;m about to drop on you absolutely does not.</strong></p>
-<p>First of all, who am I to even be talking to you about this? Well, <a href="/blog/about">I am known for a thing or two on the Internet</a>. Being handsome. Being crazy. Being in love with kanji. But the most important thing is that while I have beliefs, preferences and biases, I never let them get in the way of progress and awesomeness. I <strong>never let dogma overrule pragma</strong>. When a better way or a better idea shows is head, I&#8217;m never too proud to go make out with it.</p>
+<p>First of all, who am I to even be talking to you about this? Well, <a href="../about/index.html">I am known for a thing or two on the Internet</a>. Being handsome. Being crazy. Being in love with kanji. But the most important thing is that while I have beliefs, preferences and biases, I never let them get in the way of progress and awesomeness. I <strong>never let dogma overrule pragma</strong>. When a better way or a better idea shows is head, I&#8217;m never too proud to go make out with it.</p>
 <p>So that&#8217;s me. In the unlikely event that you&#8217;ve read any of what I&#8217;ve written and shared with the world before, then<strong> what I&#8217;m about to share with you may come as a shock</strong> and will seem to go against much of what I have previously taught; sacred cows are getting ignored on Facebook. But those contradictions are only skin-deep.</p>
-<p><a href="/blog/about">Most likely, you&#8217;ve never heard of me</a>. In which cause, what I&#8217;m about to share with you will simply come as an even bigger shock, because it will go against so much conventional &#8220;wisdom&#8221;.</p>
+<p><a href="../about/index.html">Most likely, you&#8217;ve never heard of me</a>. In which cause, what I&#8217;m about to share with you will simply come as an even bigger shock, because it will go against so much conventional &#8220;wisdom&#8221;.</p>
 <p>You&#8217;re in good hands. Not because I&#8217;m a good person (I&#8217;m not), but because I&#8217;m a practical person, an experienced person. I know what you need to do, and how you it needs to be done, but more importantly,<strong> I know what you <em>don&#8217;t</em> need to do, what you can get away with not doing; I know exactly what&#8217;s a waste of your time and energy and how to avoid it all.</strong></p>
 <p>A lot of people will tell you that you don&#8217;t need to learn kanji to know Japanese. That is grade-A, self-defeating BS. And it simply isn&#8217;t true. What is true is that <strong><em>all </em>active aspects of a language (i.e. output, so writing and speaking), are less important than passive aspects (i.e. input, so reading, hearing and comprehending)</strong>. Passive ability always precedes and supersedes active ability, in terms of both time and priority &#8212; passive ability always comes first and it always matters more. There are two simple extrinsic reasons for this:</p>
 <ol>
 <li>It&#8217;s no good knowing how to ask directions if you can&#8217;t understand the response (the explanation) that comes back.</li>
 <li>There is only ever one of you, but there are millions and billions of other people, and counting. Other speakers and writers outnumber you, and you want &#8212; need &#8212; to be able to understand them.</li>
 </ol>
-<p>What&#8217;s also true is that <a href="/blog/if-anime-is-bad-for-you"><strong>you can learn things without trying to</strong></a>. About which more later&#8230;</p>
+<p>What&#8217;s also true is that <a href="../if-anime-is-bad-for-you/index.html"><strong>you can learn things without trying to</strong></a>. About which more later&#8230;</p>
 <p>But it gets deeper. Here&#8217;s something else, brought to you from a far-off foreign country I like to call Experiencistan (where I&#8217;ve lived as a documented permanent resident since 2004).</p>
 <p>It doesn&#8217;t matter what method you use to get good at Japanese. As long as it works. It really doesn&#8217;t. Now, classes don&#8217;t work (like you needed me to tell that! I know you already knew), so they&#8217;re not even in our universe of things to consider.</p>
-<p>Whatever and however you get good at Japanese, get fluent, <em>does not matter </em>(as long as it works), because &#8212; in the long run &#8212; <a href="/blog/there-is-no-end-what-are-you-going-to-do-about-it">the trick isn&#8217;t climbing the mountain, it&#8217;s staying on top</a>. This is the great, big dirty secret of learning languages fast; it&#8217;s true of you; it&#8217;s true of me and it&#8217;s true of all the great polyglots of the world, quite a number of whom are beloved personal friends of mine &#8212; the learning part is quick and easy and can be made even quicker and even easier. The maintaining part, though, is a way of life.</p>
+<p>Whatever and however you get good at Japanese, get fluent, <em>does not matter </em>(as long as it works), because &#8212; in the long run &#8212; <a href="../there-is-no-end-what-are-you-going-to-do-about-it/index.html">the trick isn&#8217;t climbing the mountain, it&#8217;s staying on top</a>. This is the great, big dirty secret of learning languages fast; it&#8217;s true of you; it&#8217;s true of me and it&#8217;s true of all the great polyglots of the world, quite a number of whom are beloved personal friends of mine &#8212; the learning part is quick and easy and can be made even quicker and even easier. The maintaining part, though, is a way of life.</p>
 <p>Think about it: your native language, presumably English, isn&#8217;t something you&#8217;re just doing as a &#8220;challenge&#8221; to &#8220;improve your resume&#8221;. English isn&#8217;t a notch on your bedpost<del>, like your mother is to me</del>. It isn&#8217;t a bullet point on your CV. You don&#8217;t take English tests for foreigners and go show off about your score on them. You&#8217;re not here in English today and gone tomorrow. You&#8217;re not going to jump ship and quit speaking English just because the US and UK stock markets drop a few percentage points next week. You&#8217;re not a Dow Jones Industrial English speaker and you&#8217;re not a Nikkei Average Japanese speaker.</p>
 <p>But enough about that. All that maintenance stuff is in the future and it&#8217;s up to you. Eventually, Japanese will cease to be a choice or a hobby to you, and simply become a way of life. They won&#8217;t be Japanese words, they&#8217;ll just be words; they won&#8217;t be Japanese cartoons, they&#8217;ll just be cartoons; they won&#8217;t be Japanese comic books, they&#8217;ll just be comic books&#8230;that all just happen to be in Japanese. But <strong>for now, let&#8217;s get down to the quick and dirty. Let&#8217;s get you to where you can:</strong></p>
 <ul>
@@ -338,7 +310,7 @@ img.thickie {
 <p>And let&#8217;s <strong>get you there fast,</strong> all by literally &#8212; literally &#8212; sitting on your relatively plump backside, watching anime and being a couch potato. <strong>No studying. Not even kanji studying.</strong> No effort. <strong>No memorization.</strong> No boredom. No pain. All gain.</p>
 <p>So are you ready for the info already? Because I&#8217;m ready to give it to you, I&#8217;ve been wanting to give it to you all day; so let me give it to you already!</p>
 <p>Easy there, big girl. There&#8217;s just one catch, though. This information isn&#8217;t for everybody. Not everybody can deal with it, not everybody can handle it, and, quite frankly, not everybody deserves it. You need to convince me of your worthiness; I need to know that you can handle it and do deserve it.</p>
-<p>So before we go on, answer me this one question: Do you know all the <em>hiragana</em> and <em>katakana</em> by heart (46 a pop, 92 total)? If you do, let&#8217;s talk. If not, come back when you do <img src="/blog/wp-includes/images/smilies/icon_biggrin.gif" alt=":D" class="wp-smiley"/>   &#8211; this information may not be here when you come back, but it won&#8217;t make any sense until you do, so, yeah; there&#8217;d be no point in you having it; it&#8217;d be like giving a bazooka to a baby.</p>
+<p>So before we go on, answer me this one question: Do you know all the <em>hiragana</em> and <em>katakana</em> by heart (46 a pop, 92 total)? If you do, let&#8217;s talk. If not, come back when you do <img src="../wp-includes/images/smilies/icon_biggrin.gif" alt=":D" class="wp-smiley"/>   &#8211; this information may not be here when you come back, but it won&#8217;t make any sense until you do, so, yeah; there&#8217;d be no point in you having it; it&#8217;d be like giving a bazooka to a baby.</p>
 <p>So are you ready? You know all your <em>kana</em>? OK, let&#8217;s go!</p>
 <div class="youtubevid" id="stylized">
 <h2 style="text-align: center;"><span style="color: #ff6600;">All you need do is hit me with your name and email, and I&#8217;ll have my people talk to your people, and send you the secret information your lazy, couch potato derriere deserves, for free!</span></h2>
@@ -358,7 +330,7 @@ img.thickie {
 </div><!-- #primary.c8 -->
 
 	<div id="secondary" class="c3 end" role="complementary">
-		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></aside><aside id="nav_menu-2" class="widget widget_nav_menu"><h3 class="widget-title">Best of AJATT</h3><div class="menu-least-crappy-of-ajatt-container"><ul id="menu-least-crappy-of-ajatt" class="menu"><li id="menu-item-3562" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3562"><a href="../aim-to-fail/index.html">Aim To Fail</a></li>
@@ -454,7 +426,6 @@ img.thickie {
 				seriesdropdown.onchange = onSeriesChange;
 			}
 			--></script>
-			<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack6f57.js?ver=202218'></script>
 <script type='text/javascript' src='../wp-includes/js/comment-reply.mind934.js?ver=5.1.13'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/bootstrap.min605a.js?ver=2.2.2'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/harvey.mind934.js?ver=5.1.13'></script>
@@ -475,7 +446,7 @@ var fergcorp_countdown_timer_options = {"showYear":"0","showMonth":"0","showWeek
 <script type='text/javascript' src='../wp-includes/js/wp-embed.mind934.js?ver=5.1.13'></script>
 <script async="async" type='text/javascript' src='../wp-content/plugins/akismet/_inc/form8aee.js?ver=4.1.2'></script>
 <!-- Magazine Premium created by c.bavota - http://themes.bavotasan.com -->
-		<script defer src="/blog/search.js"></script>
+		<script defer src="../search.js"></script>
 	</body>
 
 </html>

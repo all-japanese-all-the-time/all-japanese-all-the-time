@@ -14,16 +14,12 @@
 <link rel="pingback" href="../xmlrpc.php" />
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <link rel='dns-prefetch' href='http://s0.wp.com/' />
-<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
-<link rel='dns-prefetch' href='http://netdna.bootstrapcdn.com/' />
+<link rel='dns-prefetch' href='https://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='https://netdna.bootstrapcdn.com/' />
 <link rel='dns-prefetch' href='http://s.w.org/' />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Feed" href="../feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Comments Feed" href="../comments/feed/index.html" />
 
-		<script type="text/javascript">
-			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.13"}};
-			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])?!1:!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55358,56760,9792,65039],[55358,56760,8203,9792,65039])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
-		</script>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -42,7 +38,7 @@ img.emoji {
 <link rel='stylesheet' id='wp-block-library-css'  href='../wp-includes/css/dist/block-library/style.mind934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='extra-style-css'  href='../wp-content/plugins/organize-series-extra-tokens/orgSeries-extrad934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='orgseries-default-css-css'  href='../wp-content/plugins/organize-series/orgSeriesd934.css?ver=5.1.13' type='text/css' media='all' />
-<link rel='stylesheet' id='google_fonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
+<link rel='stylesheet' id='google_fonts-css'  href='https://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
 <link rel='stylesheet' id='theme_stylesheet-css'  href='../wp-content/themes/magazine-premium/styled934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='font_awesome-css'  href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' type='text/css' media='all' />
 <link rel='stylesheet' id='jetpack_css-css'  href='../wp-content/plugins/jetpack/css/jetpackbf7d.css?ver=7.0.3' type='text/css' media='all' />
@@ -77,7 +73,7 @@ img.emoji {
       
       if(document.links[t].hasAttribute('onClick') == false) {
         // forced if the address starts with http (or also https), but does not link to the current domain
-        if(all_links.href.search(/^http/) != -1 && all_links.href.search(/\/index.html/) == -1 && all_links.href.search(/^#/) == -1) {
+        if(all_links.href.search(/^http/) != -1 && all_links.hostname != location.hostname && all_links.href.search(/^#/) == -1) {
           // console.log('Changed ' + all_links.href);
           change_link = true;
         }
@@ -149,30 +145,6 @@ a:hover, .entry-meta a:hover, .format-link .entry-title a:hover { color: #222222
 body.custom-background { background-image: url("../wp-content/themes/magazine-premium/library/images/solid.png"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
 </style>
 	
-	<!-- Clean Archives Reloaded v3.2.0 | http://www.viper007bond.com/wordpress-plugins/clean-archives-reloaded/ -->
-	<style type="text/css">.car-collapse .car-yearmonth { cursor: s-resize; } </style>
-	<script type="text/javascript">
-		/* <![CDATA[ */
-			jQuery(document).ready(function() {
-				jQuery('.car-collapse').find('.car-monthlisting').hide();
-				jQuery('.car-collapse').find('.car-monthlisting:first').show();
-				jQuery('.car-collapse').find('.car-yearmonth').click(function() {
-					jQuery(this).next('ul').slideToggle('fast');
-				});
-				jQuery('.car-collapse').find('.car-toggler').click(function() {
-					if ( 'Expand All' == jQuery(this).text() ) {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').show();
-						jQuery(this).text('Collapse All');
-					}
-					else {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').hide();
-						jQuery(this).text('Expand All');
-					}
-					return false;
-				});
-			});
-		/* ]]> */
-	</script>
 
 <!-- Custom CSS -->
 <style>
@@ -267,17 +239,17 @@ img.thickie {
 					<a href="#" class="left-menu"><i class="icon-reorder"></i></a>
 					<a href="#"><i class="icon-search"></i></a>
 				</div>
-				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></div>
 
 								<div class="title-logo-wrapper center">
 										<div id="title-wrapper">
-						<h1 id="site-title"><a href="" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
+						<h1 id="site-title"><a href="../index.html" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
 						<h2 id="site-description">You don&#039;t know a language, you live it. You don&#039;t learn a language, you get used to it.</h2>					</div>
 				</div>
-									<a href="" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
+									<a href="../index.html" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
 					
 				<nav id="site-navigation" role="navigation">
 					<h3 class="assistive-text">Main menu</h3>
@@ -285,7 +257,7 @@ img.thickie {
 					<div class="menu-header-links-container"><ul id="menu-header-links" class="menu"><li id="menu-item-3362" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-3362"><a title="How To Use This Website" href="../index.html">NEW? START HERE!</a>
 <li id="menu-item-3361" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3361"><a href="../archives/index.html">Latest/Blog</a>
 <li id="menu-item-3364" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3364"><a href="../store/index.html">Store</a>
-<li id="menu-item-3366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3366"><a href="/blog/contact/">Contact</a>
+<li id="menu-item-3366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3366"><a href="../contact/index.html">Contact</a>
 <li id="menu-item-24564" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24564"><a href="../index.html?random">@Random Post</a>
 </ul></div>				</nav><!-- #site-navigation -->
 
@@ -309,16 +281,16 @@ img.thickie {
 				<div class="entry-content">
 <p>This post is dedicated to <a href="http://is.gd/OCB3Ww">Captain Underpants</a>. Long may he live.</p>
 <h2>※The Untold Khatzumoto Story</h2>
-<p>So, I like to think of myself as a private man. I keep to myself. Wear overcoats&#8230;stare at people from a distance while eating Digestive Biscuits&#8230;wait, that sounds bad. You may know that I came to Japan in a blaze of self-taught glory (having blazed a <a href="/blog/the-bilingual-career-forum-story">bilingual career forum</a>) and became an engineer at Sony over at the massive Tech Center right by the HQ building, working on the software that powers those things you had before a smartphone &#8212; cameras.</p>
-<p>What you may not know is that I stopped liking leaving my house every day, so I left Sony and became not one but two things. An IT consultant (because people kept asking me to and kept forcing money on me <img src="/blog/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley"/>  ), and an at-home translator.</p>
-<p>Later on, when leaving my house even once or twice a month for consulting meetings became too much of a bother, I quit consulting altogether and focussed exclusively on at-home translation. When it comes to translation, I&#8217;ve worked with names big and small &#8212; NAMCO, Honda, Toyota, SquareEnix, Sony, and many more. Stuff you&#8217;ve heard of. Almost all of it highly confidential work, protected by non-disclosure agreements, so I only say what I can <img src="/blog/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley"/>  &#8230;</p>
+<p>So, I like to think of myself as a private man. I keep to myself. Wear overcoats&#8230;stare at people from a distance while eating Digestive Biscuits&#8230;wait, that sounds bad. You may know that I came to Japan in a blaze of self-taught glory (having blazed a <a href="../the-bilingual-career-forum-story/index.html">bilingual career forum</a>) and became an engineer at Sony over at the massive Tech Center right by the HQ building, working on the software that powers those things you had before a smartphone &#8212; cameras.</p>
+<p>What you may not know is that I stopped liking leaving my house every day, so I left Sony and became not one but two things. An IT consultant (because people kept asking me to and kept forcing money on me <img src="../wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley"/>  ), and an at-home translator.</p>
+<p>Later on, when leaving my house even once or twice a month for consulting meetings became too much of a bother, I quit consulting altogether and focussed exclusively on at-home translation. When it comes to translation, I&#8217;ve worked with names big and small &#8212; NAMCO, Honda, Toyota, SquareEnix, Sony, and many more. Stuff you&#8217;ve heard of. Almost all of it highly confidential work, protected by non-disclosure agreements, so I only say what I can <img src="../wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley"/>  &#8230;</p>
 <h2>※What&#8217;s the Difference Between At-Home Translation and Freelance Translation?</h2>
 <p>As far as I&#8217;m aware, they&#8217;re basically the same, but I never liked the word &#8220;freelance&#8221;. To me it always had connotations of &#8220;desperate&#8221;, &#8220;incompetent&#8221; and &#8220;wishes he had a &#8216;real&#8217; job&#8221;. Not connotations I like. At the very least, people seem to use the term with derision. Besides, the Japanese term for it: &#8220;在宅翻訳&#8221; literally means &#8220;at-home translation&#8221; and that&#8217;s the whole point of this exercise &#8212; to work from home. Also, we&#8217;re talking about getting into the Japanese translation industry specifically, so it makes sense to use a Japanese or Japanese-ish term for the matter in question.</p>
 <h2>※Maybe You Can Do This, But You&#8217;re Khatzumoto, Internet Sensation</h2>
 <p>Oh, please.<br/>
 I&#8217;m uglier and dumber and lazier than you. I was born in one Third World country and grew up in another. I didn&#8217;t grow up in Japan or speaking Japanese yet Japanese companies started asking me translate technical material into Japanese (presumably not for their amusement, because they were paying me quite handsomely for it) from both English and Chinese. I slur when I speak and routinely misspell words like &#8220;medecine&#8221; (see what I mean?). If I could do it, anyone can.</p>
 <h2>※Why is At-Home Translation A Good Line of Work <a class="simple-footnote" title="I hate the word “job”" id="return-note-28895-1" href="#note-28895-1"><sup>1</sup></a>?</h2>
-<p>Because you&#8217;re free. It&#8217;s the furthest thing from wage slavery that isn&#8217;t owning your own business. You get to work on what you want, from where you want, when you want to. You can literally work from home in your pajamas, your leg hair growing, Dorito stains in your teeth. And no one will care. Because all anyone cares about in the Japanese translation industry is results. It&#8217;s perhaps the closest thing on this Earth to a pure meritocracy that doesn&#8217;t include killing people or Robert Heinlein. <em>Starship Troopers</em> reference for ya there. No extra charge <img src="/blog/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley"/>  .</p>
+<p>Because you&#8217;re free. It&#8217;s the furthest thing from wage slavery that isn&#8217;t owning your own business. You get to work on what you want, from where you want, when you want to. You can literally work from home in your pajamas, your leg hair growing, Dorito stains in your teeth. And no one will care. Because all anyone cares about in the Japanese translation industry is results. It&#8217;s perhaps the closest thing on this Earth to a pure meritocracy that doesn&#8217;t include killing people or Robert Heinlein. <em>Starship Troopers</em> reference for ya there. No extra charge <img src="../wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley"/>  .</p>
 <h2>※But Don&#8217;t I Need A Degree and Certifications?</h2>
 <p>No, you don&#8217;t. For starters, I made my first forays into the industry before even graduating college, and it was never an issue <a class="simple-footnote" title="I abruptly set aside my budding translation career to focus on college and Sony, but picked it up again once I left the home of the Walkman." id="return-note-28895-2" href="#note-28895-2"><sup>2</sup></a>. Now, of course, I have a degree, but had and have no certifications whatsoever. At-home translation is a pure, black box meritocracy. That means that if you can deliver the goods (i.e. words), correctly and on time, then you get work and you get paid. No doubt many houses have been burned too often by credentialism to be swayed by that any more. Some places do require silly things like certifications (test scores, etc.) and five years of experience: ignore them; they&#8217;re silly.</p>
 <p>In the world of at-home translations, silly exceptions aside, nobody cares who you are, where you are, where you&#8217;re from or what you did. All that matters is what you can do now &#8212; your raw ability. They give you Japanese text and out comes English text. That&#8217;s all that matters.</p>
@@ -372,7 +344,7 @@ But one thing you&#8217;ll discover once you &#8212; thanks to this program &#82
 <p>And that&#8217;s why I&#8217;m offering&#8230;</p>
 <h2>※The Pays-For-Itself PFI Guarantee</h2>
 <p>If JTQ doesn&#8217;t pay for itself after 365 days have elapsed since its purchase, you get all your money back. Every last penny. No questions asked.</p>
-<p>Not only that but PayPal (our current payment processor) <em>and</em> your credit card company are backing you up as well, so you and your money are protected <em>in triplicate</em> from anything going wrong. Think of it as a three-way guarantee. We&#8217;re cooperating in a triumvirate, a <em>menage a trois</em> of awesomeness, to protect and satisfy you <img src="/blog/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley"/>  .</p>
+<p>Not only that but PayPal (our current payment processor) <em>and</em> your credit card company are backing you up as well, so you and your money are protected <em>in triplicate</em> from anything going wrong. Think of it as a three-way guarantee. We&#8217;re cooperating in a triumvirate, a <em>menage a trois</em> of awesomeness, to protect and satisfy you <img src="../wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley"/>  .</p>
 <p>&#8230;That was awkward.</p>
 <p>You know what? I hate disclaimers. So let me just come at you straight. Your income as a translator will ultimately depend on your speed and persistence of action. Speed (of translation) and persistence (in contacting people) matter the most, actual skill is obviously helpful but also secondary &#8212; people can&#8217;t experience your skill if they can&#8217;t see it, and they can&#8217;t see it if you don&#8217;t contact them and show them your stuff. I can guarantee that you <em>can</em> succeed, though not necessarily that you will, if only because I cannot control you. But I can guarantee that I&#8217;ll do my best for you, with and through JTQ. And if it doesn&#8217;t work out after a year or so, hey, take your money back. No blood, no foul.</p>
 <h2>※Wait, JTQ? You Kinda Sprung That On Me There! What&#8217;s JTQ?</h2>
@@ -383,7 +355,7 @@ But one thing you&#8217;ll discover once you &#8212; thanks to this program &#82
 <ul>
 <li>How to write a Japanese resume (you won&#8217;t need an English one) that&#8217;ll wow people&#8230;
 <ul>
-<li>&#8230;and looks just like a &#8220;proper&#8221; Japanese person&#8217;s <img src="/blog/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley"/> </li>
+<li>&#8230;and looks just like a &#8220;proper&#8221; Japanese person&#8217;s <img src="../wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley"/> </li>
 <li>&#8230;but also takes into account your presumably foreign upbringing and experience</li>
 </ul>
 </li>
@@ -425,7 +397,7 @@ But one thing you&#8217;ll discover once you &#8212; thanks to this program &#82
 <h2>※If Everyone Gets This, Won&#8217;t That Spoil the Specialness of the Information?</h2>
 <p>No, I don&#8217;t think so, because so few people act on what they know. But just in case, I&#8217;ve priced JTQ in such a way a way that <strong>it&#8217;s basically free</strong> (it costs far less than college and far less than it&#8217;ll bring back) but also discouraging to casual, low quality, post-it-on-a-free-forum people. And I control the supply like a hawk; I want only quality people to have access to this quality product per unit time &#8212; I don&#8217;t want to flood the market with bad people armed with good information.</p>
 <p>Honestly, though, there is enough pie for everybody. Japanese organizations need to produce more English text now than ever before. Japanese people in general, still suck at English and still dislike it &#8212; it feels like a chore to them and they would rather avoid it.</p>
-<p>Don&#8217;t believe me? Then step outside the bubble of internationally-oriented Japanese people who naturally gravitate to <em>gaijin</em> and go meet some regular salt of the earth folks. If Japanese people feel obligated to learn English, it&#8217;s in the same way that so many Americans feel obligated to lose weight <img src="/blog/wp-includes/images/smilies/icon_biggrin.gif" alt=":D" class="wp-smiley"/>  &#8212; lip service and vague guilt with little or no action.</p>
+<p>Don&#8217;t believe me? Then step outside the bubble of internationally-oriented Japanese people who naturally gravitate to <em>gaijin</em> and go meet some regular salt of the earth folks. If Japanese people feel obligated to learn English, it&#8217;s in the same way that so many Americans feel obligated to lose weight <img src="../wp-includes/images/smilies/icon_biggrin.gif" alt=":D" class="wp-smiley"/>  &#8212; lip service and vague guilt with little or no action.</p>
 <p>And that&#8217;s fine. I like Japan; I like Japanese. And I think languages should be a joy, a toy, a game, not an obligation. And the fact that most Japanese people are, frankly, unmotivated to really learn English (beyond a desire to occasionally show off to fellow Japanese people) works to your advantage. Your amazing, native English combined with your amazing, AJATT/RTK/SRS-produced Japanese literacy make for literal and figurative gold.</p>
 <h2>※Lemme At It! I Want Mine! I Want In On JTQ!</h2>
 <p>Slow down. Are you sure you&#8217;re a good fit? Scroll back up there to make sure, because I want you to be sure.</p>
@@ -449,24 +421,24 @@ But one thing you&#8217;ll discover once you &#8212; thanks to this program &#82
 </li>
 <li>Free lifetime access to upgrades, updates and extensions to JTQ</li>
 <li>No <a href="http://ja.wikipedia.org/wiki/%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E8%91%97%E4%BD%9C%E6%A8%A9%E7%AE%A1%E7%90%86">DRM</a>, because you&#8217;re a customer, not a criminal</li>
-<li>Free <a href="/blog/what-is-ajatt-plus">AJATT Plus</a> for 12 months
+<li>Free <a href="../what-is-ajatt-plus/index.html">AJATT Plus</a> for 12 months
 <ul>
 <li>Including the RJE: Real Japanese Email Series</li>
 </ul>
 </li>
-<li>Free <a href="/blog/work-dot-jp-starter-pack">work.jp Starter Pack</a>
+<li>Free <a href="../work-dot-jp-starter-pack/index.html">work.jp Starter Pack</a>
 <ul>
 <li>Including Japanese resume, cover letter, back-and-forth correspondence samples</li>
 </ul>
 </li>
-<li><a href="/blog/how-to-never-ever-have-trouble-finding">Free IMX Japanese for 24 months</a></li>
-<li>Free <a href="/blog/holiday-magic-omnibus-the-mother-of-all-sentence-packs">Mother of All Sentence Packs</a>
+<li><a href="../how-to-never-ever-have-trouble-finding/index.html">Free IMX Japanese for 24 months</a></li>
+<li>Free <a href="../holiday-magic-omnibus-the-mother-of-all-sentence-packs/index.html">Mother of All Sentence Packs</a>
 <ul>
 <li>A superlative learner source and professional reference for both technical and colloquial Japanese</li>
 </ul>
 </li>
 </ul>
-<p><a href="http://plus.ajatt.com/dap/paypalCoupon.php?cmd=_xclick&amp;item_number=96&amp;currency_code=USD"><img alt="" src="/blog/data/Get-Yours-Now-Button1-300x78.png"/></a></td>
+<p><a href="http://plus.ajatt.com/dap/paypalCoupon.php?cmd=_xclick&amp;item_number=96&amp;currency_code=USD"><img alt="" src="../data/Get-Yours-Now-Button1-300x78.png"/></a></td>
 <td valign="top">
 <h1>JTQ Platinum</h1>
 <ul>
@@ -483,21 +455,21 @@ But one thing you&#8217;ll discover once you &#8212; thanks to this program &#82
 </li>
 <li>Free lifetime access to upgrades, updates and extensions to JTQ</li>
 <li>No <a href="http://ja.wikipedia.org/wiki/%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E8%91%97%E4%BD%9C%E6%A8%A9%E7%AE%A1%E7%90%86">DRM</a>, because you&#8217;re a customer, not a criminal</li>
-<li>Free <a href="/blog/what-is-ajatt-plus">AJATT Plus</a> for 36 months
+<li>Free <a href="../what-is-ajatt-plus/index.html">AJATT Plus</a> for 36 months
 <ul>
 <li>Including the RJE: Real Japanese Email Series</li>
 </ul>
 </li>
-<li>Free <a href="/blog/work-dot-jp-starter-pack">work.jp Starter Pack</a></li>
-<li>Free <a href="/blog/how-to-never-ever-have-trouble-finding">Lifetime Access to IMX Japanese</a></li>
+<li>Free <a href="../work-dot-jp-starter-pack/index.html">work.jp Starter Pack</a></li>
+<li>Free <a href="../how-to-never-ever-have-trouble-finding/index.html">Lifetime Access to IMX Japanese</a></li>
 <li>Free AJATT.talk Vol 1</li>
-<li>Free <a href="/blog/holiday-magic-omnibus-the-mother-of-all-sentence-packs">Mother of All Sentence Packs</a>
+<li>Free <a href="../holiday-magic-omnibus-the-mother-of-all-sentence-packs/index.html">Mother of All Sentence Packs</a>
 <ul>
 <li>A superlative learner source and professional reference for both technical and colloquial Japanese</li>
 </ul>
 </li>
 </ul>
-<p><a href="http://plus.ajatt.com/dap/paypalCoupon.php?cmd=_xclick&amp;item_number=97&amp;currency_code=USD"><img alt="" src="/blog/data/Get-Yours-Now-Button1-300x78.png"/></a></td>
+<p><a href="http://plus.ajatt.com/dap/paypalCoupon.php?cmd=_xclick&amp;item_number=97&amp;currency_code=USD"><img alt="" src="../data/Get-Yours-Now-Button1-300x78.png"/></a></td>
 </tr>
 <tr>
 <td colspan="2" valign="top">
@@ -516,34 +488,34 @@ But one thing you&#8217;ll discover once you &#8212; thanks to this program &#82
 </li>
 <li>Free lifetime access to upgrades, updates and extensions to JTQ</li>
 <li>No <a href="http://ja.wikipedia.org/wiki/%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E8%91%97%E4%BD%9C%E6%A8%A9%E7%AE%A1%E7%90%86">DRM</a>, because you&#8217;re a customer, not a criminal</li>
-<li>Free unlimited = lifetime access to <a href="/blog/what-is-ajatt-plus">AJATT Plus</a>
+<li>Free unlimited = lifetime access to <a href="../what-is-ajatt-plus/index.html">AJATT Plus</a>
 <ul>
 <li>Including the RJE: Real Japanese Email Series</li>
 </ul>
 </li>
-<li>Free <a href="/blog/work-dot-jp-starter-pack">work.jp Starter Pack</a></li>
-<li>Free <a href="/blog/how-to-never-ever-have-trouble-finding">Lifetime Access to IMX Japanese + all current and future IMX Languages &#8212; the whole enchilada!</a></li>
+<li>Free <a href="../work-dot-jp-starter-pack/index.html">work.jp Starter Pack</a></li>
+<li>Free <a href="../how-to-never-ever-have-trouble-finding/index.html">Lifetime Access to IMX Japanese + all current and future IMX Languages &#8212; the whole enchilada!</a></li>
 <li>Free AJATT.talk Vol 1</li>
-<li>Free <a href="/blog/holiday-magic-omnibus-the-mother-of-all-sentence-packs">Mother of All Sentence Packs</a>
+<li>Free <a href="../holiday-magic-omnibus-the-mother-of-all-sentence-packs/index.html">Mother of All Sentence Packs</a>
 <ul>
 <li>A superlative learner source and professional reference for both technical and colloquial Japanese</li>
 </ul>
 </li>
 <li>Free 12 months of access to an exclusive, secret AJATT program (too explosive and controversial to spell out here)</li>
 </ul>
-<p><a href="http://plus.ajatt.com/dap/paypalCoupon.php?cmd=_xclick&amp;item_number=98&amp;currency_code=USD"><img alt="" src="/blog/data/Get-Yours-Now-Button1-300x78.png"/></a></td>
+<p><a href="http://plus.ajatt.com/dap/paypalCoupon.php?cmd=_xclick&amp;item_number=98&amp;currency_code=USD"><img alt="" src="../data/Get-Yours-Now-Button1-300x78.png"/></a></td>
 </tr>
 </tbody>
 </table>
 <h2><a href="http://plus.ajatt.com/dap/paypalCoupon.php?cmd=_xclick-subscriptions&amp;item_number=106&amp;currency_code=USD">JTQ Basic</a></h2>
-<p>Wait! Hold on! Slow your roll! Because there&#8217;s one more flavor! If you prefer to keep things nice and easy, there&#8217;s also the <a href="http://plus.ajatt.com/dap/paypalCoupon.php?cmd=_xclick-subscriptions&amp;item_number=106&amp;currency_code=USD">&#8220;Basic&#8221; plan &#8212; a simple, no-frills installment plan</a>. For just a few easy payments you can get your hands on the JTQ core and supplements. Basic also has its own special set of freebies, but you&#8217;ll have to enroll to find out what they are <img src="/blog/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley"/>  .</p>
-<div class="simple-footnotes"><p class="notes">Notes:</p><ol><li id="note-28895-1">I hate the word &#8220;job&#8221; <a href="#return-note-28895-1">&#8617;</a></li><li id="note-28895-2">I abruptly set aside my budding translation career to focus on college and <a href="/blog/the-bilingual-career-forum-story">Sony</a>, but picked it up again once I left the home of the Walkman. <a href="#return-note-28895-2">&#8617;</a></li></ol></div>
+<p>Wait! Hold on! Slow your roll! Because there&#8217;s one more flavor! If you prefer to keep things nice and easy, there&#8217;s also the <a href="http://plus.ajatt.com/dap/paypalCoupon.php?cmd=_xclick-subscriptions&amp;item_number=106&amp;currency_code=USD">&#8220;Basic&#8221; plan &#8212; a simple, no-frills installment plan</a>. For just a few easy payments you can get your hands on the JTQ core and supplements. Basic also has its own special set of freebies, but you&#8217;ll have to enroll to find out what they are <img src="../wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley"/>  .</p>
+<div class="simple-footnotes"><p class="notes">Notes:</p><ol><li id="note-28895-1">I hate the word &#8220;job&#8221; <a href="#return-note-28895-1">&#8617;</a></li><li id="note-28895-2">I abruptly set aside my budding translation career to focus on college and <a href="../the-bilingual-career-forum-story/index.html">Sony</a>, but picked it up again once I left the home of the Walkman. <a href="#return-note-28895-2">&#8617;</a></li></ol></div>
 				</div><!-- .entry-content -->
 			</article>
 </div><!-- #primary.c8 -->
 
 	<div id="secondary" class="c3 end" role="complementary">
-		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></aside><aside id="nav_menu-2" class="widget widget_nav_menu"><h3 class="widget-title">Best of AJATT</h3><div class="menu-least-crappy-of-ajatt-container"><ul id="menu-least-crappy-of-ajatt" class="menu"><li id="menu-item-3562" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3562"><a href="../aim-to-fail/index.html">Aim To Fail</a></li>
@@ -639,7 +611,6 @@ But one thing you&#8217;ll discover once you &#8212; thanks to this program &#82
 				seriesdropdown.onchange = onSeriesChange;
 			}
 			--></script>
-			<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack6f57.js?ver=202218'></script>
 <script type='text/javascript' src='../wp-includes/js/comment-reply.mind934.js?ver=5.1.13'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/bootstrap.min605a.js?ver=2.2.2'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/harvey.mind934.js?ver=5.1.13'></script>
@@ -660,7 +631,7 @@ var fergcorp_countdown_timer_options = {"showYear":"0","showMonth":"0","showWeek
 <script type='text/javascript' src='../wp-includes/js/wp-embed.mind934.js?ver=5.1.13'></script>
 <script async="async" type='text/javascript' src='../wp-content/plugins/akismet/_inc/form8aee.js?ver=4.1.2'></script>
 <!-- Magazine Premium created by c.bavota - http://themes.bavotasan.com -->
-		<script defer src="/blog/search.js"></script>
+		<script defer src="../search.js"></script>
 	</body>
 
 </html>

@@ -14,16 +14,12 @@
 <link rel="pingback" href="../xmlrpc.php" />
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <link rel='dns-prefetch' href='http://s0.wp.com/' />
-<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
-<link rel='dns-prefetch' href='http://netdna.bootstrapcdn.com/' />
+<link rel='dns-prefetch' href='https://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='https://netdna.bootstrapcdn.com/' />
 <link rel='dns-prefetch' href='http://s.w.org/' />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Feed" href="../feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Comments Feed" href="../comments/feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Help A Reader Out Comments Feed" href="feed/index.html" />
-		<script type="text/javascript">
-			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.13"}};
-			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])?!1:!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55358,56760,9792,65039],[55358,56760,8203,9792,65039])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
-		</script>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -42,7 +38,7 @@ img.emoji {
 <link rel='stylesheet' id='wp-block-library-css'  href='../wp-includes/css/dist/block-library/style.mind934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='extra-style-css'  href='../wp-content/plugins/organize-series-extra-tokens/orgSeries-extrad934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='orgseries-default-css-css'  href='../wp-content/plugins/organize-series/orgSeriesd934.css?ver=5.1.13' type='text/css' media='all' />
-<link rel='stylesheet' id='google_fonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
+<link rel='stylesheet' id='google_fonts-css'  href='https://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
 <link rel='stylesheet' id='theme_stylesheet-css'  href='../wp-content/themes/magazine-premium/styled934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='font_awesome-css'  href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' type='text/css' media='all' />
 <link rel='stylesheet' id='jetpack_css-css'  href='../wp-content/plugins/jetpack/css/jetpackbf7d.css?ver=7.0.3' type='text/css' media='all' />
@@ -77,7 +73,7 @@ img.emoji {
       
       if(document.links[t].hasAttribute('onClick') == false) {
         // forced if the address starts with http (or also https), but does not link to the current domain
-        if(all_links.href.search(/^http/) != -1 && all_links.href.search(/\/index.html/) == -1 && all_links.href.search(/^#/) == -1) {
+        if(all_links.href.search(/^http/) != -1 && all_links.hostname != location.hostname && all_links.href.search(/^#/) == -1) {
           // console.log('Changed ' + all_links.href);
           change_link = true;
         }
@@ -149,30 +145,6 @@ a:hover, .entry-meta a:hover, .format-link .entry-title a:hover { color: #222222
 body.custom-background { background-image: url("../wp-content/themes/magazine-premium/library/images/solid.png"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
 </style>
 	
-	<!-- Clean Archives Reloaded v3.2.0 | http://www.viper007bond.com/wordpress-plugins/clean-archives-reloaded/ -->
-	<style type="text/css">.car-collapse .car-yearmonth { cursor: s-resize; } </style>
-	<script type="text/javascript">
-		/* <![CDATA[ */
-			jQuery(document).ready(function() {
-				jQuery('.car-collapse').find('.car-monthlisting').hide();
-				jQuery('.car-collapse').find('.car-monthlisting:first').show();
-				jQuery('.car-collapse').find('.car-yearmonth').click(function() {
-					jQuery(this).next('ul').slideToggle('fast');
-				});
-				jQuery('.car-collapse').find('.car-toggler').click(function() {
-					if ( 'Expand All' == jQuery(this).text() ) {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').show();
-						jQuery(this).text('Collapse All');
-					}
-					else {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').hide();
-						jQuery(this).text('Expand All');
-					}
-					return false;
-				});
-			});
-		/* ]]> */
-	</script>
 
 <!-- Custom CSS -->
 <style>
@@ -267,17 +239,17 @@ img.thickie {
 					<a href="#" class="left-menu"><i class="icon-reorder"></i></a>
 					<a href="#"><i class="icon-search"></i></a>
 				</div>
-				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></div>
 
 								<div class="title-logo-wrapper center">
 										<div id="title-wrapper">
-						<h1 id="site-title"><a href="/blog/" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
+						<h1 id="site-title"><a href="../index.html" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
 						<h2 id="site-description">You don&#039;t know a language, you live it. You don&#039;t learn a language, you get used to it.</h2>					</div>
 				</div>
-									<a href="/blog/" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
+									<a href="../index.html" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
 					
 				<nav id="site-navigation" role="navigation">
 					<h3 class="assistive-text">Main menu</h3>
@@ -424,7 +396,7 @@ flower-fire: fireworks</p>
 			    <li class="comment even thread-even depth-1">
       <div id="comment-7691" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/05b7d803fc76e389f034d0b83fc57288?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/05b7d803fc76e389f034d0b83fc57288?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             <a href='http://www.kidethnic.com/' rel='external nofollow' class='url'>Saleem</a>           </div>
@@ -449,7 +421,7 @@ flower-fire: fireworks</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7692" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/728674aa8d0b8619e48c1d88cbe4dcfb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/728674aa8d0b8619e48c1d88cbe4dcfb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Sutebun           </div>
@@ -468,7 +440,7 @@ flower-fire: fireworks</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7693" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/7ae6cd54f85580d3609817d436b3a42e?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/7ae6cd54f85580d3609817d436b3a42e?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Tony           </div>
@@ -488,7 +460,7 @@ flower-fire: fireworks</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7695" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/8b21d5bf4810c63abbf69db8b9dcf99f?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/8b21d5bf4810c63abbf69db8b9dcf99f?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             AwkwardMap           </div>
@@ -507,7 +479,7 @@ flower-fire: fireworks</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7696" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/491f7f3f6897f572ff36575bbf47341f?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/491f7f3f6897f572ff36575bbf47341f?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             phauna           </div>
@@ -525,7 +497,7 @@ flower-fire: fireworks</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7697" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/1ca4c736b5dcb029dfc3c846545faf47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/1ca4c736b5dcb029dfc3c846545faf47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             <a href='http://biesnecker.com/' rel='external nofollow' class='url'>John B</a>           </div>
@@ -544,7 +516,7 @@ flower-fire: fireworks</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7698" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/fcd0b8bca230e02c0bbfd0f54211c4fa?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/fcd0b8bca230e02c0bbfd0f54211c4fa?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Cooper           </div>
@@ -563,7 +535,7 @@ flower-fire: fireworks</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7699" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/1ca4c736b5dcb029dfc3c846545faf47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/1ca4c736b5dcb029dfc3c846545faf47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             <a href='http://biesnecker.com/' rel='external nofollow' class='url'>John B</a>           </div>
@@ -582,7 +554,7 @@ flower-fire: fireworks</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7700" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/d674f8d6e0b28d5ff4e0fbf112784d8e?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/d674f8d6e0b28d5ff4e0fbf112784d8e?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Wan Zafran           </div>
@@ -600,7 +572,7 @@ flower-fire: fireworks</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7702" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/59c130f4d78b36d1281921af905821ca?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/59c130f4d78b36d1281921af905821ca?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Charles A.           </div>
@@ -626,7 +598,7 @@ Ok, I can’t completely answer this one from experience. Assume 250 hours activ
     <li class="comment even thread-even depth-1">
       <div id="comment-7703" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/f78165c585e1dc3d7ec134da8292ccc3?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/f78165c585e1dc3d7ec134da8292ccc3?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             JT0104           </div>
@@ -649,7 +621,7 @@ Ok, I can’t completely answer this one from experience. Assume 250 hours activ
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7705" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/c937eae037e722dfd4a288b1b32abd47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/c937eae037e722dfd4a288b1b32abd47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Chiro-kun           </div>
@@ -672,7 +644,7 @@ And subs become unnecessary. Your mind no longer has an excuse for tainting your
     <li class="comment even thread-even depth-1">
       <div id="comment-7706" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/7d29a4cd791e7f15af331d47e03d5b3a?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/7d29a4cd791e7f15af331d47e03d5b3a?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Rob           </div>
@@ -691,7 +663,7 @@ And subs become unnecessary. Your mind no longer has an excuse for tainting your
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7707" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/9073199331228d2a7657079300724064?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/9073199331228d2a7657079300724064?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             nacest           </div>
@@ -709,7 +681,7 @@ And subs become unnecessary. Your mind no longer has an excuse for tainting your
     <li class="comment even thread-even depth-1">
       <div id="comment-7708" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/736f4264b0a528525582d5352ebb6ca5?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/736f4264b0a528525582d5352ebb6ca5?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Brittany           </div>
@@ -736,7 +708,7 @@ Your memory doesn&#8217;t suck, you just never used it in this way before. Since
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7709" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/8d3b7408c5e0be55ce3ef435469bc6e6?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/8d3b7408c5e0be55ce3ef435469bc6e6?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Nivaldo           </div>
@@ -757,7 +729,7 @@ Wow. thanks for the idea. can anyone give links for such things? I would love to
     <li class="comment even thread-even depth-1">
       <div id="comment-7712" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/61bf6259bb06236f65a8827691f3df00?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/61bf6259bb06236f65a8827691f3df00?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             X3R0 (X-star, hehe)           </div>
@@ -774,7 +746,7 @@ Wow. thanks for the idea. can anyone give links for such things? I would love to
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7713" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/b2dc2756b0ec9a89da8ab2014e374703?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/b2dc2756b0ec9a89da8ab2014e374703?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             bubble           </div>
@@ -798,7 +770,7 @@ Most of the things I watch are somewhere in between, where I understand relative
     <li class="comment even thread-even depth-1">
       <div id="comment-7714" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/8883313183e33709338126c53070e521?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/8883313183e33709338126c53070e521?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Forrest           </div>
@@ -815,7 +787,7 @@ Most of the things I watch are somewhere in between, where I understand relative
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7715" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/7ae6cd54f85580d3609817d436b3a42e?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/7ae6cd54f85580d3609817d436b3a42e?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Tony           </div>
@@ -837,7 +809,7 @@ I&#8217;m in Japan so google automatically searches Japanese websites first, so 
     <li class="comment even thread-even depth-1">
       <div id="comment-7716" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/9073199331228d2a7657079300724064?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/9073199331228d2a7657079300724064?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             nacest           </div>
@@ -854,7 +826,7 @@ I&#8217;m in Japan so google automatically searches Japanese websites first, so 
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7719" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/00e090df20b702e4aeb1bb078771a9c4?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/00e090df20b702e4aeb1bb078771a9c4?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             <a href='http://misterwake.blogspot.com/' rel='external nofollow' class='url'>wakela</a>           </div>
@@ -875,7 +847,7 @@ I&#8217;m in Japan so google automatically searches Japanese websites first, so 
     <li class="comment even thread-even depth-1">
       <div id="comment-7720" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/c937eae037e722dfd4a288b1b32abd47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/c937eae037e722dfd4a288b1b32abd47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Chiro-kun           </div>
@@ -894,7 +866,7 @@ I&#8217;m in Japan so google automatically searches Japanese websites first, so 
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7721" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/c937eae037e722dfd4a288b1b32abd47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/c937eae037e722dfd4a288b1b32abd47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Chiro-kun           </div>
@@ -911,7 +883,7 @@ I&#8217;m in Japan so google automatically searches Japanese websites first, so 
     <li class="comment even thread-even depth-1">
       <div id="comment-7722" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             quendidil           </div>
@@ -928,7 +900,7 @@ I&#8217;m in Japan so google automatically searches Japanese websites first, so 
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7728" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/7c8f2c18d058c83561cefc616040d793?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/7c8f2c18d058c83561cefc616040d793?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Jeniko           </div>
@@ -947,7 +919,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7731" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/c6b12b03727c79fc8bfef4bf54904df0?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/c6b12b03727c79fc8bfef4bf54904df0?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Ivan the Terrible           </div>
@@ -966,7 +938,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7735" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/b0b8e10a7506005b0cc5f1902713746c?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/b0b8e10a7506005b0cc5f1902713746c?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Codexus           </div>
@@ -986,7 +958,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7748" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/1ca4c736b5dcb029dfc3c846545faf47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/1ca4c736b5dcb029dfc3c846545faf47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             <a href='http://biesnecker.com/' rel='external nofollow' class='url'>John B</a>           </div>
@@ -1004,7 +976,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7753" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             quendidil           </div>
@@ -1022,7 +994,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7757" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/c6b12b03727c79fc8bfef4bf54904df0?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/c6b12b03727c79fc8bfef4bf54904df0?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Ivan the Terrible           </div>
@@ -1041,7 +1013,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7759" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/c937eae037e722dfd4a288b1b32abd47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/c937eae037e722dfd4a288b1b32abd47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Chiro-kun           </div>
@@ -1059,7 +1031,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7768" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/c6b12b03727c79fc8bfef4bf54904df0?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/c6b12b03727c79fc8bfef4bf54904df0?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Ivan the Terrible           </div>
@@ -1079,7 +1051,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7774" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/1ca4c736b5dcb029dfc3c846545faf47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/1ca4c736b5dcb029dfc3c846545faf47?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             <a href='http://biesnecker.com/' rel='external nofollow' class='url'>John B</a>           </div>
@@ -1096,7 +1068,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7779" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/fdc0787bddc34c66354e7482333aac41?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/fdc0787bddc34c66354e7482333aac41?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Jerry           </div>
@@ -1116,7 +1088,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7783" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/c6b12b03727c79fc8bfef4bf54904df0?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/c6b12b03727c79fc8bfef4bf54904df0?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Ivan the Terrible           </div>
@@ -1136,7 +1108,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7784" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/d47a6fd837457b44315dd568ea4dbe1e?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/d47a6fd837457b44315dd568ea4dbe1e?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             ModishMinuet           </div>
@@ -1154,7 +1126,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7788" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             quendidil           </div>
@@ -1171,7 +1143,7 @@ Plus, some fansubbing can be extremely extremely wrong.</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7789" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             quendidil           </div>
@@ -1189,7 +1161,7 @@ My record for the second clause is 10secs but I slur over some words at that pac
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7791" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             quendidil           </div>
@@ -1206,7 +1178,7 @@ My record for the second clause is 10secs but I slur over some words at that pac
     <li class="comment even thread-even depth-1">
       <div id="comment-7792" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/fdc0787bddc34c66354e7482333aac41?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/fdc0787bddc34c66354e7482333aac41?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Jerry           </div>
@@ -1225,7 +1197,7 @@ My record for the second clause is 10secs but I slur over some words at that pac
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7794" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/8d3b7408c5e0be55ce3ef435469bc6e6?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/8d3b7408c5e0be55ce3ef435469bc6e6?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Nivaldo           </div>
@@ -1242,7 +1214,7 @@ My record for the second clause is 10secs but I slur over some words at that pac
     <li class="comment even thread-even depth-1">
       <div id="comment-7795" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/9073199331228d2a7657079300724064?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/9073199331228d2a7657079300724064?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             nacest           </div>
@@ -1260,7 +1232,7 @@ That&#8217;s the starting sentence not only of the anime, but also of the book. 
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7806" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             quendidil           </div>
@@ -1277,7 +1249,7 @@ That&#8217;s the starting sentence not only of the anime, but also of the book. 
     <li class="comment even thread-even depth-1">
       <div id="comment-7809" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/4278ac664f69b60675d255516c0d203f?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/4278ac664f69b60675d255516c0d203f?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             watashimo           </div>
@@ -1295,7 +1267,7 @@ I love 涼宮ハルヒの憂鬱. Where did you get the book?</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7822" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/caf075a6ccaaa571ac76d8cf1b9342fb?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             quendidil           </div>
@@ -1312,7 +1284,7 @@ I love 涼宮ハルヒの憂鬱. Where did you get the book?</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7829" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/9073199331228d2a7657079300724064?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/9073199331228d2a7657079300724064?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             nacest           </div>
@@ -1330,7 +1302,7 @@ I love 涼宮ハルヒの憂鬱. Where did you get the book?</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7835" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/ed38fae485dcd6817d2dba2a28244b33?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/ed38fae485dcd6817d2dba2a28244b33?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Meshi           </div>
@@ -1354,7 +1326,7 @@ I love 涼宮ハルヒの憂鬱. Where did you get the book?</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7836" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/0a9021eff33f5594b7ee7029f4234c6e?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/0a9021eff33f5594b7ee7029f4234c6e?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Barron           </div>
@@ -1372,7 +1344,7 @@ I love 涼宮ハルヒの憂鬱. Where did you get the book?</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7848" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/950693599584994e7a6548c2a43ddf88?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/950693599584994e7a6548c2a43ddf88?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             khatzumoto           </div>
@@ -1390,7 +1362,7 @@ I love 涼宮ハルヒの憂鬱. Where did you get the book?</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-7849" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/950693599584994e7a6548c2a43ddf88?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/950693599584994e7a6548c2a43ddf88?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             khatzumoto           </div>
@@ -1409,7 +1381,7 @@ Yeah, I do it all the time&#8230;I call it &#8220;imitating Cantonese Batman&#82
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-7924" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/4278ac664f69b60675d255516c0d203f?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/4278ac664f69b60675d255516c0d203f?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             watashimo           </div>
@@ -1428,7 +1400,7 @@ Yeah, I do it all the time&#8230;I call it &#8220;imitating Cantonese Batman&#82
     <li class="comment even thread-even depth-1">
       <div id="comment-8276" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/61bf6259bb06236f65a8827691f3df00?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/61bf6259bb06236f65a8827691f3df00?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             X3R0 ("X-star")           </div>
@@ -1446,7 +1418,7 @@ It&#8217;s also confusing that some words can have more than one reading, like �
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-8277" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/61bf6259bb06236f65a8827691f3df00?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/61bf6259bb06236f65a8827691f3df00?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             X3R0 ("X-star")           </div>
@@ -1464,7 +1436,7 @@ Compounds are quite hard to remember too, should I memorize them with mnemonics 
     <li class="comment even thread-even depth-1">
       <div id="comment-8280" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/950693599584994e7a6548c2a43ddf88?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/950693599584994e7a6548c2a43ddf88?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             khatzumoto           </div>
@@ -1488,7 +1460,7 @@ It&#8217;s part of the beauty and flexibility of the Japanese language. It&#8217
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-8284" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/8d3b7408c5e0be55ce3ef435469bc6e6?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/8d3b7408c5e0be55ce3ef435469bc6e6?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Nivaldo           </div>
@@ -1507,7 +1479,7 @@ As for the readings thing, I also found ここ for 地球 and other words. I did
     <li class="comment even thread-even depth-1">
       <div id="comment-8286" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/8d3b7408c5e0be55ce3ef435469bc6e6?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/8d3b7408c5e0be55ce3ef435469bc6e6?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Nivaldo           </div>
@@ -1524,7 +1496,7 @@ As for the readings thing, I also found ここ for 地球 and other words. I did
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-8298" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/61bf6259bb06236f65a8827691f3df00?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/61bf6259bb06236f65a8827691f3df00?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             X3R0 ("X-star")           </div>
@@ -1546,7 +1518,7 @@ As for the readings thing, I also found ここ for 地球 and other words. I did
     <li class="comment even thread-even depth-1">
       <div id="comment-15399" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/ecbec7afb9f38b4509b37b42eca1a56f?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/ecbec7afb9f38b4509b37b42eca1a56f?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             edsmaffs           </div>
@@ -1563,7 +1535,7 @@ As for the readings thing, I also found ここ for 地球 and other words. I did
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-17433" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/bd1c5ed7c4f6459e3df42573188a5171?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/bd1c5ed7c4f6459e3df42573188a5171?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Nii           </div>
@@ -1580,7 +1552,7 @@ As for the readings thing, I also found ここ for 地球 and other words. I did
     <li class="comment even thread-even depth-1">
       <div id="comment-27346" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/64ddcb77e1eb768b27067bf5ffd82a22?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/64ddcb77e1eb768b27067bf5ffd82a22?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Marshall           </div>
@@ -1614,7 +1586,7 @@ As for the readings thing, I also found ここ for 地球 and other words. I did
 			</div><!-- #primary.c8 -->
 
 	<div id="secondary" class="c3 end" role="complementary">
-		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></aside><aside id="nav_menu-2" class="widget widget_nav_menu"><h3 class="widget-title">Best of AJATT</h3><div class="menu-least-crappy-of-ajatt-container"><ul id="menu-least-crappy-of-ajatt" class="menu"><li id="menu-item-3562" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3562"><a href="../aim-to-fail/index.html">Aim To Fail</a></li>
@@ -1692,7 +1664,7 @@ As for the readings thing, I also found ここ for 地球 and other words. I did
 		<div class="row">
 			<p class="copyright c12">
 								<span class="line"></span>
-				<span class="fl">Copyright © 2006~2021 <a href="/blog/">AJATT | All Japanese All The Time</a>. All Rights Reserved.</span>
+				<span class="fl">Copyright © 2006~2021 <a href="../index.html">AJATT | All Japanese All The Time</a>. All Rights Reserved.</span>
 				<span class="fr"><i class="icon-leaf"></i><a href="http://themes.bavotasan.com/2010/magazine-premium/">Magazine Premium</a> created by <a href="http://themes.bavotasan.com/">c.bavota</a>.</span>
 			</p><!-- .c12 -->
 		</div><!-- .row -->
@@ -1710,7 +1682,6 @@ As for the readings thing, I also found ここ for 地球 and other words. I did
 				seriesdropdown.onchange = onSeriesChange;
 			}
 			--></script>
-			<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack6f57.js?ver=202218'></script>
 <script type='text/javascript' src='../wp-includes/js/comment-reply.mind934.js?ver=5.1.13'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/bootstrap.min605a.js?ver=2.2.2'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/harvey.mind934.js?ver=5.1.13'></script>
@@ -1731,7 +1702,7 @@ var fergcorp_countdown_timer_options = {"showYear":"0","showMonth":"0","showWeek
 <script type='text/javascript' src='../wp-includes/js/wp-embed.mind934.js?ver=5.1.13'></script>
 <script async="async" type='text/javascript' src='../wp-content/plugins/akismet/_inc/form8aee.js?ver=4.1.2'></script>
 <!-- Magazine Premium created by c.bavota - http://themes.bavotasan.com -->
-		<script defer src="/blog/search.js"></script>
+		<script defer src="../search.js"></script>
 	</body>
 
 </html>

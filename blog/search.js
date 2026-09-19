@@ -6,26 +6,50 @@
  * so pressing enter already navigates to /blog/?s=query, exactly as it did on
  * the live site. All that was missing was something to read that parameter.
  *
- * This script adds two things and changes no existing markup:
+ * This script adds three things and changes no existing markup:
  *   1. a dropdown of the top matches under the search box, on every page
  *   2. a paginated result list on /blog/?s=query
+ *   3. the "@Random Post" menu item, which the same index can answer
  *
- * The index (1,165 titles, ~115 kB, ~38 kB gzipped) is fetched lazily on first
- * use, so a visitor who never searches never downloads it. Styles are injected
- * from here rather than added to the theme stylesheet, which is a mirrored
- * asset and best left byte-for-byte as it was captured.
+ * The index (1,300 titles, ~131 kB, ~41 kB gzipped) is fetched lazily on first
+ * use, so a visitor who never searches or rolls the dice never downloads it.
+ * Styles are injected from here rather than added to the theme stylesheet,
+ * which is a mirrored asset and best left byte-for-byte as it was captured.
  */
 (function () {
   'use strict';
 
-  var INDEX_URL = '/blog/search-index.json';
+  /* Everything this file points at is worked out from its own <script src>,
+   * so the archive runs wherever it is put: at /blog/ on the live site, under
+   * a subdirectory of some other host, or in a folder opened straight off a
+   * disk. document.currentScript is read here, while the script is executing;
+   * by the time anything below runs it would be null. */
+  var BASE = (function () {
+    var self = document.currentScript;
+    return self ? new URL('.', self.src).href : new URL('/blog/', location.href).href;
+  })();
+
+  /* A browser asked for file:///.../a-post/ lists the directory rather than
+   * serving its index.html, so off a disk the file has to be named. On a
+   * server the bare directory URL is the real one and is left alone. */
+  var FILE = location.protocol === 'file:';
+
+  function postUrl(slug) {
+    return BASE + slug + '/' + (FILE ? 'index.html' : '');
+  }
+
+  function homeUrl(query) {
+    return BASE + (FILE ? 'index.html' : '')
+         + (query ? '?s=' + encodeURIComponent(query) : '');
+  }
+
+  var INDEX_URL = BASE + 'search-index.json';
   /* Full-text search runs on a small API on the maintainer's own machine. It is
    * consulted ONLY from the results page - never from the dropdown, which keeps
    * the dropdown instant and independent of any server. If the API is slow or
    * unreachable the page falls back to the title index below and says so, so a
    * degraded search is visible rather than silently worse. */
   var API_URL = 'https://search.alljapanesealltheti.me/search';
-  var API_FALLBACK_URL = 'https://search.fanelli.tv/search';
   var API_TIMEOUT = 2500;
   var PER_PAGE = 10;
   var MAX_DROPDOWN = 5;
@@ -105,9 +129,7 @@
       })
       .catch(function () {
         clearTimeout(timer);
-        /* one retry against the other hostname, then give up quietly */
-        if (url !== API_FALLBACK_URL) return apiSearch(q, API_FALLBACK_URL);
-        return null;
+        return null;                 /* give up quietly; the caller uses titles */
       });
   }
 
@@ -194,7 +216,7 @@
       if (!results.length) { close(); return; }
       results.slice(0, MAX_DROPDOWN).forEach(function (r, i) {
         var li = el('li'), a = el('a');
-        a.href = '/blog/' + r.slug + '/';
+        a.href = postUrl(r.slug);
         a.appendChild(highlight(r.title, q));
         a.setAttribute('role', 'option');
         li.appendChild(a);
@@ -233,13 +255,22 @@
       else if (e.key === 'Enter') {
         if (sel >= 0 && results[sel]) {
           e.preventDefault();
-          window.location.href = '/blog/' + results[sel].slug + '/';
+          window.location.href = postUrl(results[sel].slug);
         }
         /* otherwise the form submits to /blog/?s=... on its own */
       } else if (e.key === 'Escape') close();
     });
     document.addEventListener('click', function (e) {
       if (!wrap.contains(e.target)) close();
+    });
+
+    /* The theme's form is <form action="/blog/" method="get">, which is the
+     * right URL on the live site and nothing at all off a disk. Taking the
+     * submit makes the same box work from a folder; on a server it goes
+     * exactly where the form would have gone on its own. */
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      window.location.href = homeUrl(input.value.trim());
     });
   }
 
@@ -259,7 +290,7 @@
      * and action, so enter works even if the handler below never binds. */
     var bar = el('form', 'ajatt-searchbar');
     bar.setAttribute('method', 'get');
-    bar.setAttribute('action', '/blog/');
+    bar.setAttribute('action', homeUrl(''));
     bar.setAttribute('role', 'search');
     var input = el('input');
     input.type = 'search';
@@ -321,7 +352,7 @@
       page = Math.min(Math.max(1, page), pages);
       all.slice((page - 1) * PER_PAGE, page * PER_PAGE).forEach(function (r) {
         var li = el('li'), a = el('a');
-        a.href = '/blog/' + r.slug + '/';
+        a.href = postUrl(r.slug);
         a.appendChild(highlight(r.title, q));
         li.appendChild(a);
         if (r.snippet) {
@@ -369,7 +400,9 @@
       }
       /* keep the address bar shareable without reloading the page */
       if (pushUrl && window.history && window.history.replaceState) {
-        window.history.replaceState(null, '', '/blog/?s=' + encodeURIComponent(q));
+        try {
+          window.history.replaceState(null, '', homeUrl(q));
+        } catch (e) { /* file:// refuses this in some browsers; harmless */ }
       }
     }
 
@@ -395,6 +428,75 @@
     }
   }
 
+  /* ---------- random post ---------- */
+
+  /* The theme's "@Random Post" menu item asks for the blog home with a ?random
+   * query, which WordPress used to answer server-side by picking a post. A
+   * static mirror cannot, so the button has only ever reloaded the home page.
+   * The title index is already a list of every post in the archive, so the
+   * pick is one line of arithmetic once it has loaded.
+   *
+   * Two paths, because the link is not written the same way everywhere: most
+   * pages point at ../index.html?random, a few at /blog/?random, and on a feed
+   * page the relative link resolves to the post itself. Intercepting the click
+   * skips loading an intermediate page; handling ?random on arrival catches
+   * every href, a bookmarked URL, and a click that came from somewhere this
+   * script had not loaded. Nothing here edits the mirrored markup, and with
+   * JavaScript off the link still does what it did before.
+   */
+
+  function currentSlug() {
+    var here = window.location.href.split('?')[0].split('#')[0];
+    if (here.indexOf(BASE) !== 0) return null;
+    return here.slice(BASE.length).split('/')[0] || null;
+  }
+
+  /* Resolves true once the browser is on its way to a post, false if the index
+   * never arrived - in which case the caller falls back to the plain link.
+   *
+   * `replace` matters for Back. A click should leave the page it came from in
+   * history, the way following the link always did; an arrival at ?random
+   * should not, or Back lands on the redirect and rolls again, and the reader
+   * cannot get out of the archive by going backwards. */
+  function goRandom(except, replace) {
+    return load().then(function (rows) {
+      if (rows.length < 2) return false;
+      var slug;
+      do {
+        slug = rows[Math.floor(Math.random() * rows.length)][0];
+      } while (slug === except);           /* never re-roll the post you are on */
+      var url = postUrl(slug);
+      if (replace) window.location.replace(url);
+      else window.location.href = url;
+      return true;
+    });
+  }
+
+  function randomLink(e) {
+    if (!e.target || !e.target.closest) return null;
+    var a = e.target.closest('a');
+    return a && /\?random\b/.test(a.getAttribute('href') || '') ? a : null;
+  }
+
+  function attachRandomLinks() {
+    /* delegated on document, because below 768px the theme moves the whole
+     * #site-navigation into its off-canvas panel (themed934.js prependTo) -
+     * the same link, somewhere else in the page */
+    document.addEventListener('mouseover', function (e) {
+      if (randomLink(e)) load();           /* warm the index before the click */
+    });
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 ||
+          e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = randomLink(e);
+      if (!a) return;
+      e.preventDefault();
+      goRandom(currentSlug(), false).then(function (went) {
+        if (!went) window.location.href = a.href;
+      });
+    });
+  }
+
   /* ---------- boot ---------- */
 
   function init() {
@@ -408,9 +510,21 @@
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  function boot() {
+    attachRandomLinks();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  }
+
+  /* ?random is answered before the DOM is ready: the redirect needs no markup,
+   * and the index fetch is the only thing standing between the click and the
+   * post. If the index cannot be loaded the page carries on as itself. */
+  if (new URLSearchParams(window.location.search).has('random')) {
+    goRandom(currentSlug(), true).then(function (went) { if (!went) boot(); });
   } else {
-    init();
+    boot();
   }
 })();

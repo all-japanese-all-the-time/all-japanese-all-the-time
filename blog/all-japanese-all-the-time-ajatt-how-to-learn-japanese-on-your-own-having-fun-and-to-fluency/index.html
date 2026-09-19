@@ -14,16 +14,12 @@
 <link rel="pingback" href="../xmlrpc.php" />
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <link rel='dns-prefetch' href='http://s0.wp.com/' />
-<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
-<link rel='dns-prefetch' href='http://netdna.bootstrapcdn.com/' />
+<link rel='dns-prefetch' href='https://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='https://netdna.bootstrapcdn.com/' />
 <link rel='dns-prefetch' href='http://s.w.org/' />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Feed" href="../feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Comments Feed" href="../comments/feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Table of Contents / All Japanese All The Time Dot Com: How to learn Japanese. On your own, having fun and to fluency. Comments Feed" href="feed/index.html" />
-		<script type="text/javascript">
-			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.13"}};
-			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])?!1:!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55358,56760,9792,65039],[55358,56760,8203,9792,65039])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
-		</script>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -42,7 +38,7 @@ img.emoji {
 <link rel='stylesheet' id='wp-block-library-css'  href='../wp-includes/css/dist/block-library/style.mind934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='extra-style-css'  href='../wp-content/plugins/organize-series-extra-tokens/orgSeries-extrad934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='orgseries-default-css-css'  href='../wp-content/plugins/organize-series/orgSeriesd934.css?ver=5.1.13' type='text/css' media='all' />
-<link rel='stylesheet' id='google_fonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
+<link rel='stylesheet' id='google_fonts-css'  href='https://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
 <link rel='stylesheet' id='theme_stylesheet-css'  href='../wp-content/themes/magazine-premium/styled934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='font_awesome-css'  href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' type='text/css' media='all' />
 <link rel='stylesheet' id='jetpack_css-css'  href='../wp-content/plugins/jetpack/css/jetpackbf7d.css?ver=7.0.3' type='text/css' media='all' />
@@ -75,7 +71,7 @@ img.emoji {
       
       if(document.links[t].hasAttribute('onClick') == false) {
         // forced if the address starts with http (or also https), but does not link to the current domain
-        if(all_links.href.search(/^http/) != -1 && all_links.href.search(/\/index.html/) == -1 && all_links.href.search(/^#/) == -1) {
+        if(all_links.href.search(/^http/) != -1 && all_links.hostname != location.hostname && all_links.href.search(/^#/) == -1) {
           // console.log('Changed ' + all_links.href);
           change_link = true;
         }
@@ -143,30 +139,6 @@ a:hover, .entry-meta a:hover, .format-link .entry-title a:hover { color: #222222
 body.custom-background { background-image: url("../wp-content/themes/magazine-premium/library/images/solid.png"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
 </style>
 	
-	<!-- Clean Archives Reloaded v3.2.0 | http://www.viper007bond.com/wordpress-plugins/clean-archives-reloaded/ -->
-	<style type="text/css">.car-collapse .car-yearmonth { cursor: s-resize; } </style>
-	<script type="text/javascript">
-		/* <![CDATA[ */
-			jQuery(document).ready(function() {
-				jQuery('.car-collapse').find('.car-monthlisting').hide();
-				jQuery('.car-collapse').find('.car-monthlisting:first').show();
-				jQuery('.car-collapse').find('.car-yearmonth').click(function() {
-					jQuery(this).next('ul').slideToggle('fast');
-				});
-				jQuery('.car-collapse').find('.car-toggler').click(function() {
-					if ( 'Expand All' == jQuery(this).text() ) {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').show();
-						jQuery(this).text('Collapse All');
-					}
-					else {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').hide();
-						jQuery(this).text('Expand All');
-					}
-					return false;
-				});
-			});
-		/* ]]> */
-	</script>
 
 <!-- Custom CSS -->
 <style>
@@ -261,17 +233,17 @@ img.thickie {
 					<a href="#" class="left-menu"><i class="icon-reorder"></i></a>
 					<a href="#"><i class="icon-search"></i></a>
 				</div>
-				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></div>
 
 								<div class="title-logo-wrapper center">
 										<div id="title-wrapper">
-						<h1 id="site-title"><a href="/blog/" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
+						<h1 id="site-title"><a href="../index.html" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
 						<h2 id="site-description">You don&#039;t know a language, you live it. You don&#039;t learn a language, you get used to it.</h2>					</div>
 				</div>
-									<a href="/blog/" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
+									<a href="../index.html" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
 					
 				<nav id="site-navigation" role="navigation">
 					<h3 class="assistive-text">Main menu</h3>
@@ -316,7 +288,7 @@ img.thickie {
 <li><a href="../how-to-accomplish-great-things-small-victories-winnable-games/index.html">How To Accomplish Great Things: Small Victories, Winnable Games</a></li>
 <li><a href="../comfort-zone-growth-zone-panic-zone/index.html" target="_blank">Comfort Zone, Growth Zone, Panic Zone and Situational Goals: Life Is Easier Than You Think</a></li>
 <li><a href="../potheads-planners-and-players/index.html">Potheads, Planners and Players</a></li>
-<li><img title="New" src="/blog/images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../tortoises-and-hares/index.html">Tortoises and Hares</a></li>
+<li><img title="New" src="../images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../tortoises-and-hares/index.html">Tortoises and Hares</a></li>
 <li><a href="../aim-to-fail/index.html" target="_blank">Aim To Fail</a></li>
 <li><a href="../cute-girls-mathematics-language/index.html">Cute Girls, Mathematics, Language</a></li>
 <li><a title="Edit" href="../the-african-way-of-learning-just-do-it/index.html">The African Way of Learning&#8230;Just Do It</a></li>
@@ -338,7 +310,7 @@ img.thickie {
 <p style="padding-left: 60px;">
 <p style="padding-left: 30px;"><strong>0.2 For During the Journey</strong></p>
 <ul style="padding-left: 60px;">
-<li><img title="New" src="/blog/images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../beyond-binging-and-purging-why-you-maybe-shouldnt-try-overcorrecting-for-when-you-screw-up/index.html">Beyond Binging and Purging: Why You Maybe Sometimes Shouldn’t Try Overcorrecting When You Screw Up</a></li>
+<li><img title="New" src="../images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../beyond-binging-and-purging-why-you-maybe-shouldnt-try-overcorrecting-for-when-you-screw-up/index.html">Beyond Binging and Purging: Why You Maybe Sometimes Shouldn’t Try Overcorrecting When You Screw Up</a></li>
 <li><a href="../are-you-a-three-day-monk/index.html">Are You a Three-Day Monk?</a></li>
 <li><a title="Edit" href="../boiling-water/index.html">Boiling Water</a></li>
 <li><a href="../motivation-for-cynical-people/index.html" target="_blank">Motivation For Cynical People</a></li>
@@ -363,7 +335,7 @@ img.thickie {
 <li><a href="../little-and-often/index.html" target="_blank">Little and Often</a></li>
 <li><a href="../processes-not-results-or-everything-i-ever-needed-to-know-about-life-i-learned-washing-dishes/index.html" target="_blank">Processes Not Results, Or: Everything I Ever Needed To Know About Life I Learned Washing Dishes</a></li>
 <li><a href="../turn-yourself-into-a-monster-what-to-do-when-people-around-you-are-not-encouraging-or-supportive/index.html" target="_blank">Turn Yourself Into A Monster: What To Do When People Around You Are Not Encouraging Or Supportive</a></li>
-<li><img title="New" src="/blog/images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../social-resistance/index.html">Social Resistance</a></li>
+<li><img title="New" src="../images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../social-resistance/index.html">Social Resistance</a></li>
 </ul>
 <p style="padding-left: 60px;">
 <p><strong>1. Equipment</strong></p>
@@ -396,8 +368,8 @@ img.thickie {
 <ul>
 <li><a href="http://www.amazon.com/gp/product/0824831659?ie=UTF8&amp;tag=alljapanallth-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0824831659" target="_blank">Remembering the Kanji</a></li>
 <li><span style="text-decoration: line-through;"><a href="../how-to-learn-kanji-using-an-srs/index.html">How To Learn and Review Kanji Using an SRS</a></span></li>
-<li><img title="New" src="/blog/images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../lazy-kanji-cards-a-new-srs-card-format/index.html">Lazy Kanji Cards: A New (?) SRS Card Format</a></li>
-<li><img title="New" src="/blog/images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../lazy-kanji-cards-an-ajatteer-shares-a-personal-status-report/index.html">Lazy Kanji Cards: An AJATTeer Shares A Personal Status Report</a></li>
+<li><img title="New" src="../images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../lazy-kanji-cards-a-new-srs-card-format/index.html">Lazy Kanji Cards: A New (?) SRS Card Format</a></li>
+<li><img title="New" src="../images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../lazy-kanji-cards-an-ajatteer-shares-a-personal-status-report/index.html">Lazy Kanji Cards: An AJATTeer Shares A Personal Status Report</a></li>
 <li><a href="../one-kanji-poster-to-rule-them-all-one-kanji-poster-to-bind-them-one-kanji-poster-to-view-them-all-and-into-the-mind-grind-them/index.html">One Kanji Poster to Rule them All, One Kanji Poster to Bind Them, One Kanji Poster to View them All, and into the Mind Grind Them, Or “Shameless Product Placement is Good for the Wallet, and the Lymph”</a></li>
 <li><a href="../kanji-files/index.html">Kanji File: Save Yourself Some Typing</a></li>
 </ul>
@@ -424,7 +396,7 @@ img.thickie {
 </li>
 <li><a href="../10000-sentences-where/index.html">10,000 Sentence: Where</a></li>
 <li><a href="../10000-sentences-more-on-what-sentences-to-learn/index.html">10,000 Sentences: What</a></li>
-<li><img title="New" src="/blog/images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../srs-precedence-rules/index.html">SRS Precedence Rules</a></li>
+<li><img title="New" src="../images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../srs-precedence-rules/index.html">SRS Precedence Rules</a></li>
 <li><a href="../how-to-banish-boredom-from-sentence-mining-sentence-picking/index.html">How To Banish Boredom from Sentence-Mining (Sentence-Picking)</a></li>
 <li><a href="../popping-bubblewrap-tips-for-better-srs-sentence-items/index.html">Popping Bubblewrap: Tips for Better SRS Sentence Items</a></li>
 <li><a href="../secrets-to-smoother-srsing-part-1-the-srs-is-a-servant-not-a-master/index.html" target="_blank">Secrets to Smoother SRSing Part 1: The SRS is a Servant Not a Master</a></li>
@@ -437,7 +409,7 @@ img.thickie {
 <li><a href="../secrets-to-smoother-srsing-part-6-maintain-only-the-baselinesrs-holidays/index.html" target="_blank">Secrets to Smoother SRSing Part 6: Maintain Only The Baseline/SRS Holidays<br />
 </a></li>
 <li><a href="../secrets-to-smoother-srsing-part-7-the-place-of-pre-mined-srsing-and-other-ramblings/index.html" target="_blank">Secrets to Smoother SRSing Part 7: The Place of Pre-Mined SRSing and Other Ramblings</a></li>
-<li><img title="New" src="/blog/images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../i-just-dont-feel-like-doing-sentence-reps-any-more-dude/index.html">When You Just Don’t Feel Like Doing Sentence Reps Any More…</a></li>
+<li><img title="New" src="../images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../i-just-dont-feel-like-doing-sentence-reps-any-more-dude/index.html">When You Just Don’t Feel Like Doing Sentence Reps Any More…</a></li>
 <li><a href="../how-to-use-a-japanese-textbook/index.html">How to Use a Japanese Textbook</a></li>
 <li><a href="../why-monolingual-dictionaries-are-worth-your-time/index.html">Why Monolingual Dictionaries Are Worth Your Time</a></li>
 <li><span style="text-decoration: line-through;"><a href="../how-to-make-the-transition-to-monolingual-dictionaries/index.html">How To Make the Transition to Monolingual Dictionaries</a></span></li>
@@ -447,13 +419,13 @@ img.thickie {
 </ul>
 <p><strong>5. Juggling Multiple Languages + Advanced SRS Techniques</strong></p>
 <ul>
-<li><img title="New" src="/blog/images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../critical-frequency-a-brand-new-way-of-looking-at-language-exposure/index.html">Critical Frequency: A Brand New Way of Looking At Language Exposure</a></li>
-<li><img title="New" src="/blog/images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../whatever-happened-to-boiling-water/index.html">Whatever Happened To Boiling Water?</a></li>
+<li><img title="New" src="../images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../critical-frequency-a-brand-new-way-of-looking-at-language-exposure/index.html">Critical Frequency: A Brand New Way of Looking At Language Exposure</a></li>
+<li><img title="New" src="../images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../whatever-happened-to-boiling-water/index.html">Whatever Happened To Boiling Water?</a></li>
 <li><a href="../how-to-learn-multiple-languages-without-getting-confused-the-laddering-method/index.html">How To Learn Multiple Languages Without Getting Confused: The Laddering Method</a></li>
 <li><a href="../how-do-i-learn-500-languages-at-once/index.html" target="_blank">How Do I Learn 500 Languages At Once?!</a></li>
 <li><a href="../language-as-an-investment/index.html" target="_blank">Language As An Investment</a></li>
 <li><a href="../managing-greed-how-to-deal-with-your-language-lust/index.html" target="_blank">Managing Greed: How To Deal With Your Language Lust</a></li>
-<li><img title="New" src="/blog/images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../learning-songs-using-the-srs-my-current-method/index.html">Learning Songs Using the SRS: My Current Method</a></li>
+<li><img title="New" src="../images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../learning-songs-using-the-srs-my-current-method/index.html">Learning Songs Using the SRS: My Current Method</a></li>
 </ul>
 <p><strong>6. Questions from Readers</strong></p>
 <ul>
@@ -482,7 +454,7 @@ img.thickie {
 </ul>
 <p style="padding-left: 30px;"><strong>8.3 Other Recommendations (Movies, Podcasts, Books, etc.)</strong></p>
 <ul style="padding-left: 60px;">
-<li><img title="New" src="/blog/images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../japanese-music-recommendations-from-ajatteers/index.html">Japanese Music Recommendations from AJATTeers</a></li>
+<li><img title="New" src="../images/newicons/rotate.gif" alt="" width="24" height="11" /><a href="../japanese-music-recommendations-from-ajatteers/index.html">Japanese Music Recommendations from AJATTeers</a></li>
 <li><a href="../japanese-shows-with-exact-subs-the-list-of-honour/index.html">Japanese Shows with Exact Subs</a></li>
 <li><a href="../the-top-10-best-japanese-tv-shows-of-recent-times/index.html">The Top 10 Best Japanese TV Shows of Recent Times</a></li>
 <li><a href="../top-10-best-japanese-comedians/index.html">The Top 10 Japanese Comedians</a></li>
@@ -762,7 +734,7 @@ img.thickie {
     <li class="comment even thread-even depth-1">
       <div id="comment-121692" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/4dcacbb072cdf8d7063538c3901f3bee?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/4dcacbb072cdf8d7063538c3901f3bee?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Jim           </div>
@@ -784,7 +756,7 @@ Many people would have quit a few months into their endavors.</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-121693" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/4dcacbb072cdf8d7063538c3901f3bee?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/4dcacbb072cdf8d7063538c3901f3bee?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Jim           </div>
@@ -822,7 +794,7 @@ Many people would have quit a few months into their endavors.</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-174720" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://2.gravatar.com/avatar/e1ed9d4fc90106461f1413a1cab6dc70?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://2.gravatar.com/avatar/e1ed9d4fc90106461f1413a1cab6dc70?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Knicky           </div>
@@ -869,7 +841,7 @@ Many people would have quit a few months into their endavors.</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-223703" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/01890bbc4f13e296dae138a2283fe43c?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/01890bbc4f13e296dae138a2283fe43c?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             <a href='http://fash.ru/profile.php?mode=viewprofile&amp;u=798285' rel='external nofollow' class='url'>Letisha Slinsky</a>           </div>
@@ -916,7 +888,7 @@ Many people would have quit a few months into their endavors.</p>
     <li class="comment even thread-even depth-1">
       <div id="comment-272892" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://1.gravatar.com/avatar/4667ff80c95261ab4f794e6acdaa0e85?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://1.gravatar.com/avatar/4667ff80c95261ab4f794e6acdaa0e85?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             Marsupial           </div>
@@ -1013,7 +985,7 @@ Many people would have quit a few months into their endavors.</p>
     <li class="comment odd alt thread-odd thread-alt depth-1">
       <div id="comment-1000562962" class="comment-body">
         <div class="comment-avatar">
-          <img alt='' src='http://0.gravatar.com/avatar/31c0c61c58d2675c1569979c00836684?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
+          <img alt='' src='https://0.gravatar.com/avatar/31c0c61c58d2675c1569979c00836684?s=60&amp;d=retro&amp;r=pg' class='avatar avatar-60 photo' height='60' width='60' />        </div>
         <div class="comment-content">
           <div class="comment-author">
             <a href='https://www.senscritique.com/MathieuMrdco' rel='external nofollow' class='url'>Dr. Murdoch</a>           </div>
@@ -1068,7 +1040,7 @@ I&#8217;m setting a pretty reachable easy-winnable goal/game : 1 year for RTK vo
 	</div><!-- #primary.c8 -->
 
 	<div id="secondary" class="c3 end" role="complementary">
-		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></aside><aside id="nav_menu-2" class="widget widget_nav_menu"><h3 class="widget-title">Best of AJATT</h3><div class="menu-least-crappy-of-ajatt-container"><ul id="menu-least-crappy-of-ajatt" class="menu"><li id="menu-item-3562" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3562"><a href="../aim-to-fail/index.html">Aim To Fail</a></li>
@@ -1146,7 +1118,7 @@ I&#8217;m setting a pretty reachable easy-winnable goal/game : 1 year for RTK vo
 		<div class="row">
 			<p class="copyright c12">
 								<span class="line"></span>
-				<span class="fl">Copyright © 2006~2021 <a href="/blog/">AJATT | All Japanese All The Time</a>. All Rights Reserved.</span>
+				<span class="fl">Copyright © 2006~2021 <a href="../index.html">AJATT | All Japanese All The Time</a>. All Rights Reserved.</span>
 				<span class="fr"><i class="icon-leaf"></i><a href="http://themes.bavotasan.com/2010/magazine-premium/">Magazine Premium</a> created by <a href="http://themes.bavotasan.com/">c.bavota</a>.</span>
 			</p><!-- .c12 -->
 		</div><!-- .row -->
@@ -1164,7 +1136,6 @@ I&#8217;m setting a pretty reachable easy-winnable goal/game : 1 year for RTK vo
 				seriesdropdown.onchange = onSeriesChange;
 			}
 			--></script>
-			<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack6f57.js?ver=202218'></script>
 <script type='text/javascript' src='../wp-includes/js/comment-reply.mind934.js?ver=5.1.13'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/bootstrap.min605a.js?ver=2.2.2'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/harvey.mind934.js?ver=5.1.13'></script>
@@ -1185,7 +1156,7 @@ var fergcorp_countdown_timer_options = {"showYear":"0","showMonth":"0","showWeek
 <script type='text/javascript' src='../wp-includes/js/wp-embed.mind934.js?ver=5.1.13'></script>
 <script async="async" type='text/javascript' src='../wp-content/plugins/akismet/_inc/form8aee.js?ver=4.1.2'></script>
 <!-- Magazine Premium created by c.bavota - http://themes.bavotasan.com -->
-		<script defer src="/blog/search.js"></script>
+		<script defer src="../search.js"></script>
 	</body>
 
 </html>

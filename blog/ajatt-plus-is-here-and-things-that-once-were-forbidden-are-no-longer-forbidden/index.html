@@ -14,16 +14,12 @@
 <link rel="pingback" href="../xmlrpc.php" />
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <link rel='dns-prefetch' href='http://s0.wp.com/' />
-<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
-<link rel='dns-prefetch' href='http://netdna.bootstrapcdn.com/' />
+<link rel='dns-prefetch' href='https://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='https://netdna.bootstrapcdn.com/' />
 <link rel='dns-prefetch' href='http://s.w.org/' />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Feed" href="../feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Comments Feed" href="../comments/feed/index.html" />
 
-		<script type="text/javascript">
-			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.13"}};
-			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])?!1:!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55358,56760,9792,65039],[55358,56760,8203,9792,65039])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
-		</script>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -42,7 +38,7 @@ img.emoji {
 <link rel='stylesheet' id='wp-block-library-css'  href='../wp-includes/css/dist/block-library/style.mind934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='extra-style-css'  href='../wp-content/plugins/organize-series-extra-tokens/orgSeries-extrad934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='orgseries-default-css-css'  href='../wp-content/plugins/organize-series/orgSeriesd934.css?ver=5.1.13' type='text/css' media='all' />
-<link rel='stylesheet' id='google_fonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
+<link rel='stylesheet' id='google_fonts-css'  href='https://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
 <link rel='stylesheet' id='theme_stylesheet-css'  href='../wp-content/themes/magazine-premium/styled934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='font_awesome-css'  href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' type='text/css' media='all' />
 <link rel='stylesheet' id='jetpack_css-css'  href='../wp-content/plugins/jetpack/css/jetpackbf7d.css?ver=7.0.3' type='text/css' media='all' />
@@ -77,7 +73,7 @@ img.emoji {
       
       if(document.links[t].hasAttribute('onClick') == false) {
         // forced if the address starts with http (or also https), but does not link to the current domain
-        if(all_links.href.search(/^http/) != -1 && all_links.href.search(/\/index.html/) == -1 && all_links.href.search(/^#/) == -1) {
+        if(all_links.href.search(/^http/) != -1 && all_links.hostname != location.hostname && all_links.href.search(/^#/) == -1) {
           // console.log('Changed ' + all_links.href);
           change_link = true;
         }
@@ -149,30 +145,6 @@ a:hover, .entry-meta a:hover, .format-link .entry-title a:hover { color: #222222
 body.custom-background { background-image: url("../wp-content/themes/magazine-premium/library/images/solid.png"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
 </style>
 	
-	<!-- Clean Archives Reloaded v3.2.0 | http://www.viper007bond.com/wordpress-plugins/clean-archives-reloaded/ -->
-	<style type="text/css">.car-collapse .car-yearmonth { cursor: s-resize; } </style>
-	<script type="text/javascript">
-		/* <![CDATA[ */
-			jQuery(document).ready(function() {
-				jQuery('.car-collapse').find('.car-monthlisting').hide();
-				jQuery('.car-collapse').find('.car-monthlisting:first').show();
-				jQuery('.car-collapse').find('.car-yearmonth').click(function() {
-					jQuery(this).next('ul').slideToggle('fast');
-				});
-				jQuery('.car-collapse').find('.car-toggler').click(function() {
-					if ( 'Expand All' == jQuery(this).text() ) {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').show();
-						jQuery(this).text('Collapse All');
-					}
-					else {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').hide();
-						jQuery(this).text('Expand All');
-					}
-					return false;
-				});
-			});
-		/* ]]> */
-	</script>
 
 <!-- Custom CSS -->
 <style>
@@ -267,17 +239,17 @@ img.thickie {
 					<a href="#" class="left-menu"><i class="icon-reorder"></i></a>
 					<a href="#"><i class="icon-search"></i></a>
 				</div>
-				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></div>
 
 								<div class="title-logo-wrapper center">
 										<div id="title-wrapper">
-						<h1 id="site-title"><a href="" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
+						<h1 id="site-title"><a href="../index.html" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
 						<h2 id="site-description">You don&#039;t know a language, you live it. You don&#039;t learn a language, you get used to it.</h2>					</div>
 				</div>
-									<a href="" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
+									<a href="../index.html" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
 					
 				<nav id="site-navigation" role="navigation">
 					<h3 class="assistive-text">Main menu</h3>
@@ -285,7 +257,7 @@ img.thickie {
 					<div class="menu-header-links-container"><ul id="menu-header-links" class="menu"><li id="menu-item-3362" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-3362"><a title="How To Use This Website" href="../index.html">NEW? START HERE!</a>
 <li id="menu-item-3361" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3361"><a href="../archives/index.html">Latest/Blog</a>
 <li id="menu-item-3364" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3364"><a href="../store/index.html">Store</a>
-<li id="menu-item-3366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3366"><a href="/blog/contact/">Contact</a>
+<li id="menu-item-3366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3366"><a href="../contact/index.html">Contact</a>
 <li id="menu-item-24564" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24564"><a href="../index.html?random">@Random Post</a>
 </ul></div>				</nav><!-- #site-navigation -->
 
@@ -315,7 +287,7 @@ img.thickie {
 			
 		<div class="post" id="post-1005">
 	
-			<h2 class="posttitle"><a href="/blog/ajatt-plus-is-here-and-things-that-once-were-forbidden-are-no-longer-forbidden" rel="bookmark" title="AJATT Plus Pre-Launch Free Gift">AJATT Plus Pre-Launch Free Gift</a></h2>
+			<h2 class="posttitle"><a href="./index.html" rel="bookmark" title="AJATT Plus Pre-Launch Free Gift">AJATT Plus Pre-Launch Free Gift</a></h2>
 			
 			<p class="postmeta"> 
 			April 6, 2010 at 23:59 
@@ -330,7 +302,7 @@ img.thickie {
         <a href="http://www.kanjiposter.com/" target="_blank">
 			
 		</a>
-	</div>	 <!--<<a href="/blog/advertise" target="_blank">
+	</div>	 <!--<<a href="../advertise/index.html" target="_blank">
 			&nbsp;&nbsp;&nbsp;&nbsp;   
 			&nbsp;&nbsp;&nbsp;&nbsp;   
 			&nbsp;&nbsp;&nbsp;&nbsp;   
@@ -346,10 +318,10 @@ img.thickie {
 <p>AJATT Plus!</p>
 <h1>What Is AJATT Plus?</h1>
 <p>It&#8217;s &#8220;AJATT&#8221; with &#8220;Plus&#8221; attached to it, dumbwad! What, I have to explain it to you? OK here we go…</p>
-<p>Executive Summary: AJATT Plus =  Super Uber Cool Premium Version of AJATT = <strong>Forum</strong> +  AJATT Articles in Translated Into Japanese + Members-Only Benefits + Friends With Benefits <img src="/blog/wp-includes/images/smilies/icon_razz.gif" alt=":P" class="wp-smiley"/>  .</p>
+<p>Executive Summary: AJATT Plus =  Super Uber Cool Premium Version of AJATT = <strong>Forum</strong> +  AJATT Articles in Translated Into Japanese + Members-Only Benefits + Friends With Benefits <img src="../wp-includes/images/smilies/icon_razz.gif" alt=":P" class="wp-smiley"/>  .</p>
 <p>To make all this work, AJATT Plus is <strong>subscription-based</strong>. This does a number of things:</p>
 <ul>
-<li>Pays for hookers and blow for Khatzumoto and Momoko, <strong>all at your expense</strong>. This is crucial. No hookers + no blow = <img src="/blog/wp-includes/images/smilies/icon_sad.gif" alt=":(" class="wp-smiley"/>  . Not good, people.</li>
+<li>Pays for hookers and blow for Khatzumoto and Momoko, <strong>all at your expense</strong>. This is crucial. No hookers + no blow = <img src="../wp-includes/images/smilies/icon_sad.gif" alt=":(" class="wp-smiley"/>  . Not good, people.</li>
 <li>Forumwise, it acts as a conveniently simple barrier to people less intelligent than you, who would otherwise waste your time and flava.</li>
 <li>Other stuff. Like research about hookers and blow. I cannot overestimate the importance of the H&amp;B.</li>
 </ul>
@@ -397,7 +369,7 @@ img.thickie {
 <li>Get your questions answered faster</li>
 </ul>
 </li>
-<li><span style="color: #ff6600;"><span style="color: #000000;">Access to AJATT Plus members-only </span>Japanese </span><strong><span style="color: #ff6600;">translations of <a href="/blog/all-japanese-all-the-time-ajatt-how-to-learn-japanese-on-your-own-having-fun-and-to-fluency" target="_blank">original AJATT articles</a></span></strong> (two per month).
+<li><span style="color: #ff6600;"><span style="color: #000000;">Access to AJATT Plus members-only </span>Japanese </span><strong><span style="color: #ff6600;">translations of <a href="../all-japanese-all-the-time-ajatt-how-to-learn-japanese-on-your-own-having-fun-and-to-fluency/index.html" target="_blank">original AJATT articles</a></span></strong> (two per month).
 <ul>
 <li>Read aloud (for that audio-book feeling!)</li>
 <li>Illustrated</li>
@@ -423,29 +395,29 @@ img.thickie {
 <li>If you&#8217;re a beginner, you&#8217;ll benefit from having other AJATT Plus members help you get your bearings and get started</li>
 <li>If you&#8217;re intermediate, the fact that the articles have both text and audio will be a good fit for you, especially since there are so few audiobooks in Japanese.</li>
 <li>If you&#8217;re advanced, well, the articles themselves will be fun, unique, quirky reading material for you.</li>
-<li>And finally, if you&#8217;re just looking for a simple monthly way to support AJATT <img src="/blog/wp-includes/images/smilies/icon_biggrin.gif" alt=":D" class="wp-smiley"/>  &#8230;there&#8217;s always that. You like how I&#8217;m pushing this angle? Yeah.</li>
-<li>Note: AJATT blog comments will be disabled on the day AJATT Plus launches. All comment functions will shift to the AJATT Plus Forum <img src="/blog/wp-includes/images/smilies/icon_biggrin.gif" alt=":D" class="wp-smiley"/>  .</li>
+<li>And finally, if you&#8217;re just looking for a simple monthly way to support AJATT <img src="../wp-includes/images/smilies/icon_biggrin.gif" alt=":D" class="wp-smiley"/>  &#8230;there&#8217;s always that. You like how I&#8217;m pushing this angle? Yeah.</li>
+<li>Note: AJATT blog comments will be disabled on the day AJATT Plus launches. All comment functions will shift to the AJATT Plus Forum <img src="../wp-includes/images/smilies/icon_biggrin.gif" alt=":D" class="wp-smiley"/>  .</li>
 </ul>
 <h1>What About People Not Learning Japanese?</h1>
-<p>Oh, <em>you people</em> <img src="/blog/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley"/>  . Just as with this blog, AJATT Plus<strong> will include a space for other languages as well</strong>.</p>
+<p>Oh, <em>you people</em> <img src="../wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley"/>  . Just as with this blog, AJATT Plus<strong> will include a space for other languages as well</strong>.</p>
 <h1>Let Me In! Let Me Into This Exclusive Gated Community!</h1>
 <p>You can become a member of AJATT Plus in any of three simple ways:</p>
-<p style="text-align: center;"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=4CNV2H3GR3B3N" target="_blank"><img src="/blog/images/ajattplus12/rotate.png" alt="" width="510" height="338"/></a><br/>
+<p style="text-align: center;"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=4CNV2H3GR3B3N" target="_blank"><img src="../images/ajattplus12/rotate.png" alt="" width="510" height="338"/></a><br/>
 <em>Annual subscription</em><br/>
 <strong> $89.95</strong><br/>
 (<span style="color: #3366ff;"><strong>24¢ per day</strong></span>)</p>
-<p style="text-align: center;"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=TCK34SRQDVPLL" target="_blank"><img src="/blog/images/ajattplus6/rotate.png" alt="" width="306" height="203"/></a><br/>
+<p style="text-align: center;"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=TCK34SRQDVPLL" target="_blank"><img src="../images/ajattplus6/rotate.png" alt="" width="306" height="203"/></a><br/>
 <em>Six-month subscription</em><br/>
 <strong>$49.95</strong><br/>
 (<strong><span style="color: #ff00ff;">28¢ per day</span></strong>)</p>
-<p style="text-align: center;"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=QUYTD8VHPXCBG" target="_blank"><img src="/blog/images/ajattplus1/rotate.png" alt="" width="230" height="152"/></a><br/>
+<p style="text-align: center;"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=QUYTD8VHPXCBG" target="_blank"><img src="../images/ajattplus1/rotate.png" alt="" width="230" height="152"/></a><br/>
 <em>Monthly subscription</em><br/>
 <strong>$9.95</strong>/month<br/>
 (<strong><span style="color: #008000;">33¢ per day</span></strong>)</p>
 <h1><span style="color: #ff0000;">Free Gift If You Subscribe Now</span></h1>
 <p>I don&#8217;t care if adding &#8220;free&#8221; to &#8220;gift&#8221; is redundant! You&#8217;re getting one <em>anyway</em>! When you become an AJATT Plus member between today and April 12 (that&#8217;s just a few days from now), you <strong>get a <span style="color: #ff6600;">free</span> advance copy of the next AJATT product: <span style="color: #008080;">AJATT.talk</span></strong> &#8212; a spoken-word &#8220;conversation album&#8221; featuring me, the Khatzumoto, and my wild friends here on the rough, tough, rather clean and flower-lined streets of suburban Japan, talking about all kinds of cool, random topics (and even, at one point, going to the dentist). All real. All unscripted. And all in Japanese, with English synopses of track contents.</p>
 <h1>The Amazing AJATT Fo&#8217; Shizzle 100% Refund Guarantee</h1>
-<p>Your happiness matters to me. I think about you every day <img src="/blog/wp-includes/images/smilies/icon_razz.gif" alt=":P" class="wp-smiley"/>  . You can cancel your AJATT Plus membership at any time, and get a full refund on your immediate previous subscription payment. One word: &#8220;refund&#8221;, will suffice. So<strong> try it for a month and see how you feel. If you don&#8217;t like it, you can always cancel your subscription and get a refund.</strong></p>
+<p>Your happiness matters to me. I think about you every day <img src="../wp-includes/images/smilies/icon_razz.gif" alt=":P" class="wp-smiley"/>  . You can cancel your AJATT Plus membership at any time, and get a full refund on your immediate previous subscription payment. One word: &#8220;refund&#8221;, will suffice. So<strong> try it for a month and see how you feel. If you don&#8217;t like it, you can always cancel your subscription and get a refund.</strong></p>
 
 
 						</div>
@@ -461,18 +433,18 @@ img.thickie {
 				<input type="hidden" name="currency_code" value="USD">
 				<input type="hidden" name="tax" value="0">
 				<input type="hidden" name="bn" value="PP-DonationsBF">
-				<p align="center"><input type="image" src="/blog/images/khatzumoto.donate.tiny.s1.png" border="0" name="submit" alt="Yay! Donate to Khatzumoto!"></p>
+				<p align="center"><input type="image" src="../images/khatzumoto.donate.tiny.s1.png" border="0" name="submit" alt="Yay! Donate to Khatzumoto!"></p>
 				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-				</form></div></p><div><a href="/blog/category/ajatt-plus"><img src="/blog/images/header-ajattplus-v2/rotate.gif" alt="Original AJATT Products" width="535" height="140"/></a></div>		<!--donation-->
+				</form></div></p><div><a href="/blog/category/ajatt-plus"><img src="../images/header-ajattplus-v2/rotate.gif" alt="Original AJATT Products" width="535" height="140"/></a></div>		<!--donation-->
 
 				
 		   	<br/><strong>Read on:</strong><br/>
-		  <li><a href="/blog/how-should-dick-and-jane-work" rel="bookmark" title="Permanent Link: How should Dick and Jane work?">How should Dick and Jane work?</a></li><li><a href="/blog/khatzumemo-update-item-warning-swap-item-et-al" rel="bookmark" title="Permanent Link: KhatzuMemo Update — Item Warning, Swap QA et. al">KhatzuMemo Update &#8212; Item Warning, Swap QA et. al</a></li><li><a href="/blog/inertia-can-be-your-friend" rel="bookmark" title="Permanent Link: Inertia Can Be Your Friend">Inertia Can Be Your Friend</a></li><li><a href="/blog/surusu-update-multimedia-et-al" rel="bookmark" title="Permanent Link: Surusu Update: Multimedia et al.">Surusu Update: Multimedia et al.</a></li><li><a href="/blog/but-i-dont-have-time-for-immersion-what-to-do-when-youre-a-high-school-student-whose-life-is-ruled-by-others" rel="bookmark" title="Permanent Link: But I Don’t Have Time For Immersion!: How To Immerse Even When Your Time Is Controlled By Others">But I Don&#8217;t Have Time For Immersion!: How To Immerse Even When Your Time Is Controlled By Others</a></li><li><a href="/blog/calm-down-and-hurry-up" rel="bookmark" title="Permanent Link: Calm Down and Hurry Up">Calm Down and Hurry Up</a></li><li><a href="/blog/language-learning-as-gun-violence" rel="bookmark" title="Permanent Link: Language-Learning As Gun Violence: Frequency and Quantity">Language-Learning As Gun Violence: Frequency and Quantity</a></li>        <li><a href="/blog/category/ajatt-plus" title="View all posts in AJATT Plus" rel="category tag">AJATT Plus</a></li>
-		  	<h1><li><a href="/blog/all-japanese-all-the-time-ajatt-how-to-learn-japanese-on-your-own-having-fun-and-to-fluency" id="navHome" title="Home" accesskey="t"><u>T</u>able of Contents</a></li></h1>
+		  <li><a href="../how-should-dick-and-jane-work/index.html" rel="bookmark" title="Permanent Link: How should Dick and Jane work?">How should Dick and Jane work?</a></li><li><a href="../khatzumemo-update-item-warning-swap-item-et-al/index.html" rel="bookmark" title="Permanent Link: KhatzuMemo Update — Item Warning, Swap QA et. al">KhatzuMemo Update &#8212; Item Warning, Swap QA et. al</a></li><li><a href="../inertia-can-be-your-friend/index.html" rel="bookmark" title="Permanent Link: Inertia Can Be Your Friend">Inertia Can Be Your Friend</a></li><li><a href="../surusu-update-multimedia-et-al/index.html" rel="bookmark" title="Permanent Link: Surusu Update: Multimedia et al.">Surusu Update: Multimedia et al.</a></li><li><a href="../but-i-dont-have-time-for-immersion-what-to-do-when-youre-a-high-school-student-whose-life-is-ruled-by-others/index.html" rel="bookmark" title="Permanent Link: But I Don’t Have Time For Immersion!: How To Immerse Even When Your Time Is Controlled By Others">But I Don&#8217;t Have Time For Immersion!: How To Immerse Even When Your Time Is Controlled By Others</a></li><li><a href="../calm-down-and-hurry-up/index.html" rel="bookmark" title="Permanent Link: Calm Down and Hurry Up">Calm Down and Hurry Up</a></li><li><a href="../language-learning-as-gun-violence/index.html" rel="bookmark" title="Permanent Link: Language-Learning As Gun Violence: Frequency and Quantity">Language-Learning As Gun Violence: Frequency and Quantity</a></li>        <li><a href="/blog/category/ajatt-plus" title="View all posts in AJATT Plus" rel="category tag">AJATT Plus</a></li>
+		  	<h1><li><a href="../all-japanese-all-the-time-ajatt-how-to-learn-japanese-on-your-own-having-fun-and-to-fluency/index.html" id="navHome" title="Home" accesskey="t"><u>T</u>able of Contents</a></li></h1>
       
 			
 			<p class="postfeedback">
-			<a href="/blog/ajatt-plus-is-here-and-things-that-once-were-forbidden-are-no-longer-forbidden" rel="bookmark" title="Permanent link to AJATT Plus Pre-Launch Free Gift" class="permalink">Permalink</a>
+			<a href="./index.html" rel="bookmark" title="Permanent link to AJATT Plus Pre-Launch Free Gift" class="permalink">Permalink</a>
 			</p>
 		
 		
@@ -481,7 +453,7 @@ img.thickie {
 </div><!-- #primary.c8 -->
 
 	<div id="secondary" class="c3 end" role="complementary">
-		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></aside><aside id="nav_menu-2" class="widget widget_nav_menu"><h3 class="widget-title">Best of AJATT</h3><div class="menu-least-crappy-of-ajatt-container"><ul id="menu-least-crappy-of-ajatt" class="menu"><li id="menu-item-3562" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3562"><a href="../aim-to-fail/index.html">Aim To Fail</a></li>
@@ -577,7 +549,6 @@ img.thickie {
 				seriesdropdown.onchange = onSeriesChange;
 			}
 			--></script>
-			<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack6f57.js?ver=202218'></script>
 <script type='text/javascript' src='../wp-includes/js/comment-reply.mind934.js?ver=5.1.13'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/bootstrap.min605a.js?ver=2.2.2'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/harvey.mind934.js?ver=5.1.13'></script>
@@ -598,7 +569,7 @@ var fergcorp_countdown_timer_options = {"showYear":"0","showMonth":"0","showWeek
 <script type='text/javascript' src='../wp-includes/js/wp-embed.mind934.js?ver=5.1.13'></script>
 <script async="async" type='text/javascript' src='../wp-content/plugins/akismet/_inc/form8aee.js?ver=4.1.2'></script>
 <!-- Magazine Premium created by c.bavota - http://themes.bavotasan.com -->
-		<script defer src="/blog/search.js"></script>
+		<script defer src="../search.js"></script>
 	</body>
 
 </html>

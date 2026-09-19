@@ -14,16 +14,12 @@
 <link rel="pingback" href="../xmlrpc.php" />
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <link rel='dns-prefetch' href='http://s0.wp.com/' />
-<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
-<link rel='dns-prefetch' href='http://netdna.bootstrapcdn.com/' />
+<link rel='dns-prefetch' href='https://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='https://netdna.bootstrapcdn.com/' />
 <link rel='dns-prefetch' href='http://s.w.org/' />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Feed" href="../feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Comments Feed" href="../comments/feed/index.html" />
 
-		<script type="text/javascript">
-			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.13"}};
-			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])?!1:!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55358,56760,9792,65039],[55358,56760,8203,9792,65039])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
-		</script>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -42,7 +38,7 @@ img.emoji {
 <link rel='stylesheet' id='wp-block-library-css'  href='../wp-includes/css/dist/block-library/style.mind934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='extra-style-css'  href='../wp-content/plugins/organize-series-extra-tokens/orgSeries-extrad934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='orgseries-default-css-css'  href='../wp-content/plugins/organize-series/orgSeriesd934.css?ver=5.1.13' type='text/css' media='all' />
-<link rel='stylesheet' id='google_fonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
+<link rel='stylesheet' id='google_fonts-css'  href='https://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
 <link rel='stylesheet' id='theme_stylesheet-css'  href='../wp-content/themes/magazine-premium/styled934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='font_awesome-css'  href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' type='text/css' media='all' />
 <link rel='stylesheet' id='jetpack_css-css'  href='../wp-content/plugins/jetpack/css/jetpackbf7d.css?ver=7.0.3' type='text/css' media='all' />
@@ -77,7 +73,7 @@ img.emoji {
       
       if(document.links[t].hasAttribute('onClick') == false) {
         // forced if the address starts with http (or also https), but does not link to the current domain
-        if(all_links.href.search(/^http/) != -1 && all_links.href.search(/\/index.html/) == -1 && all_links.href.search(/^#/) == -1) {
+        if(all_links.href.search(/^http/) != -1 && all_links.hostname != location.hostname && all_links.href.search(/^#/) == -1) {
           // console.log('Changed ' + all_links.href);
           change_link = true;
         }
@@ -149,30 +145,6 @@ a:hover, .entry-meta a:hover, .format-link .entry-title a:hover { color: #222222
 body.custom-background { background-image: url("../wp-content/themes/magazine-premium/library/images/solid.png"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
 </style>
 	
-	<!-- Clean Archives Reloaded v3.2.0 | http://www.viper007bond.com/wordpress-plugins/clean-archives-reloaded/ -->
-	<style type="text/css">.car-collapse .car-yearmonth { cursor: s-resize; } </style>
-	<script type="text/javascript">
-		/* <![CDATA[ */
-			jQuery(document).ready(function() {
-				jQuery('.car-collapse').find('.car-monthlisting').hide();
-				jQuery('.car-collapse').find('.car-monthlisting:first').show();
-				jQuery('.car-collapse').find('.car-yearmonth').click(function() {
-					jQuery(this).next('ul').slideToggle('fast');
-				});
-				jQuery('.car-collapse').find('.car-toggler').click(function() {
-					if ( 'Expand All' == jQuery(this).text() ) {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').show();
-						jQuery(this).text('Collapse All');
-					}
-					else {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').hide();
-						jQuery(this).text('Expand All');
-					}
-					return false;
-				});
-			});
-		/* ]]> */
-	</script>
 
 <!-- Custom CSS -->
 <style>
@@ -267,17 +239,17 @@ img.thickie {
 					<a href="#" class="left-menu"><i class="icon-reorder"></i></a>
 					<a href="#"><i class="icon-search"></i></a>
 				</div>
-				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></div>
 
 								<div class="title-logo-wrapper center">
 										<div id="title-wrapper">
-						<h1 id="site-title"><a href="/blog/" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
+						<h1 id="site-title"><a href="../index.html" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
 						<h2 id="site-description">You don&#039;t know a language, you live it. You don&#039;t learn a language, you get used to it.</h2>					</div>
 				</div>
-									<a href="/blog/" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
+									<a href="../index.html" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
 					
 				<nav id="site-navigation" role="navigation">
 					<h3 class="assistive-text">Main menu</h3>
@@ -317,15 +289,15 @@ Right there ↑ . Go on. Click on it. Patrons get goodies like early access to c
 					Too Much Technique, Too Little Volume: それ以前の問題			</h1>
 
 		<h2 class="entry-meta">
-		by <a href="/blog/author/adminprime" title="Posts by khatzumoto" rel="author">khatzumoto</a>	</h2>
+		by <a href="../author/adminprime/index.html" title="Posts by khatzumoto" rel="author">khatzumoto</a>	</h2>
 	</header>
 	    <div class="entry-content">
-		    <div class="seriesmeta">This entry is part 11 of 11 in the series <a href="/blog/just-do-one-lowering-your-standards-and-using-patterns-from-addictions-to-achieve-success" title="Just Do One: Lowering Your Standards and Using Patterns from Addictions to Achieve Success">Just Do One: Lowering Your Standards and Using Patterns from Addictions to Achieve Success</a></li><li class="serieslist-li-current">Too Much Technique, Too Little Volume: それ以前の問題</li></ul></div><blockquote><p>&#8220;&#8230;beautiful things grow out of s##t&#8221;<br/>
+		    <div class="seriesmeta">This entry is part 11 of 11 in the series <a href="../just-do-one-lowering-your-standards-and-using-patterns-from-addictions-to-achieve-success/index.html" title="Just Do One: Lowering Your Standards and Using Patterns from Addictions to Achieve Success">Just Do One: Lowering Your Standards and Using Patterns from Addictions to Achieve Success</a></li><li class="serieslist-li-current">Too Much Technique, Too Little Volume: それ以前の問題</li></ul></div><blockquote><p>&#8220;&#8230;beautiful things grow out of s##t&#8221;<br/>
 ~<a href="http://espinozapresents.wordpress.com/2008/09/19/beautiful-things-grow-out-of-shit-brian-eno/">Composer</a></p></blockquote>
 <p>Adults focus too much on technique and too little on volume. Too much on technique and too little on frequency. Too much on technique, too little on consistency. Too much technique, too little exposure.</p>
-<p>There&#8217;s a word for this in Japanese (<a href="/blog/max-out-the-cause-card">precursors</a> to be having that problem&#8221;.</p>
+<p>There&#8217;s a word for this in Japanese (<a href="../max-out-the-cause-card/index.html">precursors</a> to be having that problem&#8221;.</p>
 <p>You go to the rink. Everyone&#8217;s freaking out about skating right, knee bend, not falling, going backwards. Good. Great. That&#8217;s nice. But you know what? None of that is an issue because most people &#8212; adults and children &#8212; simply have not skated enough ice kilometers, have not been on the ice enough times, for their technique to be an issue. It&#8217;s それ以前の問題.</p>
-<p>You go to any discussion about how to &#8220;learn&#8221; (i.e. get used to) Japanese. Real life or online, take your pick: they&#8217;re equally asinine. There&#8217;s always a sizeable faction of <a href="/blog/how-many-languages-abandoning-a-language-after-bad-experiences">richardheads</a> waiting to whip out their junk and mind-molest you with the idea that &#8220;anime is bad for your Japanese&#8221;.</p>
+<p>You go to any discussion about how to &#8220;learn&#8221; (i.e. get used to) Japanese. Real life or online, take your pick: they&#8217;re equally asinine. There&#8217;s always a sizeable faction of <a href="../how-many-languages-abandoning-a-language-after-bad-experiences/index.html">richardheads</a> waiting to whip out their junk and mind-molest you with the idea that &#8220;anime is bad for your Japanese&#8221;.</p>
 <p>&#8216;TF? Yeah, and maybe yellow isn&#8217;t a good color for that homeless guy&#8217;s skin tone, but you know what? That&#8217;s not even his freaking problem.  Sore izen no mondai, son. First, he needs a coat. You can go all <em>Queer Eye</em> on him later.</p>
 <p>A recklessly adventurous Frenchman has been lost in the North African desert for five days without water. You find him in his car, lips chapped. Sunburned beyond French recognition. He&#8217;s been drinking  his own urine since Wednesday. He turns to you and goes &#8220;please, water, s&#8217;il vous plaît&#8221;. You reach into your bag and hand him a bottle of Volvic. And he looks up, smiles and goes &#8220;Mmmmyeah, I&#8217;m more an Evian man. Volvic&#8217;s kinda bitter.&#8221;</p>
 <p>Crazy, right? Insane, right? Impossible, right? Madness <a class="simple-footnote" title="SPARTAAAAAAA!" id="return-note-6405-1" href="#note-6405-1"><sup>1</sup></a>, right?</p>
@@ -340,9 +312,9 @@ Right there ↑ . Go on. Click on it. Patrons get goodies like early access to c
 <p>Supposedly, there&#8217;s some form of &#8220;real&#8221;, &#8220;proper&#8221;, &#8220;correct&#8221;, &#8220;gourmet&#8221;, perfect, inhumanely slaughtered veal/<em>foie gras</em>/Fendi-mink-chinchilla-rabbit-mix-fur-stole version of Japanese that exists somewhere, and nothing but this form of Japanese will do, and anime definitely the HECK isn&#8217;t it and if you don&#8217;t have that exact Fendi stole then you might as well freeze to death; you might as well kill your Japanese baby; you might as well let Japanese die for you.</p>
 <p>That kind of junk is what grown-ups do every day.</p>
 <p>Stop trying to skate right. Just go to the rink. <strong><a href="http://www.codinghorror.com/blog/2008/08/quantity-always-trumps-quality.html">Quality comes from quantity, not the other way around. Quality is the cream that bubbles up from quantity</a></strong>. <strong>Awesomeness comes from mediocrity &#8212; </strong>mediocre- and even crap-looking regularity and showing up. <strong>Cream comes from milk.</strong></p>
-<p><a href="/blog/showing-up">show up</a>.</p>
-<fieldset><legend>Series Navigation</legend><span class="series-nav-left"><a href="/blog/just-do-one-lowering-your-standards-and-using-patterns-from-addictions-to-achieve-success" title="<< Just Do One: Lowering Your Standards and Using Patterns from Addictions to Achieve Success">&lt;&lt; Just Do One: Lowering Your Standards and Using Patterns from Addictions to Achieve Success</a></span><span class="series-nav-right"></span></fieldset>
-<div class="wp_rp_wrap  wp_rp_vertical_m" id="wp_rp_first"><div class="wp_rp_content"><h3 class="related_post_title">Related Posts</h3><ul class="related_post wp_rp"><li data-position="0" data-poid="in-27955" data-post-type="none"><a href="/blog/mockery-is-a-good-sign" class="wp_rp_title">Mockery Is A Good Sign</a></li></ul></div></div>
+<p><a href="../showing-up/index.html">show up</a>.</p>
+<fieldset><legend>Series Navigation</legend><span class="series-nav-left"><a href="../just-do-one-lowering-your-standards-and-using-patterns-from-addictions-to-achieve-success/index.html" title="<< Just Do One: Lowering Your Standards and Using Patterns from Addictions to Achieve Success">&lt;&lt; Just Do One: Lowering Your Standards and Using Patterns from Addictions to Achieve Success</a></span><span class="series-nav-right"></span></fieldset>
+<div class="wp_rp_wrap  wp_rp_vertical_m" id="wp_rp_first"><div class="wp_rp_content"><h3 class="related_post_title">Related Posts</h3><ul class="related_post wp_rp"><li data-position="0" data-poid="in-27955" data-post-type="none"><a href="../mockery-is-a-good-sign/index.html" class="wp_rp_title">Mockery Is A Good Sign</a></li></ul></div></div>
 <div class="simple-footnotes"><p class="notes">Notes:</p><ol><li id="note-6405-1">SPARTAAAAAAA! <a href="#return-note-6405-1">&#8617;</a></li><li id="note-6405-2">don&#8217;t worry &#8212; it&#8217;s OK for me to say it because I&#8217;m black&#8230;and also a closet homosexual&#8230;I make products with &#8220;spoon&#8221; in the name; there&#8217;s gotta be fire to that smoke. right? I mean, believe you me, I wish I could say &#8220;no homo&#8221; here, but, frankly, <em>there may very well be homo</em>. <a href="#return-note-6405-2">&#8617;</a></li><li id="note-6405-3">I mean, think about it: &#8220;rats&#8221;! LoL. It&#8217;s like they&#8217;re vermin! It&#8217;s as though parents think their kids are form of household pest! <a href="#return-note-6405-3">&#8617;</a></li></ol></div>	    </div><!-- .entry-content -->
 
 	        <footer class="entry">
@@ -350,8 +322,8 @@ Right there ↑ . Go on. Click on it. Patrons get goodies like early access to c
 		</article><!-- #post-6405 -->
 			<nav id="posts-pagination">
 				<h3 class="assistive-text">Post navigation</h3>
-				<div class="previous fl"><a href="/blog/ajatt-twitter-tweets-for-week-of-2012-02-26" rel="prev">&larr; AJATT Twitter Tweets for Week Of 2012-02-26</a></div>
-				<div class="next fr"><a href="/blog/10000-sentences-is-dead-long-live-mcds" rel="next">10,000 Sentences is Dead. Let the MCD Revolution Begin! &rarr;</a></div>
+				<div class="previous fl"><a href="../ajatt-twitter-tweets-for-week-of-2012-02-26/index.html" rel="prev">&larr; AJATT Twitter Tweets for Week Of 2012-02-26</a></div>
+				<div class="next fr"><a href="../10000-sentences-is-dead-long-live-mcds/index.html" rel="next">10,000 Sentences is Dead. Let the MCD Revolution Begin! &rarr;</a></div>
 			</nav><!-- #posts-pagination -->
 
 			
@@ -366,7 +338,7 @@ Right there ↑ . Go on. Click on it. Patrons get goodies like early access to c
 					<li class="comment even thread-even depth-1">
 			<div id="comment-190904" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://2.gravatar.com/avatar/205b851978598775223d92a1368bba84?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://2.gravatar.com/avatar/205b851978598775223d92a1368bba84?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						ナカツ 					</div>
@@ -380,14 +352,14 @@ Yes! <br/>
 Now where&#8217;s my bottle of Japanese pee&#8230;</p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=190904#respond" onclick="return addComment.moveForm( &quot;comment-190904&quot;, &quot;190904&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to ナカツ">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=190904#respond#respond" onclick="return addComment.moveForm( &quot;comment-190904&quot;, &quot;190904&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to ナカツ">Reply</a>					</div>
 									</div>
 			</div>
 			<ul class="children">
 		<li class="comment odd alt depth-2">
 			<div id="comment-190952" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://0.gravatar.com/avatar/085840785b9ecc0beba2d1190dfa147d?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://0.gravatar.com/avatar/085840785b9ecc0beba2d1190dfa147d?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						<a href="http://www.spanish-only.com/" rel="external nofollow" class="url">Matt</a> 					</div>
@@ -397,7 +369,7 @@ Now where&#8217;s my bottle of Japanese pee&#8230;</p>
 												<p>*wheeze* &#8220;Is it made from the urine of Japanese alpine skiers? No? I&#8217;ll pass.&#8221; *hack*</p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=190952#respond" onclick="return addComment.moveForm( &quot;comment-190952&quot;, &quot;190952&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Matt">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=190952#respond#respond" onclick="return addComment.moveForm( &quot;comment-190952&quot;, &quot;190952&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Matt">Reply</a>					</div>
 									</div>
 			</div>
 			</li><!-- #comment-## -->
@@ -406,7 +378,7 @@ Now where&#8217;s my bottle of Japanese pee&#8230;</p>
 		<li class="comment even thread-odd thread-alt depth-1">
 			<div id="comment-190916" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://1.gravatar.com/avatar/48f2913edee627bef6262da7354f557f?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://1.gravatar.com/avatar/48f2913edee627bef6262da7354f557f?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						デウィット 					</div>
@@ -416,14 +388,14 @@ Now where&#8217;s my bottle of Japanese pee&#8230;</p>
 												<p>Yellow is problem for the homeless man&#8217;s skin; Jandice.</p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=190916#respond" onclick="return addComment.moveForm( &quot;comment-190916&quot;, &quot;190916&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to デウィット">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=190916#respond#respond" onclick="return addComment.moveForm( &quot;comment-190916&quot;, &quot;190916&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to デウィット">Reply</a>					</div>
 									</div>
 			</div>
 			</li><!-- #comment-## -->
 		<li class="comment odd alt thread-even depth-1">
 			<div id="comment-190942" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://2.gravatar.com/avatar/badd4502b99bb604b009cd156dde9c07?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://2.gravatar.com/avatar/badd4502b99bb604b009cd156dde9c07?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						Freddy 					</div>
@@ -434,14 +406,14 @@ Now where&#8217;s my bottle of Japanese pee&#8230;</p>
 I need some piss&#8230; straight from the source, yo! </p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=190942#respond" onclick="return addComment.moveForm( &quot;comment-190942&quot;, &quot;190942&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Freddy">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=190942#respond#respond" onclick="return addComment.moveForm( &quot;comment-190942&quot;, &quot;190942&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Freddy">Reply</a>					</div>
 									</div>
 			</div>
 			</li><!-- #comment-## -->
 		<li class="comment even thread-odd thread-alt depth-1">
 			<div id="comment-190986" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://0.gravatar.com/avatar/694045c2636336cd9a4e6dc2e85980ec?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://0.gravatar.com/avatar/694045c2636336cd9a4e6dc2e85980ec?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						Q 					</div>
@@ -451,14 +423,14 @@ I need some piss&#8230; straight from the source, yo! </p>
 												<p>Great post Khatzumoto!</p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=190986#respond" onclick="return addComment.moveForm( &quot;comment-190986&quot;, &quot;190986&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Q">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=190986#respond#respond" onclick="return addComment.moveForm( &quot;comment-190986&quot;, &quot;190986&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Q">Reply</a>					</div>
 									</div>
 			</div>
 			</li><!-- #comment-## -->
 		<li class="comment odd alt thread-even depth-1">
 			<div id="comment-190994" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://0.gravatar.com/avatar/6026760ae1e3ce75f51c64aa5b682d87?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://0.gravatar.com/avatar/6026760ae1e3ce75f51c64aa5b682d87?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						ガイ 					</div>
@@ -470,14 +442,14 @@ I need some piss&#8230; straight from the source, yo! </p>
 Nice post khatz (*adding phrase into SRS*) </p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=190994#respond" onclick="return addComment.moveForm( &quot;comment-190994&quot;, &quot;190994&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to ガイ">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=190994#respond#respond" onclick="return addComment.moveForm( &quot;comment-190994&quot;, &quot;190994&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to ガイ">Reply</a>					</div>
 									</div>
 			</div>
 			</li><!-- #comment-## -->
 		<li class="comment even thread-odd thread-alt depth-1">
 			<div id="comment-191026" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://2.gravatar.com/avatar/e2471d8c56429e9b767d58dfde07c125?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://2.gravatar.com/avatar/e2471d8c56429e9b767d58dfde07c125?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						ライトニング 					</div>
@@ -487,14 +459,14 @@ Nice post khatz (*adding phrase into SRS*) </p>
 												<p>Where can I find meanings of sayings without having to find an english translation? I try searching for the sayings and no explanation is ever in japanese. </p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=191026#respond" onclick="return addComment.moveForm( &quot;comment-191026&quot;, &quot;191026&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to ライトニング">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=191026#respond#respond" onclick="return addComment.moveForm( &quot;comment-191026&quot;, &quot;191026&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to ライトニング">Reply</a>					</div>
 									</div>
 			</div>
 			</li><!-- #comment-## -->
 		<li class="comment odd alt thread-even depth-1">
 			<div id="comment-191056" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://0.gravatar.com/avatar/378451a8d6aab6e56c0caa50495bd976?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://0.gravatar.com/avatar/378451a8d6aab6e56c0caa50495bd976?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						<a href="http://howlearnspanish.com/" rel="external nofollow" class="url">Andrew</a> 					</div>
@@ -510,14 +482,14 @@ Cheers,<br/>
 Andrew</p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=191056#respond" onclick="return addComment.moveForm( &quot;comment-191056&quot;, &quot;191056&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Andrew">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=191056#respond#respond" onclick="return addComment.moveForm( &quot;comment-191056&quot;, &quot;191056&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Andrew">Reply</a>					</div>
 									</div>
 			</div>
 			<ul class="children">
 		<li class="comment even depth-2">
 			<div id="comment-199537" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://1.gravatar.com/avatar/134a8c2697c7b8b053fcf57311a37b3b?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://1.gravatar.com/avatar/134a8c2697c7b8b053fcf57311a37b3b?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						卑怯者 					</div>
@@ -525,11 +497,11 @@ Andrew</p>
 						April 2, 2012 at 01:46					</div>
 					<div class="comment-text">
 												<p>This is not recommended by this blog.  See the exceptions in this post:</p>
-<p><a href="aim-to-fail" rel="nofollow"></a><a href="/blog/aim-to-fail" rel="nofollow">www.alljapaneseallthetime.com/blog/aim-to-fail</a><br/>
+<p><a href="aim-to-fail" rel="nofollow"></a><a href="../aim-to-fail/index.html" rel="nofollow">www.alljapaneseallthetime.com/blog/aim-to-fail</a><br/>
  </p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=199537#respond" onclick="return addComment.moveForm( &quot;comment-199537&quot;, &quot;199537&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to 卑怯者">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=199537#respond#respond" onclick="return addComment.moveForm( &quot;comment-199537&quot;, &quot;199537&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to 卑怯者">Reply</a>					</div>
 									</div>
 			</div>
 			</li><!-- #comment-## -->
@@ -538,7 +510,7 @@ Andrew</p>
 		<li class="comment odd alt thread-odd thread-alt depth-1">
 			<div id="comment-191167" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://1.gravatar.com/avatar/41e9c2c0f9b961d684d3ddf42942281d?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://1.gravatar.com/avatar/41e9c2c0f9b961d684d3ddf42942281d?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						<a href="http://www.stijnfrishert.nl/" rel="external nofollow" class="url">スタイン</a> 					</div>
@@ -548,14 +520,14 @@ Andrew</p>
 												<p>This, people, is why AJATT is about so much more than just Japanese.</p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=191167#respond" onclick="return addComment.moveForm( &quot;comment-191167&quot;, &quot;191167&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to スタイン">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=191167#respond#respond" onclick="return addComment.moveForm( &quot;comment-191167&quot;, &quot;191167&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to スタイン">Reply</a>					</div>
 									</div>
 			</div>
 			</li><!-- #comment-## -->
 		<li class="comment even thread-even depth-1">
 			<div id="comment-191259" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://0.gravatar.com/avatar/91309af73ad2e1c8e42fef548031d7d6?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://0.gravatar.com/avatar/91309af73ad2e1c8e42fef548031d7d6?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						Spot53 					</div>
@@ -565,7 +537,7 @@ Andrew</p>
 												<p>This is one of those moments when you want to make out with and then profess your eternal love to a blogger. I want to say this to so many people in my life. Quantity trumps quality everytime&#8230;unless you are attempting to disarm an active WMD&#8230;which (statistically) you are not.</p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=191259#respond" onclick="return addComment.moveForm( &quot;comment-191259&quot;, &quot;191259&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Spot53">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=191259#respond#respond" onclick="return addComment.moveForm( &quot;comment-191259&quot;, &quot;191259&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Spot53">Reply</a>					</div>
 									</div>
 			</div>
 			</li><!-- #comment-## -->
@@ -582,12 +554,12 @@ Andrew</p>
 		<li id="comment-1000061841" class="pingback">
 			<div class="comment-body">
 				<i class="icon-paper-clip"></i>
-				Pingback: <a href="/blog/artificial-intelligence-and-learning-languages" rel="external nofollow" class="url">Artificial Intelligence and Learning Languages | AJATT | All Japanese All The Time</a>			</div>
+				Pingback: <a href="../artificial-intelligence-and-learning-languages/index.html" rel="external nofollow" class="url">Artificial Intelligence and Learning Languages | AJATT | All Japanese All The Time</a>			</div>
 			</li><!-- #comment-## -->
 		<li class="comment odd alt thread-odd thread-alt depth-1">
 			<div id="comment-1000508199" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://2.gravatar.com/avatar/be954d0af5c656be3088ad245a6c3e00?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://2.gravatar.com/avatar/be954d0af5c656be3088ad245a6c3e00?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						Laurence Bourke 					</div>
@@ -597,14 +569,14 @@ Andrew</p>
 												<p>Every time i read your articles something just clicks, i just know somehow this is the way to go, its almost intuition, but its also common sense and how babys learn, i a can personally vouch that in that lsat 6 months i have gone form struggling for 2 hours through short fairy tales to reading and understanding in large part famitus articles and others such things, im consistently shocked at how quickly im improving and alot of that is thanks to this website , it IS possible and now its actually becoming fun, im choosing the fun stuff, wathign takeshi kitano nature documentaries, transcribing interviews with my favorite artist and enjoying Japanese drama, its almost unbelievable, wow thanks khatz</p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=1000508199#respond" onclick="return addComment.moveForm( &quot;comment-1000508199&quot;, &quot;1000508199&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Laurence Bourke">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=1000508199#respond#respond" onclick="return addComment.moveForm( &quot;comment-1000508199&quot;, &quot;1000508199&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Laurence Bourke">Reply</a>					</div>
 									</div>
 			</div>
 			</li><!-- #comment-## -->
 		<li class="comment even thread-even depth-1">
 			<div id="comment-1000508198" class="comment-body">
 				<div class="comment-avatar">
-					<img alt="" src="http://2.gravatar.com/avatar/be954d0af5c656be3088ad245a6c3e00?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
+					<img alt="" src="https://2.gravatar.com/avatar/be954d0af5c656be3088ad245a6c3e00?s=120&amp;d=retro&amp;r=pg 2x" class="avatar avatar-60 photo" height="60" width="60"/>				</div>
 				<div class="comment-content">
 					<div class="comment-author">
 						Laurence Bourke 					</div>
@@ -614,7 +586,7 @@ Andrew</p>
 												<p>Every time i read your articles something just clicks, i just know somehow this is the way to go, its almost intuition, but its also common sense and how babys learn, i a can personally vouch that in that lsat 6 months i have gone form struggling for 2 hours through short fairy tales to reading and understanding in large part famitus articles and others such things, im consistently shocked at how quickly im improving and alot of that is thanks to this website , it IS possible and now its actually becoming fun, im choosing the fun stuff, wathign takeshi kitano nature documentaries, transcribing interviews with my favorite artist and enjoying Japanese drama, its almost unbelievable, wow thanks khatz</p>
 					</div>
 										<div class="reply">
-						<a rel="nofollow" class="comment-reply-link" href="/blog/too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c?replytocom=1000508198#respond" onclick="return addComment.moveForm( &quot;comment-1000508198&quot;, &quot;1000508198&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Laurence Bourke">Reply</a>					</div>
+						<a rel="nofollow" class="comment-reply-link" href="../too-much-technique-too-little-volume-%e3%81%9d%e3%82%8c%e4%bb%a5%e5%89%8d%e3%81%ae%e5%95%8f%e9%a1%8c/index.html?replytocom=1000508198#respond#respond" onclick="return addComment.moveForm( &quot;comment-1000508198&quot;, &quot;1000508198&quot;, &quot;respond&quot;, &quot;6405&quot; )" aria-label="Reply to Laurence Bourke">Reply</a>					</div>
 									</div>
 			</div>
 			</li><!-- #comment-## -->
@@ -624,7 +596,7 @@ Andrew</p>
 		
 	
 					<div id="respond" class="comment-respond">
-			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/blog/too-much-technique-too-little-volume-%E3%81%9D%E3%82%8C%E4%BB%A5%E5%89%8D%E3%81%AE%E5%95%8F%E9%A1%8C#respond" style="display:none;">Cancel reply</a></small></h3>				
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="../too-much-technique-too-little-volume-%E3%81%9D%E3%82%8C%E4%BB%A5%E5%89%8D%E3%81%AE%E5%95%8F%E9%A1%8C/index.html#respond" style="display:none;">Cancel reply</a></small></h3>				
 					<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><textarea onfocus="if(!this._s==true){var _i=document.createElement('input');_i.setAttribute('type','hidden');_i.setAttribute('name','ssc_key_9728d33700e77a78');_i.setAttribute('value','a32aa92f857c6352');var _p=this.parentNode;_p.insertBefore(_i,this);this._s=true;}" id="comment" name="comment" required cols="45" rows="8" placeholder="Comment *" aria-required="true"></textarea></p><p class="comment-form-author"><input id="author" name="author" type="text" required size="30" placeholder="Name *" aria-required="true"/></p>
 <p class="comment-form-email"><input id="email" name="email" type="email" required size="30" placeholder="Email *" aria-required="true"/></p>
 <p class="comment-form-url"><input id="url" name="url" type="url" size="30" placeholder="Website"/></p>
@@ -637,7 +609,7 @@ Andrew</p>
 			</div><!-- #primary.c8 -->
 
 	<div id="secondary" class="c3 end" role="complementary">
-		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></aside><aside id="nav_menu-2" class="widget widget_nav_menu"><h3 class="widget-title">Best of AJATT</h3><div class="menu-least-crappy-of-ajatt-container"><ul id="menu-least-crappy-of-ajatt" class="menu"><li id="menu-item-3562" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3562"><a href="../aim-to-fail/index.html">Aim To Fail</a></li>
@@ -715,7 +687,7 @@ Andrew</p>
 		<div class="row">
 			<p class="copyright c12">
 								<span class="line"></span>
-				<span class="fl">Copyright © 2006~2021 <a href="/blog/">AJATT | All Japanese All The Time</a>. All Rights Reserved.</span>
+				<span class="fl">Copyright © 2006~2021 <a href="../index.html">AJATT | All Japanese All The Time</a>. All Rights Reserved.</span>
 				<span class="fr"><i class="icon-leaf"></i><a href="http://themes.bavotasan.com/2010/magazine-premium/">Magazine Premium</a> created by <a href="http://themes.bavotasan.com/">c.bavota</a>.</span>
 			</p><!-- .c12 -->
 		</div><!-- .row -->
@@ -733,7 +705,6 @@ Andrew</p>
 				seriesdropdown.onchange = onSeriesChange;
 			}
 			--></script>
-			<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack6f57.js?ver=202218'></script>
 <script type='text/javascript' src='../wp-includes/js/comment-reply.mind934.js?ver=5.1.13'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/bootstrap.min605a.js?ver=2.2.2'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/harvey.mind934.js?ver=5.1.13'></script>
@@ -754,7 +725,7 @@ var fergcorp_countdown_timer_options = {"showYear":"0","showMonth":"0","showWeek
 <script type='text/javascript' src='../wp-includes/js/wp-embed.mind934.js?ver=5.1.13'></script>
 <script async="async" type='text/javascript' src='../wp-content/plugins/akismet/_inc/form8aee.js?ver=4.1.2'></script>
 <!-- Magazine Premium created by c.bavota - http://themes.bavotasan.com -->
-		<script defer src="/blog/search.js"></script>
+		<script defer src="../search.js"></script>
 	</body>
 
 </html>

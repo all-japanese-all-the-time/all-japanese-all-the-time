@@ -14,16 +14,12 @@
 <link rel="pingback" href="../xmlrpc.php" />
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <link rel='dns-prefetch' href='http://s0.wp.com/' />
-<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
-<link rel='dns-prefetch' href='http://netdna.bootstrapcdn.com/' />
+<link rel='dns-prefetch' href='https://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='https://netdna.bootstrapcdn.com/' />
 <link rel='dns-prefetch' href='http://s.w.org/' />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Feed" href="../feed/index.html" />
 <link rel="alternate" type="application/rss+xml" title="AJATT | All Japanese All The Time &raquo; Comments Feed" href="../comments/feed/index.html" />
 
-		<script type="text/javascript">
-			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.13"}};
-			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])?!1:!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([55358,56760,9792,65039],[55358,56760,8203,9792,65039])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
-		</script>
 		<style type="text/css">
 img.wp-smiley,
 img.emoji {
@@ -42,7 +38,7 @@ img.emoji {
 <link rel='stylesheet' id='wp-block-library-css'  href='../wp-includes/css/dist/block-library/style.mind934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='extra-style-css'  href='../wp-content/plugins/organize-series-extra-tokens/orgSeries-extrad934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='orgseries-default-css-css'  href='../wp-content/plugins/organize-series/orgSeriesd934.css?ver=5.1.13' type='text/css' media='all' />
-<link rel='stylesheet' id='google_fonts-css'  href='http://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
+<link rel='stylesheet' id='google_fonts-css'  href='https://fonts.googleapis.com/css?family=PT+Sans|Arvo:900|Quattrocento|Raleway:100|Lato:900|Lato:300|' type='text/css' media='all' />
 <link rel='stylesheet' id='theme_stylesheet-css'  href='../wp-content/themes/magazine-premium/styled934.css?ver=5.1.13' type='text/css' media='all' />
 <link rel='stylesheet' id='font_awesome-css'  href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' type='text/css' media='all' />
 <link rel='stylesheet' id='jetpack_css-css'  href='../wp-content/plugins/jetpack/css/jetpackbf7d.css?ver=7.0.3' type='text/css' media='all' />
@@ -77,7 +73,7 @@ img.emoji {
       
       if(document.links[t].hasAttribute('onClick') == false) {
         // forced if the address starts with http (or also https), but does not link to the current domain
-        if(all_links.href.search(/^http/) != -1 && all_links.href.search(/\/index.html/) == -1 && all_links.href.search(/^#/) == -1) {
+        if(all_links.href.search(/^http/) != -1 && all_links.hostname != location.hostname && all_links.href.search(/^#/) == -1) {
           // console.log('Changed ' + all_links.href);
           change_link = true;
         }
@@ -149,30 +145,6 @@ a:hover, .entry-meta a:hover, .format-link .entry-title a:hover { color: #222222
 body.custom-background { background-image: url("../wp-content/themes/magazine-premium/library/images/solid.png"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: fixed; }
 </style>
 	
-	<!-- Clean Archives Reloaded v3.2.0 | http://www.viper007bond.com/wordpress-plugins/clean-archives-reloaded/ -->
-	<style type="text/css">.car-collapse .car-yearmonth { cursor: s-resize; } </style>
-	<script type="text/javascript">
-		/* <![CDATA[ */
-			jQuery(document).ready(function() {
-				jQuery('.car-collapse').find('.car-monthlisting').hide();
-				jQuery('.car-collapse').find('.car-monthlisting:first').show();
-				jQuery('.car-collapse').find('.car-yearmonth').click(function() {
-					jQuery(this).next('ul').slideToggle('fast');
-				});
-				jQuery('.car-collapse').find('.car-toggler').click(function() {
-					if ( 'Expand All' == jQuery(this).text() ) {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').show();
-						jQuery(this).text('Collapse All');
-					}
-					else {
-						jQuery(this).parent('.car-container').find('.car-monthlisting').hide();
-						jQuery(this).text('Expand All');
-					}
-					return false;
-				});
-			});
-		/* ]]> */
-	</script>
 
 <!-- Custom CSS -->
 <style>
@@ -267,17 +239,17 @@ img.thickie {
 					<a href="#" class="left-menu"><i class="icon-reorder"></i></a>
 					<a href="#"><i class="icon-search"></i></a>
 				</div>
-				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+				<div id="drop-down-search"><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></div>
 
 								<div class="title-logo-wrapper center">
 										<div id="title-wrapper">
-						<h1 id="site-title"><a href="" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
+						<h1 id="site-title"><a href="../index.html" title="AJATT | All Japanese All The Time" rel="home">AJATT | All Japanese All The Time</a></h1>
 						<h2 id="site-description">You don&#039;t know a language, you live it. You don&#039;t learn a language, you get used to it.</h2>					</div>
 				</div>
-									<a href="" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
+									<a href="../index.html" title="AJATT | All Japanese All The Time" rel="home"><img id="header-img" src="../data/blogtop1.png" width="1200" height="235" alt="" /></a>
 					
 				<nav id="site-navigation" role="navigation">
 					<h3 class="assistive-text">Main menu</h3>
@@ -285,7 +257,7 @@ img.thickie {
 					<div class="menu-header-links-container"><ul id="menu-header-links" class="menu"><li id="menu-item-3362" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-3362"><a title="How To Use This Website" href="../index.html">NEW? START HERE!</a>
 <li id="menu-item-3361" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3361"><a href="../archives/index.html">Latest/Blog</a>
 <li id="menu-item-3364" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3364"><a href="../store/index.html">Store</a>
-<li id="menu-item-3366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3366"><a href="/blog/contact/">Contact</a>
+<li id="menu-item-3366" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3366"><a href="../contact/index.html">Contact</a>
 <li id="menu-item-24564" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24564"><a href="../index.html?random">@Random Post</a>
 </ul></div>				</nav><!-- #site-navigation -->
 
@@ -315,11 +287,11 @@ img.thickie {
 			
 		<div class="post" id="post-1100">
 	
-			<h2 class="posttitle"><a href="/blog/%e3%81%8a%e5%b7%ab%e5%b1%b1%e6%88%af%e3%80%81%e6%97%a5%e6%9c%ac%e8%aa%9e%e3%81%a7-japanese-babies-that-suck-even-harder-than-you" rel="bookmark" title="お巫山戯、日本語で: Japanese Babies That Suck…Even Harder Than You">お巫山戯、日本語で: Japanese Babies That Suck&#8230;Even Harder Than You</a></h2>
+			<h2 class="posttitle"><a href="../%e3%81%8a%e5%b7%ab%e5%b1%b1%e6%88%af%e3%80%81%e6%97%a5%e6%9c%ac%e8%aa%9e%e3%81%a7-japanese-babies-that-suck-even-harder-than-you/index.html" rel="bookmark" title="お巫山戯、日本語で: Japanese Babies That Suck…Even Harder Than You">お巫山戯、日本語で: Japanese Babies That Suck&#8230;Even Harder Than You</a></h2>
 			
 			<p class="postmeta"> 
 			April 28, 2010 at 19:00 
-			&#183; Read more about: <a href="/blog/category/immersion" title="View all posts in Immersion" rel="category tag">Immersion</a>,  <a href="/blog/category/momokos-musings" title="View all posts in Momoko's Musings" rel="category tag">Momoko's Musings</a>,  <a href="/blog/category/sentences" title="View all posts in Sentences" rel="category tag">Sentences</a>,  <a href="/blog/category/speaking" title="View all posts in Speaking" rel="category tag">Speaking</a>,  <a href="/blog/category/video" title="View all posts in Video" rel="category tag">Video</a>						</p>
+			&#183; Read more about: <a href="/blog/category/immersion" title="View all posts in Immersion" rel="category tag">Immersion</a>,  <a href="../category/momokos-musings/index.html" title="View all posts in Momoko's Musings" rel="category tag">Momoko's Musings</a>,  <a href="../category/sentences/index.html" title="View all posts in Sentences" rel="category tag">Sentences</a>,  <a href="/blog/category/speaking" title="View all posts in Speaking" rel="category tag">Speaking</a>,  <a href="/blog/category/video" title="View all posts in Video" rel="category tag">Video</a>						</p>
 			<p class="postmeta"> 
       
 	  <!--<div>
@@ -330,7 +302,7 @@ img.thickie {
         <a href="http://www.kanjiposter.com/" target="_blank">
 			
 		</a>
-	</div>	 <!--<<a href="/blog/advertise" target="_blank">
+	</div>	 <!--<<a href="../advertise/index.html" target="_blank">
 			&nbsp;&nbsp;&nbsp;&nbsp;   
 			&nbsp;&nbsp;&nbsp;&nbsp;   
 			&nbsp;&nbsp;&nbsp;&nbsp;   
@@ -342,25 +314,25 @@ img.thickie {
 			<div class="tweetmeme_button" style="float: right; margin-left: 10px;"><iframe src="http://api.tweetmeme.com/button.js?url=%2Fblog%2F%25e3%2581%258a%25e5%25b7%25ab%25e5%25b1%25b1%25e6%2588%25af%25e3%2580%2581%25e6%2597%25a5%25e6%259c%25ac%25e8%25aa%259e%25e3%2581%25a7-japanese-babies-that-suck-even-harder-than-you&amp;source=ajatt&amp;style=normal&amp;service=bit.ly&amp;service_api=R_c0a13a3328570abe6a1392d515c12625" height="61" width="50" frameborder="0" scrolling="no"></iframe></div>
 <p><span style="color: #808080;">Note from Dear Leader Khatzumoto: The following post is by Momoko, and not me. Momoko likes to use language that we don&#8217;t approve of here at AJATT. It&#8217;s like she&#8217;s doing that teenage rebellion thing, but like 15 years too late&#8230;way to be on time, champ. Um&#8230;I actually tried bowdlerizing her text, but then she went and painstakingly restored </span><em><span style="color: #808080;">all</span></em><span style="color: #808080;"> the naughty words. And since I&#8217;m basically a pushover for hot chicks, I&#8217;m just going to let it go. Let it go. Also, just so you know, she sometimes refers to herself in the third person. </span><em><span style="color: #808080;">Weird</span></em><span style="color: #808080;">. Anyway&#8230;hot chicks, man &#8212; what are you gonna do? They puncture your carefully constructed veneer of moral superiority and they&#8217;re </span><span style="color: #808080;">still</span><span style="color: #808080;"> hot&#8230;</span></p>
 <p><em>This is the first installment in a new weekly series by Momoko, 「お巫山戯（ふざけ）、日本語で」, or &#8220;F***ing around in Japanese&#8221;. In it, Momoko will document how she&#8230;f***s around in Japanese, with the hope that the links to Japanese media and the irreverent setting will help readers relax a bit, go off on their own as the call of insanity dictates, and screw around in Japanese as well. (And, frankly, since Momoko&#8217;s the kind of uptight perfectionist that needs this sort of thing the most&#8230;it&#8217;s really all for her own benefit anyway.)</em></p>
-<p>I have to admit, one of the most humiliating parts of learning a language is <a href="/blog/cute-girls-mathematics-language">when you realize that even three-year-olds put you to shame</a>—after months or even years of trying to learn the blasted thing. When I go to a Japanese friend’s house and listen to their little ちびちゃん babbling away, my internal monologue usually goes something like this: #@$&amp;*! What&#8217;s the word for dinosaur again? hide-and-go-seek? elbow? pee-pee? Sh**! Sh**! Sh**!!! Why don’t I <em>know</em> this stuff?! That snot face is totally owning me!</p>
+<p>I have to admit, one of the most humiliating parts of learning a language is <a href="../cute-girls-mathematics-language/index.html">when you realize that even three-year-olds put you to shame</a>—after months or even years of trying to learn the blasted thing. When I go to a Japanese friend’s house and listen to their little ちびちゃん babbling away, my internal monologue usually goes something like this: #@$&amp;*! What&#8217;s the word for dinosaur again? hide-and-go-seek? elbow? pee-pee? Sh**! Sh**! Sh**!!! Why don’t I <em>know</em> this stuff?! That snot face is totally owning me!</p>
 <p>But fear not, comrades. I&#8217;ve got just the thing for our wounded egos. Maybe you suck at Japanese, but there&#8217;s no WAY you suck as hard as these <del datetime="2010-04-09T10:08:36+00:00">slobbering cretins</del> precious bundles of joy. (Or you won’t in about 2 minutes after reading this.)</p>
 <p>I give you: Japanese babies that suck. Even harder than you.</p>
 <p>First off, let&#8217;s start with &#8230;</p>
 <p><strong>Counting!</strong></p>
 <p>The title of our first video translates &#8220;A baby who can count&#8221;. See what <em>you</em> think&#8230;</p>
-<p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="560" height="340" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="src" value="http://www.youtube.com/v/FLH8YNeBSFo&amp;hl=ja_JP&amp;fs=1&amp;"/><param name="allowfullscreen" value="true"/><embed type="application/x-shockwave-flash" width="560" height="340" src="http://www.youtube.com/v/FLH8YNeBSFo&amp;hl=ja_JP&amp;fs=1&amp;" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
+<p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="560" height="340" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="src" value="http://www.youtube.com/v/FLH8YNeBSFo&amp;hl=ja_JP&amp;fs=1&amp;"/><param name="allowfullscreen" value="true"/><embed type="application/x-shockwave-flash" width="560" height="340" src="https://www.youtube.com/v/FLH8YNeBSFo&amp;hl=ja_JP&amp;fs=1&amp;" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
 <p>「数字を数える赤ちゃん」? I don&#8217;t think so! You can&#8217;t just make the same incoherent sound whenever your mom pauses and call that counting. That’s いち、に、さん fool!!</p>
 <p>This next baby got <em>one</em> number right&#8230;</p>
-<p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="425" height="344" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="src" value="http://www.youtube.com/v/36yACMOysrg&amp;hl=ja_JP&amp;fs=1&amp;"/><param name="allowfullscreen" value="true"/><embed type="application/x-shockwave-flash" width="425" height="344" src="http://www.youtube.com/v/36yACMOysrg&amp;hl=ja_JP&amp;fs=1&amp;" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
+<p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="425" height="344" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="src" value="http://www.youtube.com/v/36yACMOysrg&amp;hl=ja_JP&amp;fs=1&amp;"/><param name="allowfullscreen" value="true"/><embed type="application/x-shockwave-flash" width="425" height="344" src="https://www.youtube.com/v/36yACMOysrg&amp;hl=ja_JP&amp;fs=1&amp;" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
 <p>&#8230;and consistently forgot all the nine ones that came before it! Nice. Again, that&#8217;s いち、に、<em>さん</em>, not いち、に、<em>じゃ～ん</em>. You just can&#8217;t make this stuff up&#8230;</p>
 <p>I don&#8217;t know, folks, but if his parents can claim he can count after <em>that</em>, where, I guess 「数」 is &#8220;number&#8221; instead of &#8220;numbers&#8221;, then we all know Japanese. I mean, you know &#8220;sushi&#8221;, right?</p>
 <p>Let&#8217;s move on to</p>
 <p><strong>Colors!</strong></p>
 <p>Our next little ちび is either color blind or suffers from severe short-term memory loss. You decide:</p>
-<p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="425" height="344" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="src" value="http://www.youtube.com/v/8xXyDF0Y7IM&amp;hl=ja_JP&amp;fs=1&amp;"/><param name="allowfullscreen" value="true"/><embed type="application/x-shockwave-flash" width="425" height="344" src="http://www.youtube.com/v/8xXyDF0Y7IM&amp;hl=ja_JP&amp;fs=1&amp;" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
+<p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="425" height="344" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="src" value="http://www.youtube.com/v/8xXyDF0Y7IM&amp;hl=ja_JP&amp;fs=1&amp;"/><param name="allowfullscreen" value="true"/><embed type="application/x-shockwave-flash" width="425" height="344" src="https://www.youtube.com/v/8xXyDF0Y7IM&amp;hl=ja_JP&amp;fs=1&amp;" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
 <p>That&#8217;s ピンク、あお、あか bee-atch!</p>
 <p>Aww&#8230; But let&#8217;s give her another chance. In this second attempt, she starts out strong&#8230;</p>
-<p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="425" height="344" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="src" value="http://www.youtube.com/v/8CYqVetLwa4&amp;hl=ja_JP&amp;fs=1&amp;"/><param name="allowfullscreen" value="true"/><embed type="application/x-shockwave-flash" width="425" height="344" src="http://www.youtube.com/v/8CYqVetLwa4&amp;hl=ja_JP&amp;fs=1&amp;" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
+<p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="425" height="344" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="src" value="http://www.youtube.com/v/8CYqVetLwa4&amp;hl=ja_JP&amp;fs=1&amp;"/><param name="allowfullscreen" value="true"/><embed type="application/x-shockwave-flash" width="425" height="344" src="https://www.youtube.com/v/8CYqVetLwa4&amp;hl=ja_JP&amp;fs=1&amp;" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
 <p>&#8230;and sharply nose-dives into a long stream of gobbledygook.</p>
 <p>Take a look at this scorecard:</p>
 <table border="0" cellpadding="5">
@@ -431,7 +403,7 @@ img.thickie {
 <p>Last of all, let&#8217;s take a look at</p>
 <p><strong>Food!</strong></p>
 <p>&#8220;What did you eat?&#8221; A question so simple, even a two-and-a-half-year-old who had just eaten a pear and is still sitting at the table wearing her bib could answer it, no problem, right? Right?</p>
-<p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="425" height="344" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="src" value="http://www.youtube.com/v/rQqo3eWD7Ok&amp;hl=ja_JP&amp;fs=1&amp;"/><param name="allowfullscreen" value="true"/><embed type="application/x-shockwave-flash" width="425" height="344" src="http://www.youtube.com/v/rQqo3eWD7Ok&amp;hl=ja_JP&amp;fs=1&amp;" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
+<p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="425" height="344" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="src" value="http://www.youtube.com/v/rQqo3eWD7Ok&amp;hl=ja_JP&amp;fs=1&amp;"/><param name="allowfullscreen" value="true"/><embed type="application/x-shockwave-flash" width="425" height="344" src="https://www.youtube.com/v/rQqo3eWD7Ok&amp;hl=ja_JP&amp;fs=1&amp;" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
 <p>I love it! First her dad fakes her out: もも（桃）？</p>
 <p>She takes the bait: Yeah, yeah, that&#8217;s it, I had a peach&#8230;</p>
 <p>And he&#8217;s like: Unh-unhh <em>*you had a pear, baby!!*</em></p>
@@ -490,18 +462,18 @@ Us: 5</p>
 				<input type="hidden" name="currency_code" value="USD">
 				<input type="hidden" name="tax" value="0">
 				<input type="hidden" name="bn" value="PP-DonationsBF">
-				<p align="center"><input type="image" src="/blog/images/khatzumoto.donate.tiny.s1.png" border="0" name="submit" alt="Yay! Donate to Khatzumoto!"></p>
+				<p align="center"><input type="image" src="../images/khatzumoto.donate.tiny.s1.png" border="0" name="submit" alt="Yay! Donate to Khatzumoto!"></p>
 				<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-				</form></div></p><div><a href="/blog/category/ajatt-plus"><img src="/blog/images/header-ajattplus-v2/rotate.gif" alt="Original AJATT Products" width="535" height="140"/></a></div>		<!--donation-->
+				</form></div></p><div><a href="/blog/category/ajatt-plus"><img src="../images/header-ajattplus-v2/rotate.gif" alt="Original AJATT Products" width="535" height="140"/></a></div>		<!--donation-->
 
 				
 		   	<br/><strong>Read on:</strong><br/>
-		  <li><a href="/blog/10000-sentences-why" rel="bookmark" title="Permanent Link: 10,000 Sentences: Why">10,000 Sentences: Why</a></li><li><a href="/blog/showing-up" rel="bookmark" title="Permanent Link: Showing Up">Showing Up</a></li><li><a href="/blog/calm-down-and-hurry-up" rel="bookmark" title="Permanent Link: Calm Down and Hurry Up">Calm Down and Hurry Up</a></li><li><a href="/blog/how-to-score-yourself-on-repetitions" rel="bookmark" title="Permanent Link: How to Score Yourself on Repetitions">How to Score Yourself on Repetitions</a></li><li><a href="/blog/top-10-reasons-why-expats-who-live-in-japan-dont-know-japanese" rel="bookmark" title="Permanent Link: Top 10 Reasons Why Expats Who Live In Japan Don’t Know Japanese">Top 10 Reasons Why Expats Who Live In Japan Don&#8217;t Know Japanese</a></li><li><a href="/blog/the-eternal-sorrow-of-the-intermediate-learner-%e2%80%9care-we-there-yet%e2%80%9d-syndrome" rel="bookmark" title="Permanent Link: The Eternal Sorrow of the Intermediate Learner: “Are We There Yet?” Syndrome">The Eternal Sorrow of the Intermediate Learner: “Are We There Yet?” Syndrome</a></li><li><a href="/blog/language-learning-as-gun-violence" rel="bookmark" title="Permanent Link: Language-Learning As Gun Violence: Frequency and Quantity">Language-Learning As Gun Violence: Frequency and Quantity</a></li>        <li><a href="/blog/category/immersion" title="View all posts in Immersion" rel="category tag">Immersion</a>,  <a href="/blog/category/momokos-musings" title="View all posts in Momoko's Musings" rel="category tag">Momoko's Musings</a>,  <a href="/blog/category/sentences" title="View all posts in Sentences" rel="category tag">Sentences</a>,  <a href="/blog/category/speaking" title="View all posts in Speaking" rel="category tag">Speaking</a>,  <a href="/blog/category/video" title="View all posts in Video" rel="category tag">Video</a></li>
-		  	<h1><li><a href="/blog/all-japanese-all-the-time-ajatt-how-to-learn-japanese-on-your-own-having-fun-and-to-fluency" id="navHome" title="Home" accesskey="t"><u>T</u>able of Contents</a></li></h1>
+		  <li><a href="../10000-sentences-why/index.html" rel="bookmark" title="Permanent Link: 10,000 Sentences: Why">10,000 Sentences: Why</a></li><li><a href="../showing-up/index.html" rel="bookmark" title="Permanent Link: Showing Up">Showing Up</a></li><li><a href="../calm-down-and-hurry-up/index.html" rel="bookmark" title="Permanent Link: Calm Down and Hurry Up">Calm Down and Hurry Up</a></li><li><a href="../how-to-score-yourself-on-repetitions/index.html" rel="bookmark" title="Permanent Link: How to Score Yourself on Repetitions">How to Score Yourself on Repetitions</a></li><li><a href="../top-10-reasons-why-expats-who-live-in-japan-dont-know-japanese/index.html" rel="bookmark" title="Permanent Link: Top 10 Reasons Why Expats Who Live In Japan Don’t Know Japanese">Top 10 Reasons Why Expats Who Live In Japan Don&#8217;t Know Japanese</a></li><li><a href="../the-eternal-sorrow-of-the-intermediate-learner-%e2%80%9care-we-there-yet%e2%80%9d-syndrome/index.html" rel="bookmark" title="Permanent Link: The Eternal Sorrow of the Intermediate Learner: “Are We There Yet?” Syndrome">The Eternal Sorrow of the Intermediate Learner: “Are We There Yet?” Syndrome</a></li><li><a href="../language-learning-as-gun-violence/index.html" rel="bookmark" title="Permanent Link: Language-Learning As Gun Violence: Frequency and Quantity">Language-Learning As Gun Violence: Frequency and Quantity</a></li>        <li><a href="/blog/category/immersion" title="View all posts in Immersion" rel="category tag">Immersion</a>,  <a href="../category/momokos-musings/index.html" title="View all posts in Momoko's Musings" rel="category tag">Momoko's Musings</a>,  <a href="../category/sentences/index.html" title="View all posts in Sentences" rel="category tag">Sentences</a>,  <a href="/blog/category/speaking" title="View all posts in Speaking" rel="category tag">Speaking</a>,  <a href="/blog/category/video" title="View all posts in Video" rel="category tag">Video</a></li>
+		  	<h1><li><a href="../all-japanese-all-the-time-ajatt-how-to-learn-japanese-on-your-own-having-fun-and-to-fluency/index.html" id="navHome" title="Home" accesskey="t"><u>T</u>able of Contents</a></li></h1>
       
 			
 			<p class="postfeedback">
-			<a href="/blog/%e3%81%8a%e5%b7%ab%e5%b1%b1%e6%88%af%e3%80%81%e6%97%a5%e6%9c%ac%e8%aa%9e%e3%81%a7-japanese-babies-that-suck-even-harder-than-you" rel="bookmark" title="Permanent link to お巫山戯、日本語で: Japanese Babies That Suck…Even Harder Than You" class="permalink">Permalink</a>
+			<a href="../%e3%81%8a%e5%b7%ab%e5%b1%b1%e6%88%af%e3%80%81%e6%97%a5%e6%9c%ac%e8%aa%9e%e3%81%a7-japanese-babies-that-suck-even-harder-than-you/index.html" rel="bookmark" title="Permanent link to お巫山戯、日本語で: Japanese Babies That Suck…Even Harder Than You" class="permalink">Permalink</a>
 			</p>
 		
 		
@@ -510,7 +482,7 @@ Us: 5</p>
 </div><!-- #primary.c8 -->
 
 	<div id="secondary" class="c3 end" role="complementary">
-		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="/blog/" >
+		<aside id="search-3" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="slide" action="../index.html" >
     <label class="assistive-text" for="site-search">Search for:</label>
     <input type="search" placeholder="Search&hellip;" value="" name="s" id="site-search" />
     </form></aside><aside id="nav_menu-2" class="widget widget_nav_menu"><h3 class="widget-title">Best of AJATT</h3><div class="menu-least-crappy-of-ajatt-container"><ul id="menu-least-crappy-of-ajatt" class="menu"><li id="menu-item-3562" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3562"><a href="../aim-to-fail/index.html">Aim To Fail</a></li>
@@ -606,7 +578,6 @@ Us: 5</p>
 				seriesdropdown.onchange = onSeriesChange;
 			}
 			--></script>
-			<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack6f57.js?ver=202218'></script>
 <script type='text/javascript' src='../wp-includes/js/comment-reply.mind934.js?ver=5.1.13'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/bootstrap.min605a.js?ver=2.2.2'></script>
 <script type='text/javascript' src='../wp-content/themes/magazine-premium/library/js/harvey.mind934.js?ver=5.1.13'></script>
@@ -627,7 +598,7 @@ var fergcorp_countdown_timer_options = {"showYear":"0","showMonth":"0","showWeek
 <script type='text/javascript' src='../wp-includes/js/wp-embed.mind934.js?ver=5.1.13'></script>
 <script async="async" type='text/javascript' src='../wp-content/plugins/akismet/_inc/form8aee.js?ver=4.1.2'></script>
 <!-- Magazine Premium created by c.bavota - http://themes.bavotasan.com -->
-		<script defer src="/blog/search.js"></script>
+		<script defer src="../search.js"></script>
 	</body>
 
 </html>
