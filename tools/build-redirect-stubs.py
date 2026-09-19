@@ -23,6 +23,11 @@ absolute URL it used to be spelled out as - and a copy of this archive unzipped
 on someone's laptop, or served from a subdirectory of another domain, redirects
 just as well as the original does.
 
+The three redirects name index.html; the canonical does not. A browser asked
+for file:///.../a-post/ lists that directory instead of serving the index.html
+inside it, so off a disk the jump has to name the file - while the URL the site
+wants indexed is still the directory, which is what the canonical gives.
+
 Run from the repository root:  python3 tools/build-redirect-stubs.py
 Existing stubs are rewritten in place; anything that is not a stub is left alone.
 """
@@ -44,11 +49,11 @@ TEMPLATE = """<!DOCTYPE html>
 <title>Moved: {title}</title>
 <link rel="canonical" href="{dest}">
 <meta name="referrer" content="no-referrer-when-downgrade">
-<meta http-equiv="refresh" content="0; url={dest}">
-<script>location.replace({dest_js} + location.search + location.hash);</script>
+<meta http-equiv="refresh" content="0; url={jump}">
+<script>location.replace({jump_js} + location.search + location.hash);</script>
 </head>
 <body style="font-family:sans-serif;padding:2em;max-width:40em;margin:0 auto">
-<p>This page now lives at <a href="{dest}">{site_path}</a>.</p>
+<p>This page now lives at <a href="{jump}">{site_path}</a>.</p>
 <p style="color:#666;font-size:.9em">The archive moved to <code>/blog/</code> to
 restore the URLs the original site used, so that an old link needs only its
 domain changed to work again.</p>
@@ -95,7 +100,8 @@ def main():
         page = TEMPLATE.format(
             title=html.escape(path.rsplit('/', 1)[-1].replace('-', ' '))[:90],
             dest=html.escape(dest),
-            dest_js=repr(dest).replace("'", '"'),
+            jump=html.escape(dest + 'index.html'),
+            jump_js=repr(dest + 'index.html').replace("'", '"'),
             site_path=html.escape('/blog/' + path + '/'))
         if exists and open(target, encoding='utf-8').read() == page:
             continue                  # already current
