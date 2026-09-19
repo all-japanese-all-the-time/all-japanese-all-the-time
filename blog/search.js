@@ -6,14 +6,15 @@
  * so pressing enter already navigates to /blog/?s=query, exactly as it did on
  * the live site. All that was missing was something to read that parameter.
  *
- * This script adds two things and changes no existing markup:
+ * This script adds three things and changes no existing markup:
  *   1. a dropdown of the top matches under the search box, on every page
  *   2. a paginated result list on /blog/?s=query
+ *   3. the "@Random Post" menu item, which the same index can answer
  *
- * The index (1,165 titles, ~115 kB, ~38 kB gzipped) is fetched lazily on first
- * use, so a visitor who never searches never downloads it. Styles are injected
- * from here rather than added to the theme stylesheet, which is a mirrored
- * asset and best left byte-for-byte as it was captured.
+ * The index (1,300 titles, ~131 kB, ~41 kB gzipped) is fetched lazily on first
+ * use, so a visitor who never searches or rolls the dice never downloads it.
+ * Styles are injected from here rather than added to the theme stylesheet,
+ * which is a mirrored asset and best left byte-for-byte as it was captured.
  */
 (function () {
   'use strict';
@@ -395,6 +396,74 @@
     }
   }
 
+  /* ---------- random post ---------- */
+
+  /* The theme's "@Random Post" menu item asks for the blog home with a ?random
+   * query, which WordPress used to answer server-side by picking a post. A
+   * static mirror cannot, so the button has only ever reloaded the home page.
+   * The title index is already a list of every post in the archive, so the
+   * pick is one line of arithmetic once it has loaded.
+   *
+   * Two paths, because the link is not written the same way everywhere: most
+   * pages point at ../index.html?random, a few at /blog/?random, and on a feed
+   * page the relative link resolves to the post itself. Intercepting the click
+   * skips loading an intermediate page; handling ?random on arrival catches
+   * every href, a bookmarked URL, and a click that came from somewhere this
+   * script had not loaded. Nothing here edits the mirrored markup, and with
+   * JavaScript off the link still does what it did before.
+   */
+
+  function currentSlug() {
+    var m = /^\/blog\/([^\/]+)\//.exec(window.location.pathname);
+    return m ? m[1] : null;
+  }
+
+  /* Resolves true once the browser is on its way to a post, false if the index
+   * never arrived - in which case the caller falls back to the plain link.
+   *
+   * `replace` matters for Back. A click should leave the page it came from in
+   * history, the way following the link always did; an arrival at ?random
+   * should not, or Back lands on the redirect and rolls again, and the reader
+   * cannot get out of the archive by going backwards. */
+  function goRandom(except, replace) {
+    return load().then(function (rows) {
+      if (rows.length < 2) return false;
+      var slug;
+      do {
+        slug = rows[Math.floor(Math.random() * rows.length)][0];
+      } while (slug === except);           /* never re-roll the post you are on */
+      var url = '/blog/' + slug + '/';
+      if (replace) window.location.replace(url);
+      else window.location.href = url;
+      return true;
+    });
+  }
+
+  function randomLink(e) {
+    if (!e.target || !e.target.closest) return null;
+    var a = e.target.closest('a');
+    return a && /\?random\b/.test(a.getAttribute('href') || '') ? a : null;
+  }
+
+  function attachRandomLinks() {
+    /* delegated on document, because below 768px the theme moves the whole
+     * #site-navigation into its off-canvas panel (themed934.js prependTo) -
+     * the same link, somewhere else in the page */
+    document.addEventListener('mouseover', function (e) {
+      if (randomLink(e)) load();           /* warm the index before the click */
+    });
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 ||
+          e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = randomLink(e);
+      if (!a) return;
+      e.preventDefault();
+      goRandom(currentSlug(), false).then(function (went) {
+        if (!went) window.location.href = a.href;
+      });
+    });
+  }
+
   /* ---------- boot ---------- */
 
   function init() {
@@ -408,9 +477,21 @@
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  function boot() {
+    attachRandomLinks();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  }
+
+  /* ?random is answered before the DOM is ready: the redirect needs no markup,
+   * and the index fetch is the only thing standing between the click and the
+   * post. If the index cannot be loaded the page carries on as itself. */
+  if (new URLSearchParams(window.location.search).has('random')) {
+    goRandom(currentSlug(), true).then(function (went) { if (!went) boot(); });
   } else {
-    init();
+    boot();
   }
 })();
