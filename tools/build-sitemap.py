@@ -26,12 +26,27 @@ SKIP = {
     'data', 'images', 'audio', 'store', 'deletions', 'emailsub',
 }
 
+def is_redirect_stub(path):
+    """True for the small pages that only forward to somewhere else.
+
+    They are real URLs and must keep working, but they are not content: listing
+    one in the sitemap invites a search engine to index a redirect, and putting
+    one in the search index offers the reader a result that immediately bounces
+    them elsewhere.
+    """
+    try:
+        head = open(path, 'rb').read(2048)
+    except OSError:
+        return False
+    return b'location.replace' in head and b'canonical' in head
+
 def main():
     urls = [ORIGIN + '/blog/']
     for slug in sorted(os.listdir(BLOG)):
         if slug in SKIP or slug.startswith('.'):
             continue
-        if os.path.isfile(os.path.join(BLOG, slug, 'index.html')):
+        page = os.path.join(BLOG, slug, 'index.html')
+        if os.path.isfile(page) and not is_redirect_stub(page):
             urls.append(f'{ORIGIN}/blog/{slug}/')
 
     if len(urls) < 100:
