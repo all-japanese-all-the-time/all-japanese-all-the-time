@@ -609,6 +609,7 @@ https://alljapanesealltheti.me/blog/immersion-why-is-the-pause-button-your-enemy
 https://alljapanesealltheti.me/blog/immersion-why-you-should-stop-trying-to-control-or-measure-time/
 https://alljapanesealltheti.me/blog/immersionreading-tip-tear-up-the-book-if-you-love-your-mind/
 https://alljapanesealltheti.me/blog/improving-your-life-through-japanese/
+https://alljapanesealltheti.me/blog/imx/
 https://alljapanesealltheti.me/blog/imx-easter-2017-gratitude-event/
 https://alljapanesealltheti.me/blog/imx-french-is-out-also-a-new-secret-japanese-version/
 https://alljapanesealltheti.me/blog/imx-spring-2017-gratitude-event/
@@ -685,9 +686,11 @@ https://alljapanesealltheti.me/blog/kawaii/
 https://alljapanesealltheti.me/blog/kbl-khatzumotos-book-list-august-2008/
 https://alljapanesealltheti.me/blog/kenya-chan-wake-up/
 https://alljapanesealltheti.me/blog/khatz-if-youre-fluent-why-do-you-still-srs/
+https://alljapanesealltheti.me/blog/khatzumemo/
 https://alljapanesealltheti.me/blog/khatzumemo-back-in-action/
 https://alljapanesealltheti.me/blog/khatzumemo-cellphone-drive/
 https://alljapanesealltheti.me/blog/khatzumemo-database-upgrade-and-service-interruption/
+https://alljapanesealltheti.me/blog/khatzumemo-dev/
 https://alljapanesealltheti.me/blog/khatzumemo-like-supermemomnemosyne-but-web-based/
 https://alljapanesealltheti.me/blog/khatzumemo-update-back-to-basic-ui-more-stats-extra-reps-fix/
 https://alljapanesealltheti.me/blog/khatzumemo-update-changes-to-same-day-repetition-scheduling/
@@ -946,6 +949,7 @@ https://alljapanesealltheti.me/blog/srs-scoring-heuristics/
 https://alljapanesealltheti.me/blog/ss-sold-out/
 https://alljapanesealltheti.me/blog/ss-waitinglist-almost/
 https://alljapanesealltheti.me/blog/ss-waitinglist-confirmation/
+https://alljapanesealltheti.me/blog/ssinfo/
 https://alljapanesealltheti.me/blog/stephen-krashen-on-reading/
 https://alljapanesealltheti.me/blog/stop-being-creative/
 https://alljapanesealltheti.me/blog/stop-mystifying-japanese/
@@ -1127,6 +1131,7 @@ https://alljapanesealltheti.me/blog/totally-fine/
 https://alljapanesealltheti.me/blog/trump-madness/
 https://alljapanesealltheti.me/blog/trumpinator/
 https://alljapanesealltheti.me/blog/turn-yourself-into-a-monster-what-to-do-when-people-around-you-are-not-encouraging-or-supportive/
+https://alljapanesealltheti.me/blog/twitter/
 https://alljapanesealltheti.me/blog/twitter-tweets/
 https://alljapanesealltheti.me/blog/ululation-qrg-the-movie-is-here/
 https://alljapanesealltheti.me/blog/unclean-why-would-ajatt-do-a-tie-in-with-other-people’s-stuff/
