@@ -19,7 +19,31 @@
 (function () {
   'use strict';
 
-  var INDEX_URL = '/blog/search-index.json';
+  /* Everything this file points at is worked out from its own <script src>,
+   * so the archive runs wherever it is put: at /blog/ on the live site, under
+   * a subdirectory of some other host, or in a folder opened straight off a
+   * disk. document.currentScript is read here, while the script is executing;
+   * by the time anything below runs it would be null. */
+  var BASE = (function () {
+    var self = document.currentScript;
+    return self ? new URL('.', self.src).href : new URL('/blog/', location.href).href;
+  })();
+
+  /* A browser asked for file:///.../a-post/ lists the directory rather than
+   * serving its index.html, so off a disk the file has to be named. On a
+   * server the bare directory URL is the real one and is left alone. */
+  var FILE = location.protocol === 'file:';
+
+  function postUrl(slug) {
+    return BASE + slug + '/' + (FILE ? 'index.html' : '');
+  }
+
+  function homeUrl(query) {
+    return BASE + (FILE ? 'index.html' : '')
+         + (query ? '?s=' + encodeURIComponent(query) : '');
+  }
+
+  var INDEX_URL = BASE + 'search-index.json';
   /* Full-text search runs on a small API on the maintainer's own machine. It is
    * consulted ONLY from the results page - never from the dropdown, which keeps
    * the dropdown instant and independent of any server. If the API is slow or
@@ -192,7 +216,7 @@
       if (!results.length) { close(); return; }
       results.slice(0, MAX_DROPDOWN).forEach(function (r, i) {
         var li = el('li'), a = el('a');
-        a.href = '/blog/' + r.slug + '/';
+        a.href = postUrl(r.slug);
         a.appendChild(highlight(r.title, q));
         a.setAttribute('role', 'option');
         li.appendChild(a);
@@ -231,13 +255,22 @@
       else if (e.key === 'Enter') {
         if (sel >= 0 && results[sel]) {
           e.preventDefault();
-          window.location.href = '/blog/' + results[sel].slug + '/';
+          window.location.href = postUrl(results[sel].slug);
         }
         /* otherwise the form submits to /blog/?s=... on its own */
       } else if (e.key === 'Escape') close();
     });
     document.addEventListener('click', function (e) {
       if (!wrap.contains(e.target)) close();
+    });
+
+    /* The theme's form is <form action="/blog/" method="get">, which is the
+     * right URL on the live site and nothing at all off a disk. Taking the
+     * submit makes the same box work from a folder; on a server it goes
+     * exactly where the form would have gone on its own. */
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      window.location.href = homeUrl(input.value.trim());
     });
   }
 
@@ -257,7 +290,7 @@
      * and action, so enter works even if the handler below never binds. */
     var bar = el('form', 'ajatt-searchbar');
     bar.setAttribute('method', 'get');
-    bar.setAttribute('action', '/blog/');
+    bar.setAttribute('action', homeUrl(''));
     bar.setAttribute('role', 'search');
     var input = el('input');
     input.type = 'search';
@@ -319,7 +352,7 @@
       page = Math.min(Math.max(1, page), pages);
       all.slice((page - 1) * PER_PAGE, page * PER_PAGE).forEach(function (r) {
         var li = el('li'), a = el('a');
-        a.href = '/blog/' + r.slug + '/';
+        a.href = postUrl(r.slug);
         a.appendChild(highlight(r.title, q));
         li.appendChild(a);
         if (r.snippet) {
@@ -367,7 +400,9 @@
       }
       /* keep the address bar shareable without reloading the page */
       if (pushUrl && window.history && window.history.replaceState) {
-        window.history.replaceState(null, '', '/blog/?s=' + encodeURIComponent(q));
+        try {
+          window.history.replaceState(null, '', homeUrl(q));
+        } catch (e) { /* file:// refuses this in some browsers; harmless */ }
       }
     }
 
@@ -411,8 +446,9 @@
    */
 
   function currentSlug() {
-    var m = /^\/blog\/([^\/]+)\//.exec(window.location.pathname);
-    return m ? m[1] : null;
+    var here = window.location.href.split('?')[0].split('#')[0];
+    if (here.indexOf(BASE) !== 0) return null;
+    return here.slice(BASE.length).split('/')[0] || null;
   }
 
   /* Resolves true once the browser is on its way to a post, false if the index
@@ -429,7 +465,7 @@
       do {
         slug = rows[Math.floor(Math.random() * rows.length)][0];
       } while (slug === except);           /* never re-roll the post you are on */
-      var url = '/blog/' + slug + '/';
+      var url = postUrl(slug);
       if (replace) window.location.replace(url);
       else window.location.href = url;
       return true;

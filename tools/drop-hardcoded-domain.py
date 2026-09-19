@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Take the site's own domain name back out of the mirrored pages.
+"""Take the site's own address back out of the mirrored pages.
 
-Two places still named alljapanesealltheti.me, and neither needs to:
+Three ways a page said where it was, none of which it needs to:
 
   A  the "open external links in a new window" plugin, on 1,885 pages. It walks
      every link on load and decides internal from external by looking for the
@@ -22,6 +22,19 @@ Two places still named alljapanesealltheti.me, and neither needs to:
      at all in a downloaded copy. Existence-gated: a URL is only rewritten when
      the page it names is on disk, so a link to something the archive does not
      hold keeps pointing at the internet.
+
+  C  URLs written from the server root, /blog/..., which assume the archive is
+     published at exactly that path: the <script src> for the search, the
+     search form's action, and the assets and links on the pages recovered
+     from the Wayback Machine, whose markup was captured with the prefix in
+     place. Same treatment, same gate.
+
+     A link to a page gets index.html on the end, which is what HTTrack wrote
+     everywhere else in the mirror and what a browser opening the archive off
+     a disk needs: asked for file:///.../a-post/ it lists the directory rather
+     than serving the index.html inside it. <link rel=canonical> is the one
+     exception - it keeps naming the clean directory URL, because that is the
+     URL the site wants indexed.
 
 Left alone: CNAME, robots.txt and sitemap.txt, where an absolute URL is the
 format; and the RSS files under */feed/, where the spec wants absolute links.
@@ -54,6 +67,10 @@ def is_html(raw):
     head = raw[:200].lstrip().lower()
     return head.startswith(b'<!doctype html') or head.startswith(b'<html')
 
+# C - a URL that assumes the archive sits at /blog/ on the server root
+CANONICAL = re.compile(r'(<link\b[^>]*\brel="canonical"[^>]*\bhref=")(/blog/[^"]*)"', re.I)
+ROOTED    = re.compile(r'((?:href|src|action)=")(/blog/[^"]*)"')
+
 def target_of(url_path):
     """The repo path a site path names, or None when we do not hold it.
 
@@ -62,14 +79,14 @@ def target_of(url_path):
     prefix are taken as they are.
     """
     clean = url_path.split('#')[0].split('?')[0].strip('/')
-    rel = clean if clean.startswith('blog/') else 'blog/' + clean
+    rel = clean if clean == 'blog' or clean.startswith('blog/') else 'blog/' + clean
     on_disk = os.path.join(ROOT, unquote(rel))
     if os.path.isfile(on_disk) or os.path.isfile(os.path.join(on_disk, 'index.html')):
         return rel
     return None
 
 def process(path, src):
-    n = dict(A=0, B=0)
+    n = dict(A=0, B=0, C=0)
     src, n['A'] = NOT_US.subn(SAME_ORIGIN, src)
 
     page_dir = os.path.relpath(os.path.dirname(path), ROOT).replace(os.sep, '/')
@@ -92,17 +109,37 @@ def process(path, src):
         return m.group(1) + href + suffix + '"'
 
     src = OWN.sub(relink, src)
+
+    def reroot(m, name_the_file=True):
+        rel = target_of(m.group(2))
+        if not rel:
+            return m.group(0)                 # nothing of ours at that path
+        n['C'] += 1
+        suffix = ''
+        for sep in ('#', '?'):
+            if sep in m.group(2):
+                _, _, rest = m.group(2).partition(sep)
+                suffix = sep + rest + suffix
+        href = os.path.relpath(rel, page_dir).replace(os.sep, '/')
+        if os.path.isdir(os.path.join(ROOT, unquote(rel))):
+            href += '/index.html' if name_the_file else '/'
+        return m.group(1) + href + suffix + '"'
+
+    # canonical first, so the general rule never sees it
+    src = CANONICAL.sub(lambda m: reroot(m, False), src)
+    src = ROOTED.sub(reroot, src)
     return src, n
 
 def main():
-    total = dict(A=0, B=0); touched = 0
+    total = dict(A=0, B=0, C=0); touched = 0
     for dirpath, _, names in os.walk(BLOG):
         for name in names:
             if not name.endswith('.html'):
                 continue
             path = os.path.join(dirpath, name)
             raw = open(path, 'rb').read()
-            if b'alljapanesealltheti' not in raw and b'/index.html/' not in raw:
+            if (b'alljapanesealltheti' not in raw and b'/index.html/' not in raw
+                    and b'="/blog/' not in raw):
                 continue
             if not is_html(raw):                     # */feed/index.html is RSS
                 continue
@@ -119,6 +156,7 @@ def main():
     print(('would change' if DRY else 'changed') + f' {touched:,} pages')
     print(f"  A external-link tests made same-origin {total['A']:,}")
     print(f"  B own-domain links made relative       {total['B']:,}")
+    print(f"  C root-absolute /blog/ URLs made relative {total['C']:,}")
 
 if __name__ == '__main__':
     main()
