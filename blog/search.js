@@ -26,7 +26,6 @@
    * unreachable the page falls back to the title index below and says so, so a
    * degraded search is visible rather than silently worse. */
   var API_URL = 'https://search.alljapanesealltheti.me/search';
-  var API_FALLBACK_URL = 'https://search.fanelli.tv/search';
   var API_TIMEOUT = 2500;
   var PER_PAGE = 10;
   var MAX_DROPDOWN = 5;
@@ -106,9 +105,7 @@
       })
       .catch(function () {
         clearTimeout(timer);
-        /* one retry against the other hostname, then give up quietly */
-        if (url !== API_FALLBACK_URL) return apiSearch(q, API_FALLBACK_URL);
-        return null;
+        return null;                 /* give up quietly; the caller uses titles */
       });
   }
 
