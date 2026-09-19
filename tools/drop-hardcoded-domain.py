@@ -60,16 +60,19 @@ SAME_ORIGIN = 'all_links.hostname != location.hostname'
 # The scheme is optional because a handful of these were written without one -
 # href="www.alljapaneseallthetime.com/blog/..." is a relative URL to a browser,
 # so those links have been 404ing since they were typed.
-OWN = re.compile(r'((?:href|src)=")(?:https?://)?(?:www\.)?'
-                 r'(?:alljapanesealltheti\.me|alljapaneseallthetime\.com)(/[^"]*)"')
+OWN = re.compile(r'((?:href|src)=(["\']))(?:https?://)?(?:www\.)?'
+                 r'(?:alljapanesealltheti\.me|alljapaneseallthetime\.com)(/[^"\']*)\2')
 
 def is_html(raw):
     head = raw[:200].lstrip().lower()
     return head.startswith(b'<!doctype html') or head.startswith(b'<html')
 
 # C - a URL that assumes the archive sits at /blog/ on the server root
-CANONICAL = re.compile(r'(<link\b[^>]*\brel="canonical"[^>]*\bhref=")(/blog/[^"]*)"', re.I)
-ROOTED    = re.compile(r'((?:href|src|action)=")(/blog/[^"]*)"')
+CANONICAL = re.compile(r'(<link\b[^>]*\brel=["\']canonical["\'][^>]*\bhref=(["\']))'
+                       r'(/blog/[^"\']*)\2', re.I)
+ROOTED    = re.compile(r'((?:href|src|action)=(["\']))(/blog/[^"\']*)\2')
+# url(/blog/...) inside the theme's inline CSS - the body background lives there
+CSS_URL   = re.compile(r'(url\((["\']?))(/blog/[^"\')]*)(\2\))')
 
 def target_of(url_path):
     """The repo path a site path names, or None when we do not hold it.
@@ -92,42 +95,43 @@ def process(path, src):
     page_dir = os.path.relpath(os.path.dirname(path), ROOT).replace(os.sep, '/')
 
     def relink(m):
-        rel = target_of(m.group(2))
+        rel = target_of(m.group(3))
         if not rel:
             return m.group(0)                 # not ours to fix
         n['B'] += 1
         suffix = ''
         for sep in ('#', '?'):                # keep the fragment or query intact
-            if sep in m.group(2):
-                _, _, rest = m.group(2).partition(sep)
+            if sep in m.group(3):
+                _, _, rest = m.group(3).partition(sep)
                 suffix = sep + rest + suffix
         # pure string arithmetic on the percent-encoded path, so the encoding
         # the page was written with survives
         href = os.path.relpath(rel, page_dir).replace(os.sep, '/')
         if not os.path.splitext(href)[1]:
             href += '/'
-        return m.group(1) + href + suffix + '"'
+        return m.group(1) + href + suffix + m.group(2)
 
     src = OWN.sub(relink, src)
 
-    def reroot(m, name_the_file=True):
-        rel = target_of(m.group(2))
+    def reroot(m, name_the_file=True, close=None):
+        rel = target_of(m.group(3))
         if not rel:
             return m.group(0)                 # nothing of ours at that path
         n['C'] += 1
         suffix = ''
         for sep in ('#', '?'):
-            if sep in m.group(2):
-                _, _, rest = m.group(2).partition(sep)
+            if sep in m.group(3):
+                _, _, rest = m.group(3).partition(sep)
                 suffix = sep + rest + suffix
         href = os.path.relpath(rel, page_dir).replace(os.sep, '/')
         if os.path.isdir(os.path.join(ROOT, unquote(rel))):
             href += '/index.html' if name_the_file else '/'
-        return m.group(1) + href + suffix + '"'
+        return m.group(1) + href + suffix + (close if close is not None else m.group(2))
 
     # canonical first, so the general rule never sees it
     src = CANONICAL.sub(lambda m: reroot(m, False), src)
     src = ROOTED.sub(reroot, src)
+    src = CSS_URL.sub(lambda m: reroot(m, close=m.group(4)), src)
     return src, n
 
 def main():
@@ -139,7 +143,8 @@ def main():
             path = os.path.join(dirpath, name)
             raw = open(path, 'rb').read()
             if (b'alljapanesealltheti' not in raw and b'/index.html/' not in raw
-                    and b'="/blog/' not in raw):
+                    and b'="/blog/' not in raw and b"='/blog/" not in raw
+                    and b'url("/blog/' not in raw):
                 continue
             if not is_html(raw):                     # */feed/index.html is RSS
                 continue
