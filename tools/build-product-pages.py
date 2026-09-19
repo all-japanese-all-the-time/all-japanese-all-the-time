@@ -57,6 +57,24 @@ def page(title, body_html):
 '''
     return (head + article + tail).encode('utf-8', 'surrogateescape')
 
+def _note(body):
+    return ('<p style="border-left:4px solid #ccc;padding:8px 14px;margin:0 0 20px;'
+            'background:#f6f6f6;font-size:14px">' + body + '</p>')
+
+# The framing has to match what was actually lost, or the page states something
+# untrue about its own subject. A product page vanished behind an order form; a
+# web service simply stopped existing; a shortcut to somewhere else was never a
+# page here at all.
+NOTE_SERVICE = _note(
+    'This page is part of an archived copy of AJATT. What it describes was a '
+    'separate service rather than a page on the blog, so there is nothing to '
+    'restore here. What follows is a note from the people maintaining the '
+    'archive, not original AJATT material.')
+NOTE_LINK = _note(
+    'This page is part of an archived copy of AJATT. The address you followed was '
+    'a shortcut to somewhere else rather than a page on the blog. What follows is '
+    'a note from the people maintaining the archive, not original AJATT material.')
+
 NOTE = ('<p style="border-left:4px solid #ccc;padding:8px 14px;margin:0 0 20px;'
         'background:#f6f6f6;font-size:14px">This page is part of an archived copy of AJATT. '
         'The original page was lost — it was never captured by the Internet Archive, '
@@ -75,6 +93,33 @@ def have_it(title, what, links):
 				</ul>
 				<p>If you have a better or more complete copy, please
 				<a href="{mailto(f'AJATT archive: better copy of {what}')}">get in touch</a>.</p>''')
+
+def service(title, what, extra=''):
+    """A web service that lived off the blog and is gone entirely."""
+    return page(title, f'''{NOTE_SERVICE}
+				<p><strong>{html.escape(what)}</strong> was not a page on this blog \u2014 it ran as its
+				own service, at its own address, and that address no longer exists. The
+				shortcut that used to lead here has nothing left to lead to.</p>
+				<p>Nothing of it has been found: not a working copy, not an export, not a
+				page in the Internet Archive.</p>
+				<p><strong>If you have anything at all \u2014 an archived page, an export of your
+				data, even a screenshot \u2014 please get in touch.</strong> Screenshots are genuinely
+				useful here: for a service with nothing left, a picture of the interface may be
+				the only record that survives.</p>
+				<p><a href="{mailto(f'AJATT archive: I have something from {what}')}">Email
+				{CONTACT}</a></p>{extra}''')
+
+
+def elsewhere(title, what, links, note):
+    items = '\n'.join(
+        f'					<li><a href="{u}"{" target=\"_blank\" rel=\"noopener\"" if u.startswith("http") else ""}>{html.escape(t)}</a></li>'
+        for t, u in links)
+    return page(title, f'''{NOTE_LINK}
+				<p>{note}</p>
+				<ul>
+{items}
+				</ul>''')
+
 
 def wanted(title, what):
     return page(title, f'''{NOTE}
@@ -100,6 +145,23 @@ HAVE = {
          ('AJATT QRG (PDF, v1rev7)', PRODUCTS + 'AJATT%20QRG%20-%20v1rev7.pdf')]),
 }
 
+SERVICES = {
+    'khatzumemo': ('KhatzuMemo', 'KhatzuMemo, the spaced-repetition system'),
+    'khatzumemo-dev': ('KhatzuMemo (Development Version)',
+                       'the development version of KhatzuMemo'),
+}
+
+ELSEWHERE = {
+    'twitter': ('AJATT on Twitter', 'AJATT on Twitter',
+                [('The AJATT account on X / Twitter', 'https://x.com/ajatt'),
+                 ('234 weekly tweet round-ups preserved in this archive',
+                  '/blog/archives/')],
+                'This shortcut pointed at the AJATT Twitter account rather than at a '
+                'page on the blog, so there is nothing here to show you. The account '
+                'is still where it was, and the weekly round-ups of it that were '
+                'posted to the blog are part of this archive:'),
+}
+
 WANTED = {
     'join-ajatt-silverspoon-vanilla': ('Join AJATT SilverSpoon', 'AJATT SilverSpoon'),
     'join-silverspoon-bigboi-post-rtk1': ('Join SilverSpoon BigBoi', 'SilverSpoon BigBoi (post-RTK)'),
@@ -110,6 +172,8 @@ WANTED = {
     'cantospoon-silverspoon-for-cantonese-because-this-is-what-bruce-lee-would-have-wanted': ('CantoSpoon', 'CantoSpoon (SilverSpoon for Cantonese)'),
     'pre-launch-50-percent-discount-join-cantospoon-silverspoon-cantonese': ('CantoSpoon — Pre-Launch', 'CantoSpoon (SilverSpoon for Cantonese)'),
     'pre-order-my-first-japanese-storybook-today-and-save': ('My First Japanese Storybook', 'My First Japanese Storybook'),
+    'imx': ('IMX', 'IMX (IMX Japanese / IMX Polyglot)'),
+    'ssinfo': ('Neutrino', 'Neutrino'),
 }
 
 def write(slug, data):
@@ -125,6 +189,10 @@ def main():
         n += 1; print(f'  have    {write(slug, have_it(title, what, links)):>7}B  {slug[:54]}')
     for slug, (title, what) in WANTED.items():
         n += 1; print(f'  wanted  {write(slug, wanted(title, what)):>7}B  {slug[:54]}')
+    for slug, (title, what) in SERVICES.items():
+        n += 1; print(f'  service {write(slug, service(title, what)):>7}B  {slug[:54]}')
+    for slug, (title, what, links, note) in ELSEWHERE.items():
+        n += 1; print(f'  link    {write(slug, elsewhere(title, what, links, note)):>7}B  {slug[:54]}')
     print(f'\n{n} product pages written')
 
 if __name__ == '__main__':
