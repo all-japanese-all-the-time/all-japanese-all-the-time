@@ -27,6 +27,14 @@ Run from the repository root; it is idempotent, so a re-mirror can replay it:
      and only tags the browser fetches: the Google Fonts and Font Awesome
      stylesheets, Gravatar avatars, and YouTube frames. Link targets are left
      alone - an <a href> to a dead http:// page is history, not a bug.
+  F  Clean Archives Reloaded -> deleted. The plugin's collapse script is on
+     every page, and the archive listing it collapses is on none of them: no
+     document here contains a car-collapse, car-yearmonth or car-monthlisting
+     element, and /blog/archives/ is not an archive listing at all. It runs and
+     matches nothing on the 1,915 pages that have jQuery, and throws
+     ReferenceError: jQuery is not defined on the 11 recovered from the Wayback
+     Machine, whose capture did not include the script tags. Gated on the
+     markup being absent, so it would leave a real listing alone.
   E  own-domain subresources -> root-relative. One post body loads an image
      from http://alljapanesealltheti.me/images/..., which is both mixed content
      and, since the /blog prefix came back, a 404. Rewritten only when the file
@@ -74,6 +82,14 @@ FETCHED_TAG = re.compile(
 OWN = re.compile(r'(<(?:img|script|iframe|source|embed|link)\b[^>]*?\b(?:src|href)\s*=\s*["\']?)'
                  r'https?://(?:www\.)?alljapanesealltheti\.me(/[^"\'\s>]*)', re.I)
 
+# F - the archive-collapse plugin, and the markup that would justify it
+CAR_MARKUP = re.compile(r'class="[^"]*car-(?:collapse|yearmonth|monthlisting|container|toggler)', re.I)
+CAR_BLOCK = re.compile(
+    r'[ \t]*<!--\s*Clean Archives Reloaded.*?-->[ \t]*\r?\n?'
+    r'|[ \t]*<style[^>]*>[^<]*car-collapse[^<]*</style>[ \t]*\r?\n?'
+    r'|[ \t]*<script[^>]*>(?:(?!</script>).)*?car-collapse(?:(?!</script>).)*?</script>[ \t]*\r?\n?',
+    re.S | re.I)
+
 # D - the slider, which has nothing to slide
 SLIDER = re.compile(r'[ \t]*<script[^>]*\bsrc\s*=\s*["\'][^"\']*slider\.min[^"\']*["\'][^>]*>'
                     r'\s*</script>[ \t]*\r?\n?', re.I)
@@ -86,8 +102,12 @@ def own_local(path):
     """True when a /-rooted site path is a file we actually host under blog/."""
     return os.path.isfile(os.path.join(BLOG, unquote(path).lstrip('/').split('?')[0]))
 
+def strip_markup(src):
+    """The document with its scripts and styles taken out, for gate checks."""
+    return re.sub(r'<(script|style)\b[^>]*>.*?</\1>', '', src, flags=re.S | re.I)
+
 def process(src):
-    n = dict(A=0, B=0, C=0, D=0, E=0)
+    n = dict(A=0, B=0, C=0, D=0, E=0, F=0)
     src, k = EMOJI.subn('', src);         n['A'] += k
     src, k = THIRD_PARTY_SRC.subn('', src); n['B'] += k
     src, k = INLINE_STQ.subn('', src);    n['B'] += k
@@ -100,10 +120,12 @@ def process(src):
         return m.group(1) + '/blog' + m.group(2)
     src = OWN.sub(reroot, src)
     src, k = SLIDER.subn('', src);        n['D'] += k
+    if not CAR_MARKUP.search(strip_markup(src)):
+        src, k = CAR_BLOCK.subn('', src);  n['F'] += k
     return src, n
 
 def main():
-    total = dict(A=0, B=0, C=0, D=0, E=0)
+    total = dict(A=0, B=0, C=0, D=0, E=0, F=0)
     touched = 0
     for dirpath, _, names in os.walk(BLOG):
         for name in names:
@@ -129,6 +151,7 @@ def main():
     print(f"  C subresources upgraded to https {total['C']:,}")
     print(f"  D slider scripts removed     {total['D']:,}")
     print(f"  E own-domain subresources re-rooted {total['E']:,}")
+    print(f"  F archive-collapse blocks removed {total['F']:,}")
 
 if __name__ == '__main__':
     main()
