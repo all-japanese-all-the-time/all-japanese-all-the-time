@@ -71,7 +71,7 @@ img.emoji {
       
       if(document.links[t].hasAttribute('onClick') == false) {
         // forced if the address starts with http (or also https), but does not link to the current domain
-        if(all_links.href.search(/^http/) != -1 && all_links.href.search(/\/index.html/) == -1 && all_links.href.search(/^#/) == -1) {
+        if(all_links.href.search(/^http/) != -1 && all_links.hostname != location.hostname && all_links.href.search(/^#/) == -1) {
           // console.log('Changed ' + all_links.href);
           change_link = true;
         }
@@ -358,7 +358,7 @@ img.thickie {
           <div class="comment-meta">
             June 21, 2011 at 07:20          </div>
           <div class="comment-text">
-                        <p>Try <a href="https://alljapanesealltheti.me/dick-and-jane/" class="autohyperlink">Dick and Jane</a></p>
+                        <p>Try <a href="./" class="autohyperlink">Dick and Jane</a></p>
           </div>
                     <div class="reply">
             <a rel='nofollow' class='comment-reply-link' href='index.html?replytocom=106167#respond' data-commentid="106167" data-postid="26" data-belowelement="comment-106167" data-respondelement="respond" aria-label='Reply to Monochrome'>Reply</a>          </div>

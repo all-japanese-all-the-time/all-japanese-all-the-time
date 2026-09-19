@@ -70,7 +70,7 @@ img.emoji {
       
       if(document.links[t].hasAttribute('onClick') == false) {
         // forced if the address starts with http (or also https), but does not link to the current domain
-        if(all_links.href.search(/^http/) != -1 && all_links.href.search(/\/index.html/) == -1 && all_links.href.search(/^#/) == -1) {
+        if(all_links.href.search(/^http/) != -1 && all_links.hostname != location.hostname && all_links.href.search(/^#/) == -1) {
           // console.log('Changed ' + all_links.href);
           change_link = true;
         }

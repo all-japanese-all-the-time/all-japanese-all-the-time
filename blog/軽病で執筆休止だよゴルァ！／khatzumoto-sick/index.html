@@ -79,7 +79,7 @@ img.emoji {
 			
 			if(document.links[t].hasAttribute('onClick') == false) {
 				// forced if the address starts with http (or also https), but does not link to the current domain
-				if(all_links.href.search(/^http/) != -1 && all_links.href.search('alljapanesealltheti.me') == -1) {
+				if(all_links.href.search(/^http/) != -1 && all_links.hostname != location.hostname) {
 					// alert('Changeda '+all_links.href);
 					change_link = true;
 				}
