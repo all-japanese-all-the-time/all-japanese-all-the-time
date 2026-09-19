@@ -19,7 +19,7 @@ Run from the repository root; it is idempotent, so a re-mirror can replay it:
      request time and no mirror can hold: a 404 on every page. The style rule
      beside it stays, because post bodies do contain <img class="emoji"> tags
      and that rule is what sizes them.
-  B  third-party scripts -> deleted. devicepx-jetpack (410 on wp.com, and four
+  B  third-party scripts -> deleted. devicepx-jetpack (404 on wp.com, and four
      tracking-prevention warnings per page), stats.wp.com plus its _stq inline
      block, and the Gravatar hovercard script with its WPGroHo block. All of
      them phone home for a site that no longer exists.
