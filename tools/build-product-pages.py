@@ -151,7 +151,18 @@ SERVICES = {
                        'the development version of KhatzuMemo'),
 }
 
+WAYBACK_FF7 = ('https://web.archive.org/web/20150321162824/'
+               'http://ajatt.com/finalfantasy/ff7p-index.htm')
+
 ELSEWHERE = {
+    'ff': ('FF7 Dialogue Chart', 'the FF7 dialogue chart',
+           [('The index, preserved in the Internet Archive', WAYBACK_FF7)],
+           'This shortcut led to a complete Japanese dialogue chart for Final '
+           'Fantasy VII \u2014 an index and fourteen further pages \u2014 hosted alongside '
+           'AJATT but transcribed by a reader, credited on the blog as R-star. '
+           'It is game script rather than anything written for AJATT, so it is '
+           'linked here rather than republished. The Internet Archive still has '
+           'it:'),
     'twitter': ('AJATT on Twitter', 'AJATT on Twitter',
                 [('The AJATT account on X / Twitter', 'https://x.com/ajatt'),
                  ('234 weekly tweet round-ups preserved in this archive',
