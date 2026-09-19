@@ -22,7 +22,7 @@
   var PER_PAGE = 10;
   var MAX_DROPDOWN = 5;
 
-  var index = null, loading = null;
+  var index = null, loading = null, loadFailed = false;
 
   function load() {
     if (index) return Promise.resolve(index);
@@ -30,7 +30,7 @@
       loading = fetch(INDEX_URL)
         .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
         .then(function (rows) { index = rows; return rows; })
-        .catch(function () { loading = null; return []; });
+        .catch(function () { loading = null; loadFailed = true; return []; });
     }
     return loading;
   }
@@ -259,10 +259,16 @@
         count.textContent = hasCJK(q)
           ? 'Type at least one character.'
           : 'Type at least three characters.';
+      } else if (loadFailed) {
+        /* Saying "no posts matched" when the index never arrived is a lie that
+         * looks exactly like a working search finding nothing. */
+        count.className = 'ajatt-hint';
+        count.textContent = 'The search index could not be loaded. Reload the page to try again.';
       } else {
         count.textContent = all.length
           ? all.length + (all.length === 1 ? ' post' : ' posts') + ' found'
-          : 'No posts matched that title.';
+          : 'No posts matched that title. This search covers post titles only, '
+            + 'not the text inside posts.';
       }
     }
 
