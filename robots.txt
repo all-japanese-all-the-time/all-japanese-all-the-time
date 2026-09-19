@@ -1,0 +1,14 @@
+# The archive lives under /blog/, which is where it was on the original site.
+#
+# Every pre-move URL still resolves: each serves a small page that redirects to
+# its counterpart under /blog/ and carries a rel=canonical pointing there. Those
+# pages are deliberately NOT disallowed below - a crawler has to fetch one to
+# discover the redirect and consolidate the two addresses. Blocking them would
+# leave the old URLs indexed forever with no path to the new ones.
+#
+# The sitemap lists only real pages, never a redirect.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://alljapanesealltheti.me/sitemap.txt
