@@ -19,6 +19,14 @@
   'use strict';
 
   var INDEX_URL = '/blog/search-index.json';
+  /* Full-text search runs on a small API on the maintainer's own machine. It is
+   * consulted ONLY from the results page - never from the dropdown, which keeps
+   * the dropdown instant and independent of any server. If the API is slow or
+   * unreachable the page falls back to the title index below and says so, so a
+   * degraded search is visible rather than silently worse. */
+  var API_URL = 'https://search.alljapanesealltheti.me/search';
+  var API_FALLBACK_URL = 'https://search.fanelli.tv/search';
+  var API_TIMEOUT = 2500;
   var PER_PAGE = 10;
   var MAX_DROPDOWN = 5;
 
@@ -80,6 +88,29 @@
     return out;
   }
 
+  /* Resolves to {mode:'full-text', results:[...]} or null when unavailable.
+   * Never rejects: the caller treats null as "use the local index". */
+  function apiSearch(q, url) {
+    if (typeof fetch !== 'function' || typeof AbortController !== 'function') {
+      return Promise.resolve(null);
+    }
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { ctrl.abort(); }, API_TIMEOUT);
+    return fetch(url + '?q=' + encodeURIComponent(q) + '&limit=200',
+                 { signal: ctrl.signal, mode: 'cors', credentials: 'omit' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        clearTimeout(timer);
+        return (d && d.results) ? d : null;
+      })
+      .catch(function () {
+        clearTimeout(timer);
+        /* one retry against the other hostname, then give up quietly */
+        if (url !== API_FALLBACK_URL) return apiSearch(q, API_FALLBACK_URL);
+        return null;
+      });
+  }
+
   function el(tag, cls, text) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -129,6 +160,7 @@
       '.ajatt-results ol{list-style:none;margin:0;padding:0}',
       '.ajatt-results ol li{padding:10px 0;border-bottom:1px solid #ddd}',
       '.ajatt-results ol li a{font-size:16px;line-height:1.4}',
+      '.ajatt-snippet{color:#555;font-size:13px;line-height:1.5;margin:4px 0 0}',
       '.ajatt-results .ajatt-hit{color:#b34700}',
       '.ajatt-pager{margin:20px 0;text-align:center}',
       '.ajatt-pager button{margin:0 2px;padding:5px 10px;border:1px solid #ccc;',
@@ -217,7 +249,7 @@
     var host = document.getElementById('primary');
     if (!host) return;
 
-    var q = initialQuery, all = search(q), page = 1;
+    var q = initialQuery, all = search(q), page = 1, mode = 'titles';
     var box = el('div', 'ajatt-results');
 
     /* The theme's own search box sits in #drop-down-search, which is
@@ -264,11 +296,17 @@
          * looks exactly like a working search finding nothing. */
         count.className = 'ajatt-hint';
         count.textContent = 'The search index could not be loaded. Reload the page to try again.';
+      } else if (mode === 'full-text') {
+        count.textContent = all.length
+          ? all.length + (all.length === 1 ? ' post' : ' posts') + ' found'
+            + ' \u2014 searching titles and post text'
+          : 'Nothing matched, in titles or post text.';
       } else {
         count.textContent = all.length
           ? all.length + (all.length === 1 ? ' post' : ' posts') + ' found'
-          : 'No posts matched that title. This search covers post titles only, '
-            + 'not the text inside posts.';
+            + ' \u2014 titles only; full-text search is unavailable right now'
+          : 'No posts matched that title. Full-text search is unavailable right '
+            + 'now, so this covers post titles only.';
       }
     }
 
@@ -281,7 +319,13 @@
         var li = el('li'), a = el('a');
         a.href = '/blog/' + r.slug + '/';
         a.appendChild(highlight(r.title, q));
-        li.appendChild(a); list.appendChild(li);
+        li.appendChild(a);
+        if (r.snippet) {
+          var sn = el('div', 'ajatt-snippet');
+          sn.appendChild(highlight(r.snippet, q));
+          li.appendChild(sn);
+        }
+        list.appendChild(li);
       });
       if (pages < 2) return;
       var btn = function (label, to, dis, cur) {
@@ -309,8 +353,16 @@
     function setQuery(next, pushUrl) {
       q = next;
       all = longEnough(q) ? search(q) : [];
+      mode = 'titles';
       page = 1;
       heading(); draw();
+      if (longEnough(q)) {
+        apiSearch(q, API_URL).then(function (d) {
+          if (!d || q !== next) return;          /* stale response, ignore */
+          all = d.results; mode = 'full-text'; page = 1;
+          heading(); draw();
+        });
+      }
       /* keep the address bar shareable without reloading the page */
       if (pushUrl && window.history && window.history.replaceState) {
         window.history.replaceState(null, '', '/blog/?s=' + encodeURIComponent(q));
@@ -327,6 +379,16 @@
     heading(); draw();
     host.textContent = '';
     host.appendChild(box);
+
+    /* Titles render immediately from the local index, then full-text results
+     * replace them if the API answers in time. */
+    if (longEnough(q)) {
+      apiSearch(q, API_URL).then(function (d) {
+        if (!d || d.q !== q) return;
+        all = d.results; mode = 'full-text'; page = 1;
+        heading(); draw();
+      });
+    }
   }
 
   /* ---------- boot ---------- */
