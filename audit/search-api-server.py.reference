@@ -1,0 +1,320 @@
+#!/usr/bin/env python3
+"""Full-text search API for the AJATT archive.
+
+The site stays static on GitHub Pages. This runs on the home box and is called
+from the results page only; when it cannot be reached, the page falls back to the
+38 kB title index shipped with the site. So this service being down degrades
+search, it does not break it.
+
+Standard library only. The whole job is a substring scan over 8 MB held in
+memory, which takes single-digit milliseconds; a framework would add dependencies
+and an attack surface for no gain.
+
+    GET /search?q=<query>[&limit=N]   ->  {mode, q, total, results:[...]}
+    GET /health                       ->  {ok, posts, loaded}
+"""
+import json, os, re, sys, time, threading, unicodedata
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from urllib.parse import urlparse, parse_qs
+
+INDEX = os.environ.get('AJATT_INDEX', '/data/index.json')
+PORT = int(os.environ.get('AJATT_PORT', '8000'))
+# Browsers enforce this; curl ignores it. Rate limiting at the proxy is what
+# actually protects the box - see the Traefik labels in docker-compose.yml.
+ALLOWED = [o.strip() for o in os.environ.get(
+    'AJATT_ALLOWED_ORIGINS', 'https://alljapanesealltheti.me').split(',') if o.strip()]
+QUERY_LOG = os.environ.get('AJATT_QUERY_LOG', '')      # empty disables logging
+MAX_Q = 120
+DEFAULT_LIMIT, MAX_LIMIT = 30, 100
+
+_lock = threading.Lock()
+_rows, _loaded_at = [], 0
+_vocab = {}          # word -> how often it appears; the spelling corrector's dictionary
+
+WORD = re.compile(r'[a-z0-9]+')
+
+def load():
+    global _rows, _loaded_at, _vocab
+    with open(INDEX, encoding='utf-8') as fh:
+        rows = json.load(fh)
+    # Vocabulary for typo tolerance. Correcting a misspelling against 38k known
+    # words is cheap and precise; trying to match fuzzily against 8 MB of text
+    # would be neither.
+    vocab = {}
+    for r in rows:
+        for w in WORD.findall(r['b']):
+            if 2 <= len(w) <= 24:
+                vocab[w] = vocab.get(w, 0) + 1
+        for w in WORD.findall(norm(r['t'])):
+            if 2 <= len(w) <= 24:
+                vocab[w] = vocab.get(w, 0) + 3      # a title word is worth more
+    with _lock:
+        _rows, _loaded_at, _vocab = rows, time.time(), vocab
+    return len(rows)
+
+ALPHA = 'abcdefghijklmnopqrstuvwxyz0123456789'
+
+def edits1(w):
+    splits = [(w[:i], w[i:]) for i in range(len(w) + 1)]
+    out = set()
+    for a, b in splits:
+        if b:
+            out.add(a + b[1:])                                   # deletion
+            if len(b) > 1:
+                out.add(a + b[1] + b[0] + b[2:])                 # transposition
+            for c in ALPHA:
+                out.add(a + c + b[1:])                           # replacement
+        for c in ALPHA:
+            out.add(a + c + b)                                   # insertion
+    out.discard(w)
+    return out
+
+def correct(term):
+    """Known word -> itself. Unknown -> the commonest word one edit away, or None.
+
+    Only one edit, and only for terms of four characters or more: at two or three
+    characters almost every word is one edit from several others, and the
+    correction would be a guess rather than a fix."""
+    with _lock:
+        vocab = _vocab
+    if term in vocab or len(term) < 4:
+        return term if term in vocab else None
+    cands = [(vocab[c], c) for c in edits1(term) if c in vocab]
+    if not cands:
+        return None
+    return max(cands)[1]
+
+def norm(s):
+    s = unicodedata.normalize('NFKC', s).lower()
+    return (s.replace('‘', "'").replace('’', "'")
+             .replace('“', '"').replace('”', '"')
+             .replace('–', '-').replace('—', '-'))
+
+CJK = re.compile(r'[぀-ヿ㐀-䶿一-鿿豈-﫿]')
+
+def long_enough(q):
+    return len(q) >= 1 if CJK.search(q) else len(q.strip()) >= 3
+
+WORD_EDGE = re.compile(r'[\s(\[‘"\'\-:,.!?]')
+
+def snippet(body, n, width=150):
+    """A window of body text around the match, trimmed to whitespace."""
+    start = max(0, n - width // 3)
+    end = min(len(body), n + width)
+    frag = body[start:end]
+    if start:
+        frag = frag[frag.find(' ') + 1:] if ' ' in frag[:40] else frag
+    if end < len(body):
+        frag = frag[:frag.rfind(' ')] if ' ' in frag[-40:] else frag
+    return ('…' if start else '') + frag.strip() + ('…' if end < len(body) else '')
+
+def spellfix(q):
+    """Return (query_to_use, corrected_or_None). Latin terms only - a CJK query
+    has no word boundaries to correct against."""
+    if CJK.search(q):
+        return q, None
+    terms = WORD.findall(q)
+    if not terms:
+        return q, None
+    with _lock:
+        vocab = _vocab
+    # "A term exists, so leave it alone" is too blunt: a misspelling that someone
+    # typed once in a post is in the vocabulary too. Treat a term as real only if
+    # it is not vanishingly rare next to a near neighbour that is common - which
+    # is what separates a genuine rare word from a typo of a frequent one.
+    def solid(t):
+        n = vocab.get(t, 0)
+        if n == 0:
+            return False
+        if n >= 5:
+            return True
+        best = max((vocab[c], c) for c in edits1(t) if c in vocab) if len(t) >= 4 else None
+        return not (best and best[0] >= n * 10)
+    if any(solid(t) for t in terms):
+        return q, None
+    fixed, changed = [], False
+    for t in terms:
+        c = correct(t)
+        if c == t and not solid(t) and len(t) >= 4:
+            cands = [(vocab[x], x) for x in edits1(t) if x in vocab]
+            if cands:
+                best = max(cands)
+                if best[0] >= vocab.get(t, 0) * 10:
+                    c = best[1]
+        fixed.append(c or t)
+        changed = changed or (c is not None and c != t)
+    if not changed:
+        return q, None
+    return ' '.join(fixed), ' '.join(fixed)
+
+
+PROX_GAP = 60          # characters allowed between one matched word and the next
+
+def phrase_positions(body, terms):
+    """Smallest span in `body` holding every term, in order, each within
+    PROX_GAP of the previous. Returns (start, end) or None.
+
+    Matching whole words in sequence is what keeps this precise: the words must
+    genuinely be near each other, so no amount of punctuation between them
+    invents a match the way character-level stripping does.
+    """
+    if not all(t in body for t in terms):
+        return None                                  # cheap reject before regex
+    spans = []
+    for t in terms:
+        found = [(m.start(), m.end())
+                 for m in re.finditer(r'\b' + re.escape(t) + r'\b', body)]
+        if not found:
+            return None
+        spans.append(found)
+    # walk forward keeping, for each candidate end position, where its chain began
+    chains = [(a, b) for a, b in spans[0]]           # (chain_start, current_end)
+    for nxt in spans[1:]:
+        advanced = []
+        for a, b in nxt:
+            best = None
+            for st, en in chains:
+                if 0 <= a - en < PROX_GAP and (best is None or st > best):
+                    best = st
+            if best is not None:
+                advanced.append((best, b))
+        if not advanced:
+            return None
+        chains = advanced
+    return min(chains, key=lambda c: c[1] - c[0])
+
+
+def search(q, limit):
+    n = norm(q).strip()
+    terms = [t for t in WORD.findall(n) if t]
+    out = []
+    with _lock:
+        rows = _rows
+    for r in rows:
+        t = norm(r['t'])
+        pos = t.find(n)
+        if pos != -1:
+            rank = (0 if t == n else 1 if pos == 0 else
+                    2 if pos and WORD_EDGE.match(t[pos - 1]) else 3)
+            out.append((rank, pos, len(r['t']), r['s'], r['t'], 'title', ''))
+            continue
+        b = r['b']                                   # already lowercased at build time
+        bpos = b.find(n)
+        if bpos != -1:
+            hits = b.count(n)
+            # body matches rank below every title match; more hits ranks higher
+            out.append((4, -hits, len(r['t']), r['s'], r['t'], 'body', snippet(b, bpos)))
+            continue
+        # Multi-word query: accept the words appearing in order and close
+        # together, which is how a phrase survives punctuation, a line break or a
+        # word the reader misremembered.
+        if len(terms) > 1:
+            span = phrase_positions(b, terms)
+            if span:
+                tightness = span[1] - span[0]
+                out.append((5, tightness, len(r['t']), r['s'], r['t'],
+                            'nearby', snippet(b, span[0])))
+    out.sort(key=lambda x: (x[0], x[1], x[2], x[4]))
+    total = len(out)
+    return total, [{'slug': s, 'title': t, 'where': w, 'snippet': sn}
+                   for _, _, _, s, t, w, sn in out[:limit]]
+
+def log_query(q, total):
+    if not QUERY_LOG:
+        return
+    try:
+        # the query and what it found; no addresses, no identifiers
+        with open(QUERY_LOG, 'a', encoding='utf-8') as fh:
+            fh.write(json.dumps({'t': int(time.time()), 'q': q, 'n': total},
+                                ensure_ascii=False) + '\n')
+    except OSError:
+        pass
+
+class Handler(BaseHTTPRequestHandler):
+    protocol_version = 'HTTP/1.1'
+    server_version = 'ajatt-search'
+    sys_version = ''
+
+    def log_message(self, *a):
+        pass                                          # Traefik already logs requests
+
+    def _origin(self):
+        o = self.headers.get('Origin')
+        return o if o in ALLOWED else (ALLOWED[0] if ALLOWED else '*')
+
+    def _send(self, code, payload, cache='no-store'):
+        body = json.dumps(payload, ensure_ascii=False).encode('utf-8')
+        self.send_response(code)
+        self.send_header('Content-Type', 'application/json; charset=utf-8')
+        self.send_header('Content-Length', str(len(body)))
+        self.send_header('Cache-Control', cache)
+        self.send_header('Access-Control-Allow-Origin', self._origin())
+        self.send_header('Vary', 'Origin')
+        self.end_headers()
+        self.wfile.write(body)
+
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self.send_header('Access-Control-Allow-Origin', self._origin())
+        self.send_header('Access-Control-Allow-Methods', 'GET, OPTIONS')
+        self.send_header('Access-Control-Max-Age', '86400')
+        self.send_header('Vary', 'Origin')
+        self.send_header('Content-Length', '0')
+        self.end_headers()
+
+    def do_GET(self):
+        u = urlparse(self.path)
+        if u.path == '/health':
+            with _lock:
+                n, at = len(_rows), _loaded_at
+            return self._send(200, {'ok': n > 0, 'posts': n, 'loaded': int(at)})
+        if u.path != '/search':
+            return self._send(404, {'error': 'not found'})
+
+        qs = parse_qs(u.query)
+        q = (qs.get('q') or [''])[0][:MAX_Q]
+        try:
+            limit = min(MAX_LIMIT, max(1, int((qs.get('limit') or [DEFAULT_LIMIT])[0])))
+        except ValueError:
+            limit = DEFAULT_LIMIT
+        if not q.strip():
+            return self._send(400, {'error': 'q is required'})
+        if not long_enough(q):
+            return self._send(200, {'mode': 'full-text', 'q': q, 'total': 0,
+                                    'results': [], 'note': 'query too short'})
+        total, results = search(q, limit)
+        corrected = None
+        # Correct on no results, and also on very few: a typo can still match
+        # once by chance as a substring inside another word, and a single
+        # incidental hit should not suppress an obvious correction. The
+        # correction is only adopted if it finds substantially more.
+        if total < 3:
+            alt, cand = spellfix(q)
+            if cand:
+                alt_total, alt_results = search(alt, limit)
+                if alt_total >= max(3, total * 10):
+                    total, results, corrected = alt_total, alt_results, cand
+        log_query(q, total)
+        payload = {'mode': 'full-text', 'q': q, 'total': total, 'results': results}
+        if corrected:
+            payload['corrected'] = corrected
+        return self._send(200, payload, cache='public, max-age=300')
+
+class Server(ThreadingHTTPServer):
+    # socketserver defaults the listen backlog to 5, which means modest
+    # concurrency is refused at the kernel before Traefik's rate limiter ever
+    # sees the request - a dropped connection rather than an honest 429.
+    request_queue_size = 128
+    daemon_threads = True
+    allow_reuse_address = True
+
+
+def main():
+    n = load()
+    print(f'loaded {n:,} posts from {INDEX}', flush=True)
+    srv = Server(('0.0.0.0', PORT), Handler)
+    print(f'listening on :{PORT}; origins={ALLOWED}', flush=True)
+    srv.serve_forever()
+
+if __name__ == '__main__':
+    main()
