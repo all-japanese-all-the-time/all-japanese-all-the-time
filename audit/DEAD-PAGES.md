@@ -5,7 +5,7 @@ A target reached from many distinct pages is in a template or menu — fix once,
 
 | category | refs | targets | reached from ≥5 pages | linked from exactly 1 page |
 |---|---:|---:|---:|---:|
-| ARTICLE | 174 | 61 | 4 | 42 |
+| ARTICLE | 91 | 45 | 3 | 34 |
 | feed | 10 | 10 | 0 | 10 |
 | taxonomy/category | 26 | 9 | 0 | 7 |
 | taxonomy/series | 15 | 4 | 1 | 3 |
@@ -13,30 +13,21 @@ A target reached from many distinct pages is in a template or menu — fix once,
 | wp-internal | 1 | 1 | 0 | 1 |
 | other | 34 | 23 | 1 | 21 |
 
-## ARTICLE — 174 refs across 61 targets
+## ARTICLE — 91 refs across 45 targets
 
 | pages | refs | target |
 |---:|---:|---|
-| 41 | 41 | `khatzumoto-you-say-to-imitate-japanese-people-faithfully-but-why-do-you-overuse-kanji-` |
 | 7 | 7 | `blog/mfsp` |
 | 7 | 7 | `blog/ssinfo` |
 | 5 | 7 | `khatzumemo` |
-| 4 | 4 | `お巫山戯、日本語で-halloween-spectacular-zombie-vs-3-chibi-chans` |
 | 3 | 12 | `blog/imx` |
-| 3 | 4 | `the-eternal-sorrow-of-the-intermediate-learner-“are-we-there-yet”-syndrome` |
-| 3 | 3 | `勝元s日本語初ビデオだよコノヤロー／khatzumoto-japanese-video-debut` |
 | 3 | 3 | `blog/twitter` |
-| 2 | 16 | `if-youre-trying-to-get-to-point-x-then-the-only-people-whose-opinion-matters-are-those` |
 | 2 | 8 | `blog/toc` |
 | 2 | 4 | `世界読書コンクール／international-l2-reading-contest` |
-| 2 | 2 | `進むテレビの低俗化` |
-| 2 | 2 | `jss-japanese-sports-sentence-pack-mmaboxing-mayweather-vs-mcgregor-pre-fight-chatter-a` |
-| 2 | 2 | `jss-japanese-sports-sentence-pack-mmaboxing-mayweather-vs-mcgregor-pre-fight-chatter-a` |
 | 2 | 2 | `dick-and-jane` |
 | 2 | 2 | `hanzimem` |
 | 2 | 2 | `language-is-friendship-and-familiarity` |
 | 2 | 2 | `stephen-krashen-on-reading` |
-| 1 | 2 | `日本語上等podcast-episode-2` |
 | 1 | 2 | `blog/e382a2e3839be38383e3818be38081e5958fe9a18ce381afe8be9ee69bb8e381aae38293e3818be38` |
 | 1 | 1 | `blog/ff` |
 | 1 | 1 | `blog/index531b-2.html` |
@@ -46,23 +37,31 @@ A target reached from many distinct pages is in a template or menu — fix once,
 | 1 | 1 | `all-japanese-all-the-time-ajatt-how-to-learn-japanese-on-y&` |
 | 1 | 1 | `blog/index5034-2.html` |
 | 1 | 1 | `dick-and-jane-episode-13` |
-| 1 | 1 | `日本語上等pod…cast-episode-2-script-manga` |
-| 1 | 1 | `日本語上等pod…cast-episode-3` |
-| 1 | 1 | `漢字、彼是` |
-| 1 | 1 | `言葉の戦争勃発！亜米利加で人気の日本アニメ` |
-| 1 | 1 | `陳冠希万歳！` |
 | 1 | 1 | `chinese-content-bonanza -` |
 | 1 | 1 | `chinese-project-notes-10-big-developments-anki-text-to-spe` |
-| 1 | 1 | `jtq` |
 | 1 | 1 | `blog/dick-and-jane-episode-13.html` |
 | 1 | 1 | `blog/index9f0c-2.html` |
 | 1 | 1 | `how-to-accomplish-great-things-small-victories-winnable-ga` |
-| 1 | 1 | `immersion-hack-how-to-keep-your-immersion-environment-from-being-destroyed-by-interrup` |
 | 1 | 1 | `just-do-one-lowering-your-standards-and-using-patterns-fro` |
 | 1 | 1 | `khatzumemo-dev` |
 | 1 | 1 | `blog/index0863-2.html` |
 | 1 | 1 | `logical-reasons-to-learn-a-l` |
-| … | … | *16 more, of which 16 are linked from a single page* |
+| 1 | 1 | `blog/indexda6e-2.html` |
+| 1 | 1 | `further-reading-on-どんだけ` |
+| 1 | 1 | `read-more-or-die-readmod多読-a-foreign-language-extensive-reading-contest-2014-edition/i` |
+| 1 | 1 | `stop-with-the-resolutions-start-with-the-crack` |
+| 1 | 1 | `the-ten-commandments-of-ajatt` |
+| 1 | 1 | `ajatt-best-of-2013` |
+| 1 | 1 | `dont-think-of-it-as-a-new-year-think-of-it-as-a-new-day` |
+| 1 | 1 | `language-is-murder` |
+| 1 | 1 | `read-more-or-die-readmod多読-a-foreign-language-extensive-reading-contest-2013-edition` |
+| 1 | 1 | `blog/secrets-to-smoother-srsing-part-1-the-srs-is-a-servant-not-a-masterf587.html` |
+| 1 | 1 | `learning-songs-using-the-srs-my-current-method` |
+| 1 | 1 | `success-story-ive-finally-figured-out-this-ajatt-thing` |
+| 1 | 1 | `blog/indexdba8-2.html` |
+| 1 | 1 | `blog/index38f0-2.html` |
+| 1 | 1 | `blog/if-youre-trying-to-get-to-point-x-then-the-only-people-whose-opinion-matters-are-` |
+| 1 | 1 | `why-do-people-who-have-all-the-time-in-the-world-get-nothi` |
 
 ## feed — 10 refs across 10 targets
 
