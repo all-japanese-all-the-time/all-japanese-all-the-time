@@ -40,7 +40,7 @@ DRY = '--dry-run' in sys.argv
 # Feeds and other machine endpoints are skipped: an HTML stub served where a
 # reader expects RSS is worse than a 404, because a feed reader cannot parse it.
 SKIP_FIRST = {'wp-content', 'wp-includes', 'wp-admin', 'wp-json', 'images',
-              'data', 'audio', 'comments'}
+              'data', 'audio', 'comments', 'feed'}
 
 TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
