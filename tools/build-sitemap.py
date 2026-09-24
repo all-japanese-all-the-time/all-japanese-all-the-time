@@ -26,6 +26,12 @@ SKIP = {
     'data', 'images', 'audio', 'store', 'deletions', 'emailsub',
 }
 
+# Content that is not a top-level slug. WordPress child pages live under their
+# parent's directory, which the one-level walk below never enters; this is the
+# only one in the archive that is an article (the other nested index pages are
+# an image attachment and a trackback endpoint).
+NESTED = ['about/overview-page']
+
 def is_redirect_stub(path):
     """True for the small pages that only forward to somewhere else.
 
@@ -47,6 +53,9 @@ def main():
             continue
         page = os.path.join(BLOG, slug, 'index.html')
         if os.path.isfile(page) and not is_redirect_stub(page):
+            urls.append(f'{ORIGIN}/blog/{slug}/')
+    for slug in NESTED:
+        if os.path.isfile(os.path.join(BLOG, slug, 'index.html')):
             urls.append(f'{ORIGIN}/blog/{slug}/')
 
     if len(urls) < 100:
